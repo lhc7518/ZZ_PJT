@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenId="commonShortcut" meta_screenName="단축키기능">
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+				<w2:dataMap baseNode="map" id="dma_fileDesc">
+					<w2:keyInfo>
+						<w2:key id="title" name="화면타이틀" dataType="text"></w2:key>
+						<w2:key id="desc" name="화면설명" dataType="text"></w2:key>
+					</w2:keyInfo>
+					<w2:data use="true">
+						<title><![CDATA[
+Common - 단축키기능  
+						]]></title>
+						<desc><![CDATA[
+<pre style="font-size:14px;">
+화면 단위로 단축키를 지정 할 수 있다. 
+ - 메뉴데이터 초기 셋팅 시 단축키 정보를 가져와서 기본적으로 셋팅한다. (현재는 shortcut.json 파일 기준)
+ - 기본적으로 설정된 단축키 화면에서는 별도의 호출 없이, 단축키 기능 사용이 가능하다. (해당정보는 shortcut.json 파일 기준)  
+ - 추가로 특정 화면에서 단축키 기능을 수행하기 위한 방법으로 제약조건이 존재한다. 
+ * 제약조건 1) 해당 함수는 MDI 를 통해서 로딩 된 업무화면 or wframe 모달 팝업 일 경우에만 처리 가능하다. (일반 브라우저 팝업에서는 처리 불가)  
+ * 제약조건 2) 해당 함수는 페이지 onpageload 함수에 선언해야한다.
+ * 제약조건 3) IE 의 경우 F1키(도움말)는 단축키 기능은 수행되나 도움말 창도 open 된다. (Chrome, Edge는 정상동작)
+ * 제약조건 4) 단축키는 F1 ~ F10 까지만 지정 가능하다. 
+ - 예시) 
+	scwin.onpageload = function() {
+		//단축키 설정 
+		var shocutArray = [
+			{ key:"F2",		func:"scwin.search" }	//F2키 입력 시 scwin.search 함수 실행 
+			,{ key:"F3",		func:"scwin.insertRow" }	//F3키 입력 시 scwin.insertRow 함수 실행 
+		];
+		com.hkey.setData( shocutArray );
+	};
+
+	//조회 
+	scwin.search = function() {
+		com.sbm.excute(sbm_excel);
+	};
+
+	//행추가 
+	scwin.insertRow = function() {
+		dlt_excel.insertRow();
+	};
+</pre>
+						]]></desc>
+					</w2:data>
+				</w2:dataMap>
+				<w2:dataList id="dlt_excel" baseNode="list" saveRemovedData="true" repeatNode="map">
+					<w2:columnInfo>
+						<w2:column id="menuCd" name="메뉴코드" dataType="text"></w2:column>
+						<w2:column id="menuNm" name="메뉴명" dataType="text"></w2:column>
+						<w2:column id="uprMenuNm" name="부모메뉴명" dataType="text"></w2:column>
+						<w2:column id="hierLvl" name="메뉴레벨" dataType="text"></w2:column>
+						<w2:column id="urlAddr" name="경로" dataType="text"></w2:column>
+						<w2:column id="useYn" name="사용여부" dataType="text"></w2:column>
+						<w2:column id="sortOrder" name="순서" dataType="text"></w2:column>
+						<w2:column id="uprMenuId" name="부모메뉴코드" dataType="text"></w2:column>
+					</w2:columnInfo>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection></w2:workflowCollection>
+			<xf:submission id="sbm_excel" ref="" target="data:json,dlt_excel"
+				action="/ui/SP/json/excelData.json" method="get" mediatype="application/json" encoding="UTF-8" instance="" replace=""
+				errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submit="" ev:submitdone="scwin.sbm_excel_submitdone"
+				ev:submiterror="" abortTrigger="">
+			</xf:submission>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+
+	//onplageload 시 
+	scwin.onpageload = function() {
+		//단축키 설정 
+		var shortcutList = [
+			 { key: "F2",		func: "scwin.btn_init_onclick" }			//초기화(F2) 
+			,{ key: "F3",		func: "scwin.btn_search_onclick" }		//조회(F3)  
+			,{ key: "F4",		func: "scwin.btn_add_onclick" }			//행추가(F4)  
+		];
+		com.hkey.setData( shortcutList );
+	};
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+
+	//조회 
+	scwin.btn_search_onclick = function() {
+		com.sbm.execute(sbm_excel);
+	};
+
+	//조회 callback 
+	scwin.sbm_excel_submitdone = function(e) {
+		spn_excelCnt.setValue( dlt_excel.getRowCount() );
+	};
+
+	//행추가 		
+	scwin.btn_add_onclick = function() {
+		dlt_excel.insertRow();
+	};
+	
+	//초기화 
+	scwin.btn_init_onclick = function() {
+		dlt_excel.removeAll();	
+	};
+	
+	]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+		<xf:group class="contentWrap" id="" style="">
+			<w2:wframe id="wfm_contentHeader" src="/ui/SP/contentHeader.xml"></w2:wframe>
+			<w2:wframe id="wfm_contentDesc" src="/ui/SP/contentDesc.xml"></w2:wframe>
+			<xf:group id="" style="" class="section">
+				<xf:group id="" style="" class="defaultbox">
+					<xf:group id="" style="" class="ofh">
+						<w2:span id="spn_excelCnt" dataType="number" style="" class="df_total" label="" displayFormat="총 #,###건"></w2:span>
+						<xf:group id="" style="" class="ml5 fr">
+							<w2:anchor id="btn_init" style="" toolTip="" clickEventElement="outerDiv" ev:onclick="scwin.btn_init_onclick"
+								class="btn_gcm mr5" outerDiv="true">
+								<xf:label><![CDATA[초기화]]></xf:label>
+							</w2:anchor>
+							<w2:anchor id="btn_search" style="" toolTip="" clickEventElement="outerDiv"
+								ev:onclick="scwin.btn_search_onclick" class="btn_sh" outerDiv="true">
+								<xf:label><![CDATA[조회]]></xf:label>
+							</w2:anchor>
+							<w2:anchor id="btn_add" style="" toolTip="" clickEventElement="outerDiv" ev:onclick="scwin.btn_add_onclick"
+								class="btn_gcm mr5" outerDiv="true">
+								<xf:label><![CDATA[행추가]]></xf:label>
+							</w2:anchor>
+						</xf:group>
+						<w2:span class="df_total fr" dataType="" displayFormat="" id="span1" label="F2 (초기화) , F3 (조회) , F4 (행추가)"
+							style="color: red;margin-right: 20px;">
+						</w2:span>
+
+						<w2:span class="df_total fr" dataType="" displayFormat="" id="span2" label="[ 단축키 ]"
+							style="margin-right: 5px;">
+						</w2:span>
+					</xf:group>
+				</xf:group>
+			<xf:group id="" class="cm_gridGrp "><w2:gridView sortEvent="ondblclick" rowNumVisible="true" useShiftKey="true" rowNumHeaderValue="순서" scrollByColumn="false" sortable="true" ev:onfilereadend="" columnMoveWithFooter="" rowStatusHeaderValue="상태" rowStatusVisible="true" fixedColumnWithHidden="true" dataList="dlt_excel" ignoreCellClick="false" style="height:300px;" columnMove="" autoFit="allColumn" visibleRowNum="" id="grd_excelGrid" ev:onafteredit="" class="cm_grid">
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row2">
+							<w2:column width="50" style="height:25px;" inputType="text" id="column11" value="메뉴코드" blockSelect="false"></w2:column>
+							<w2:column width="40" style="height:25px;" inputType="text" id="column9" value="메뉴명" blockSelect="false"></w2:column>
+							<w2:column width="50" style="height:25px;" inputType="text" id="column7" value="부모메뉴명" blockSelect="false"></w2:column>
+							<w2:column width="50" style="height:25px;" inputType="text" id="column3" value="메뉴레벨" blockSelect="false"></w2:column>
+							<w2:column width="50" style="" inputType="text" id="column12" value="경로" blockSelect="false"></w2:column>
+							<w2:column width="70" style="height:25px" inputType="text" id="column15" value="부모메뉴코드" blockSelect="false"></w2:column>
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody4">
+						<w2:row style="" id="row5">
+							<w2:column width="50" style="height:25px;" inputType="text" id="menuCd" blockSelect="false"></w2:column>
+							<w2:column width="40" style="height:25px;" inputType="text" id="menuNm" blockSelect="false"></w2:column>
+							<w2:column textAlign="left" width="50" style="height:25px;" inputType="text" id="uprMenuNm" blockSelect="false"></w2:column>
+							<w2:column textAlign="left" width="50" style="height:25px;" inputType="text" id="hierLvl" blockSelect="false"></w2:column>
+							<w2:column width="50" style="" inputType="text" id="urlAddr" blockSelect="false"></w2:column>
+							<w2:column width="70" style="height:25px" inputType="text" id="uprMenuId" blockSelect="false"></w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView></xf:group></xf:group>
+		</xf:group>
+	</body>
+</html>

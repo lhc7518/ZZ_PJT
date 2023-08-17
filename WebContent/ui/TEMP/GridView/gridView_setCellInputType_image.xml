@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList id="dataList1" baseNode="list" saveRemovedData="true" repeatNode="map">
+					<w2:columnInfo>
+						<w2:column id="col1" name="name1" dataType="text"></w2:column>
+						<w2:column id="col2" name="name2" dataType="text"></w2:column>
+						<w2:column id="col3" name="name3" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col1><![CDATA[111111]]></col1>
+							<col2><![CDATA[]]>
+							</col2>
+							<col3><![CDATA[aaaaaa]]></col3>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[222222]]></col1>
+							<col2><![CDATA[]]>
+							</col2>
+							<col3><![CDATA[bbbbbb]]></col3>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[333333]]></col1>
+							<col2><![CDATA[]]>
+							</col2>
+							<col3><![CDATA[cccccc]]></col3>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection>
+			</w2:workflowCollection>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+		//이미지타입으로 변경  
+		var info_image = {
+			inputType : "image",
+			options : {
+				imageSrc : "/cm/images/base/ico_docu.png"
+				//,imageClickFunction : "scwin.imageClick"		//image에서는 처리 안됨 (해당 그리드컬럼에서 직접 설정)  				
+			}
+		};
+		var info_button = {
+			inputType : "button"
+			,value : "버튼1"
+		};
+		gridView1.setCellInputType(0, "col2", info_image); // 0 번째 row, "col1" column에 해당하는 cell의 inputType을 image로 변경.
+		gridView1.setCellInputType(2, "col2", info_button); // 2 번째 row, "col1" column에 해당하는 cell의 inputType을 button으로 변경.		
+		
+	};
+	
+ 
+ 	//==================================================//
+ 	
+ 	
+	scwin.imageClick = function(row, colId, colValue){ 
+		console.log("imageClick : row["+row+"], colId["+colId+"]");
+		alert("imageClick : row["+row+"], colId["+colId+"]");
+	};
+ 
+	
+	scwin.gridView1_oncellclick = function(row,col,colId) {
+		if ( gridView1.getCellInputType(row, col) == "button" ){
+			alert("버튼클릭 !!");
+		}		
+	};
+	
+	
+	]]></script>
+
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group id="" class="sub_contents ">
+			<w2:gridView id="gridView1" autoFit="allColumn" dataList="data:dataList1" style="height:250px;" readOnly="true"
+				class="cm_grid" setCellInputTypeCustom="true" ev:oncellclick="scwin.gridView1_oncellclick">
+				<w2:header style="" id="header1">
+					<w2:row style="" id="row1">
+						<w2:column width="100" style="" inputType="text" id="column5" value="col1" blockSelect="false" displayMode="label"></w2:column>
+						<w2:column width="30" style="" inputType="text" id="column3" value="col2" blockSelect="false" displayMode="label"></w2:column>
+						<w2:column width="100" style="" inputType="text" id="column1" value="col3" blockSelect="false" displayMode="label"></w2:column>
+					</w2:row>
+				</w2:header>
+				<w2:gBody style="" id="gBody1">
+					<w2:row style="" id="row2">
+						<w2:column dataType="text" width="100" style="" inputType="text" id="col1" value="" blockSelect="false" displayMode="label">
+						</w2:column>
+						<w2:column dataType="text" width="30" style="" inputType="custom" id="col2" value="" blockSelect="false" displayMode="label"
+							imageClickFunction="scwin.imageClick">
+						</w2:column>
+						<w2:column dataType="text" width="100" style="" inputType="text" id="col3" value="" blockSelect="false" displayMode="label">
+						</w2:column>
+					</w2:row>
+				</w2:gBody>
+			</w2:gridView>
+		</xf:group>
+	</body>
+</html>

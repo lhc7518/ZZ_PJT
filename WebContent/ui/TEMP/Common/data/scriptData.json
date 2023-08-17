@@ -1,0 +1,1004 @@
+{
+	"dlt_temp": [
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.sbm.execute",
+			"FUNC_TITLE": "서버 통신 확장 모듈, Submission를 실행합니다.",
+			"FUNC_DESC": "/**\n * 서버 통신 확장 모듈, Submission를 실행합니다.\n *\n * @memberOf com.sbm\n * @function com.sbm.execute\n * @date 2017.11.30\n * @param {Object} sbmObj submission 객체\n * @param {Object} requestData [Default : null, JSON, XML] 요청 데이터로 submission에 등록된 ref를 무시하고 현재의 값이 할당된다.\n * @param {Object} compObj [Default : null] 전송중 disable시킬 컴포넌트\n * @author InswaveSystems\n * @example \n// Submission의 ref 속성에 서버에 전송할 DataCollection을 설정하는 경우\ncom.sbm.execute(sbm_search); \n\n//  Submission의 ref 속성에 서버에 전송할 DataCollection을 설정하지 않고 JSON 객체를 전송하는 경우\nvar searchParam = {\n id : \"A0001\"\n};\ncom.sbm.execute(sbm_search, searchParam); \n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.sbm.executeDynamic",
+			"FUNC_TITLE": "Submission를 동적으로 생성해서 실행합니다.",
+			"FUNC_DESC": "/**\n * Submission를 동적으로 생성해서 실행합니다.\n *\n * @memberOf com.sbm\n * @function com.sbm.executeDynamic\n * @date 2020.05.16\n * @param {Object} options com.sbm.create의 options 참고\n * @param {Object} requestData 요청 데이터\n * @param {Object} obj 전송중 disable시킬 컴퍼넌트\n * @author Inswave Systems\n * @example\nvar searchCodeGrpOption = {\n  id : \"sbm_searchCodeGrp\",\n  action : \"/sample/tempSelect\",\n  target : 'data:json,{\"id\":\"dlt_codeGrp\", \"key\":\"data\"}',\n  submitDoneHandler : scwin.searchCodeGrpCallback, isProcessMsg : false };\ncom.sbm.executeDynamic(searchCodeGrpOption);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.sbm.executeWorkflow",
+			"FUNC_TITLE": "workflow를 실행합니다.",
+			"FUNC_DESC": "/**\n * workflow를 실행합니다.\n *\n * @date 2020.05.16\n * @param {Object} options workflow 객체 or workflow 아이디\n * @memberOf com.sbm\n * @author Inswave Systems\n * @example\ncom.sbm.executeWorkflow(wkf_basicInfo);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.sbm.create",
+			"FUNC_TITLE": "Submission 객체를 동적으로 생성한다.",
+			"FUNC_DESC": "/**\n * Submission 객체를 동적으로 생성한다.\n *\n * @date 2020.05.16\n * @param {Object} options Submission 생성 옵션 JSON 객체\n * @param {String} options.id submission 객체의 ID. 통신 모듈 실행 시 필요.\n * @param {String} options.ref 서버로 보낼(request) DataCollection의 조건 표현식.(조건에 때라 표현식이 복잡하다) 또는 Instance Data의 XPath.\n * @param {String} options.target 서버로 응답(response) 받은 데이터가 위치 할 DataCollection의 조건 표현식. 또는 Instance Data의 XPath.\n * @param {String} options.action 통신 할 서버 측 URI.(브라우저 보안 정책으로 crossDomain은 지원되지 않는다.)\n * @param {String} options.method [default: get, post, urlencoded-post]\n * - get : 파라메타를 url에 붙이는 방식 (HTML과 동일).\n * - post : 파라메타를 body 구간에 담는 방식 (HTML과 동일)\n * - urlencoded-post : urlencoded-post.\n * @param {String} options.mediatype [default: application/xml, text/xml, application/json, application/x-www-form-urlencoded]\n * application/x-www-form-urlencoded 웹 form 방식(HTML방식). application/json : json 방식. application/xml : XML 방식. text/xml : xml방식\n * (두 개 차이는 http://stackoverflow._com/questions/4832357 참조)\n * @param {String} options.mode [default: synchronous, synchronous] 서버와의 통신 방식.  asynchronous:비동기식.  synchronous:동기식\n * @param {String} options.encoding [default: utf-8, euc-kr, utf-16] 서버 측 encoding 타입 설정 (euc-kr/utf-16/utf-8)\n * @param {String} options.replace [default: none, all, instance] action으로부터 받은 response data를 적용 구분 값.\n *   - all : 문서 전체를 서버로부터 온 응답데이터로 교체.\n *   - instance : 해당되는 데이터 구간.\n *   - none : 교체안함.\n * @param {String} options.processMsg submission 통신 중 보여줄 메세지.\n * @param {String} options.errorHandler submission오류 발생 시 실행 할 함수명.\n * @param {String} options.customHandler submssion호출 시 실행 할 함수명.\n * @param {requestCallback} options.submitHandler {script type=\"javascript\" ev:event=\"xforms-submit\"} 에 대응하는 함수.\n * @param {requestCallback} options.submitDoneHandler {script type=\"javascript\" ev:event=\"xforms-submit-done\"} 에 대응하는 함수\n * @param {requestCallback} options.submitErrorHandler {script type=\"javascript\" ev:event=\"xforms-submit-error\"} 에 대응하는 함수\n * @memberOf com.sbm\n * @author Inswave Systems\n * @example\ncom.sbm.create(options);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.sbm.getResultCode",
+			"FUNC_TITLE": "서버에서 전송한 통신 결과 코드를 반환한다.",
+			"FUNC_DESC": "/**\n * 서버에서 전송한 통신 결과 코드를 반환한다.\n *\n * @date 2020.05.16\n * @private\n * @param {Object} e submission 후 callback의 상태값\n * @memberOf com.sbm\n * @author Inswave Systems\n * @return {String} 상태 코드\n * @example\n// 통신결과 코드가 있을 경우\ncom.sbm.getResultCode(e);\n// return 예시) E || S || W\n\n// 통신결과 코드가 없을 경우\ncom.sbm.getResultCode(e);\n// return 예시) 웹스퀘어5 로그창 - 결과 상태 메세지가 없습니다.: com.sbm.getResultCode\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.sbm.getStatusMessage",
+			"FUNC_TITLE": "서버에서 전송한 통신 결과 상태 메시지를 반환한다.",
+			"FUNC_DESC": "/**\n * 서버에서 전송한 통신 결과 상태 메시지를 반환한다.\n *\n * @date 2021.02.19\n * @private\n * @param {Object} e submission 후 callback의 상태값\n * @memberOf com.sbm\n * @author Inswave Systems\n * @return {String} 상태 메시지\n * @example\n// 통신결과 코드가 있을 경우\ncom.sbm.getStatusMessage(e);\n\n// 통신결과 코드가 없을 경우\ncom.sbm.getStatusMessage(e);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.sbm.resultMsg",
+			"FUNC_TITLE": "statusCode값에 따라 message를 출력한다.",
+			"FUNC_DESC": "/**\n * statusCode값에 따라 message를 출력한다.\n *\n * @date 2020.05.16\n * @private\n * @param {Object} resultData 상태코드값 및 메시지가 담긴 JSON.\n * @param {String} resultData.message 메시지\n * @param {String} resultData.statusCode 상태코드값\n * @memberOf com.sbm\n * @author Inswave Systems\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.sbm.setAction",
+			"FUNC_TITLE": "submission action 을 변경한다.",
+			"FUNC_DESC": "/**\n * submission action 을 변경한다.\n *\n * @date 2020.05.16\n * @private\n * @memberOf com.sbm\n * @param {Object} sbmObj 서브미션 객체\n * @param {String} sbmAction 서브미션 action\n * @author Inswave Systems\n * @example com.sbm.setAction(sbm_search,\"/cust/crgd/v1/user\")\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.setCommonCode",
+			"FUNC_TITLE": "코드성 데이터와 컴포넌트의 nodeSet(아이템 리스트)연동 기능을 제공한다.",
+			"FUNC_DESC": "/**\n * 코드성 데이터와 컴포넌트의 nodeSet(아이템 리스트)연동 기능을 제공한다.\n *\n * cdGrp별로 JSON객체를 생성하여 array에 담아 첫번째 파라메터로 넘겨준다.\n *\n * @date 2020.05.16\n * @param {Object} codeOptions {\"cdGrp\" : \"코드그룹\", \"compID\" : \"적용할 컴포넌트명\"}\n * @param {requestCallback} callbackFunc 콜백 함수\n * @memberOf com.data\n * @author Inswave Systems\n * @example\nvar codeOptions = [ { code : \"00001\", compID : \"sbx_Duty\" },\n     { code : \"00002\", compID : \"sbx_Postion\" },\n     { code : \"00021\", compID : \"sbx_JoinClass\" },\n     { code : \"00005\", compID : \"sbx_CommCodePart1, sbx_CommCodePart2\"},\n     { code : \"00024\", compID : \"grd_CommCodeSample:JOB_CD\"} ];\ncom.data.setCommonCode(codeOptions);\n */",
+			"FUNC_REMARK": "공통 코드 형식 및 요건에 따라 작업 필요",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.getCommonCodeDataList",
+			"FUNC_TITLE": "특정 공통 코드를 저장하는 DataList 객체를 반환한다.",
+			"FUNC_DESC": "/**\n * 특정 공통 코드를 저장하는 DataList 객체를 반환한다.\n * 서버에서 전달된 데이터가 아닌 화면 상에서 데이터 가공이 필요한 경우 DataList 객체를 전달 받아서 필터링하거나 데이터를 조작할 수 있다.\n * @date 2020.06.16\n * @param {String} cdGrp 코드그룹\n * @memberOf com.data\n * @author Inswave Systems\n * @example\nvar comDataList1 = com.data.getCommonCodeDataList(\"00024\");\ncomDataList1.setColumnFilter( \n {type:'regExp', colIndex:'COM_CD', key:/01|02|04|05/gi, condition:'and'}\n);\n */",
+			"FUNC_REMARK": "공통 코드 조회 이후 사용 가능",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.executeCommonCode",
+			"FUNC_TITLE": "공통 코드를 로딩하는 Submission을 실행한다.",
+			"FUNC_DESC": "/**\n * 공통 코드를 로딩하는 Submission을 실행한다.\n * \n * scwin.onpageload 이벤트에 정의된 com.data.setCommonCode 함수를 통해서 생성된 공통 코드 조회 Submission은 scwin.ondataload 함수가 실행되기 전에 \n * UI 공통 프레임워크 내에서 자동으로 실행시켜 준다.\n * 하지만, TabControl의 alwaysDraw=false 등의 옵션 적용 등으로 인해서 화면이 로딩된 이후에 어떤 이벤트 시점 이후에 공통 코드를 로딩하려면\n * com.data.executeCommonCode() 함수를 실행하면 된다.\n * @date 2020.06.16\n * @param {String} cdGrp 코드그룹\n * @memberOf com.data\n * @author Inswave Systems\n * @example\nvar codeOptions = [ { code : \"00002\", compID : \"sbx_Postion\" },\n     { code : \"00024\", compID : \"grd_CommCodeSample:JOB_CD\"} ];\ncom.data.setCommonCode(codeOptions);\ncom.data.executeCommonCode();\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.getParameter",
+			"FUNC_TITLE": "파라미터를 읽어 온다.",
+			"FUNC_DESC": "/**\n * 파라미터를 읽어 온다.\n *\n * @memberOf com.data\n * @date 2020.05.16\n * @param {String} 파라미터 키\n * @author Inswave Systems\n * @return {Object} 파라미터 값\n * @example\nvar code = com.data.getParameter(\"code\");  // 특정 파라미터 값을 얻어오기\nvar param = com.data.getParameter();    // 전체 파라미터 값을 얻어오기\n */",
+			"FUNC_REMARK": "본 화면에서 팝업 호출 시 넘겨주는 파라미터를 읽어오는데 사용",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.getColumnName",
+			"FUNC_TITLE": "특정 컴포넌트에 바인된 DataList나 DataMap의 컬럼 이름을 반환한다.",
+			"FUNC_DESC": "/**\n * 특정 컴포넌트에 바인된 DataList나 DataMap의 컬럼 이름을 반환한다.\n *\n * @memberOf com.data\n * @date 2020.05.16\n * @param {Object} comObj 컴포넌트 객체\n * @return {String} 컬럼명\n * @example\ncom.data.getColumnName(ibx_name);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.getDataCollection",
+			"FUNC_TITLE": "특정 컴포넌트에 바인된 DataList나 DataMap의 정보를 반환한다.",
+			"FUNC_DESC": "/**\n * 특정 컴포넌트에 바인된 DataList나 DataMap의 정보를 반환한다.\n *\n * @memberOf com.data\n * @date 2020.05.16\n * @param {Object} comObj callerObj 컴포넌트 객체\n * @returns {Object} dataCollection정보\n * @example\ncom.data.getDataCollection(ibx_applUserId);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.getMessage",
+			"FUNC_TITLE": "공통 메시지에 코드에 해당하는 공통 메시지 코드를 반환합니다.",
+			"FUNC_DESC": "/**\n * 공통 메시지에 코드에 해당하는 공통 메시지 코드를 반환합니다.\n *\n * @memberOf com.data\n * @date 2021.07.08\n * @param {String} sysMsgId 메시지 ID , Array 형식인 경우는 첫번째 인덱스가 sysMsgId가 되고 두번째 인덱스부터 치환문자가 됨\n * @param {(String|String[])} arguments 메시지 치환 문자열 (메시지 ID에서 치환이 필요한 만큼 문자열 매개변수를 전달함)\n * @author Inswave Systems\n * @example\ncom.data.getMessage(\"MSG_CM_00001\");  // \"변경된 데이터를 저장하시겠습니까?\"\ncom.data.getMessage(\"MSG_CM_00002\", com.str.attachPostposition(\"전화번호\"));  // \"전화번호는 필수입력값입니다.\"\ncom.data.getMessage(\"MSG_CM_00003\", \"세션이 종료되어\");  // \"세션이 종료되어 로그인 화면으로 이동하겠습니다.\"\ncom.data.getMessage(\"MSG_CM_00007\", \"엑셀\", \"5M\");  // 엑셀 파일의 크기가 5M를 초과 했습니다.\n */",
+			"FUNC_REMARK": "현재는 공통 메시지 정의되어 있지 않음",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.isModified",
+			"FUNC_TITLE": "DataCollection 객체의 변경된 데이터가 있는지 검사한다.",
+			"FUNC_DESC": "/**\n * DataCollection 객체의 변경된 데이터가 있는지 검사한다.\n *\n * @memberOf com.data\n * @date 2020.05.16\n * @param {Object} dcObjArr DataCollection 또는 배열\n * @author Inswave Systems\n * @returns {Boolean} 검사결과 (true or false)\n * @example\nif (com.data.validateGridView(grd_indexPage, valInfo) && com.data.isModified(dlt_grdAllData)) {\n com.win.confirm(\"저장하시겠습니까?\", \"scwin.saveData\");\n};\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.downloadGridViewExcel",
+			"FUNC_TITLE": "그리드를 엑셀로 다운로드 한다.",
+			"FUNC_DESC": "/**\n * 그리드를 엑셀로 다운로드 한다.\n *\n * @param {Object} grdObj GridView 객체\n * @param {Object} options JSON형태로 저장된 그리드의 엑셀 다운로드 옵션\n * @param {Boolean} options.hiddenVisible   [default: false] GridView 내 Hidden 컬럼을 엑셀 다운로드 시 포함시킬지 여부 (true : 포함, false : 미포함)\n * @param {String} options.fileName    [default: excel.xls] 다운로드하려는 파일의 이름으로 필수 입력 값이다.\n * @param {String} options.sheetName    [default: sheet] excel의 sheet의 이름\n * @param {String} options.type     [default: 0] type이 0인 경우 실제 데이터 1인 경우 눈에 보이는 데이터를 2이면 들어가 있는 data 그대로(filter무시 expression 타입의 셀은 나오지 않음)\n * @param {String} options.removeColumns   [default: 없음] 다운로드시 excel에서 삭제하려는 열의 번호(여러 개일 경우 ,로 구분)\n * @param {String} options.removeHeaderRows  [default: 없음] 다운로드시 excel에서 삭제하려는 Header의 row index(여러 개일 경우 ,로 구분)\n * @param {String} options.foldColumns    [default: 없음] 다운로드시 excel에서 fold하려는 열의 번호(여러 개일 경우 ,로 구분)\n * @param {Number} options.startRowIndex   [default: 0] excel파일에서 그리드의 데이터가 시작되는 행의 번호(헤더 포함)\n * @param {Number} options.startColumnIndex  [default: 0] excel파일에서 그리드의 데이터가 시작되는 열의 번호(헤더 포함)\n * @param {String} options.headerColor    [default: #33CCCC] excel파일에서 그리드의 header부분의 색\n * @param {String} options.headerFontName   [default: 없음] excel파일에서 그리드의 header부분의 font name\n * @param {String} options.headerFontSize   [default: 10] excel파일에서 그리드의 header부분의 font size\n * @param {String} options.headerFontColor   [default: 없음] excel파일에서 그리드의 header부분의 font색\n * @param {String} options.bodyColor    [default: #FFFFFF] excel파일에서 그리드의 body부분의 색\n * @param {String} options.bodyFontName   [default: 없음] excel파일에서 그리드의 body부분의 font name\n * @param {String} options.bodyFontSize   [default: 10] excel파일에서 그리드의 body부분의 font size\n * @param {String} options.bodyFontColor   [default: 없음] excel파일에서 그리드의 body부분의 font색\n * @param {String} options.subTotalColor   [default: #CCFFCC] excel파일에서 그리드의 subtotal부분의 색\n * @param {String} options.subTotalFontName  [default: 없음] excel파일에서 그리드의 subtotal부분의 font name\n * @param {String} options.subTotalFontSize  [default: 10] excel파일에서 그리드의 subtotal부분의 font size\n * @param {String} options.subTotalFontColor  [default: 없음] excel파일에서 그리드의 subtotal부분의 font색\n * @param {String} options.footerColor    [default: #008000] excel파일에서 그리드의 footer부분의 색\n * @param {String} options.footerFontName   [default: 없음] excel파일에서 그리드의 footer부분의 font name\n * @param {String} options.footerFontSize   [default: 10] excel파일에서 그리드의 footer부분의 font size\n * @param {String} options.footerFontColor   [default: 없음] excel파일에서 그리드의 footer부분의 font색\n * @param {String} options.oddRowBackgroundColor [default: 없음] excel파일에서 그리드 body의 홀수줄의 배경색\n * @param {String} options.evenRowBackgroundColor [default: 없음] excel파일에서 그리드 body의 짝수줄의 배경색\n * @param {String} options.rowNumHeaderColor  [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 header 영역의 배경색\n * @param {String} options.rowNumHeaderFontName [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 header 영역의 폰트이름\n * @param {String} options.rowNumHeaderFontSize [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 header 영역의 폰트크기\n * @param {String} options.rowNumHeaderFontColor [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 header 영역의 폰트색상\n * @param {String} options.rowNumBodyColor   [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Body 영역의 배경색\n * @param {String} options.rowNumBodyFontName  [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Body 영역의 폰트이름\n * @param {String} options.rowNumBodyFontSize  [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Body 영역의 폰트크기\n * @param {String} options.rowNumBodyFontColor  [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Body 영역의 폰트색상\n * @param {String} options.rowNumFooterColor  [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Footer 영역의 배경색\n * @param {String} options.rowNumFooterFontName [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Footer 영역의 폰트이름\n * @param {String} options.rowNumFooterFontSize [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Footer 영역의 폰트크기\n * @param {String} options.rowNumFooterFontColor [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Footer 영역의 폰트색상\n * @param {String} options.rowNumSubTotalColor  [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Subtotal 영역의 배경색\n * @param {String} options.rowNumSubTotalFontName  [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Subtotal 영역의 폰트이름\n * @param {String} options.rowNumSubTotalFontSize  [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Subtotal 영역의 폰트크기\n * @param {String} options.rowNumSubTotalFontColor [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Subtotal 영역의 폰트색상\n * @param {String} options.rowNumHeaderValue  [default: 없음] rowNumVisible 속성이 true인 경우 순서출력 Header 영역의 출력값\n * @param {String} options.rowNumVisible   [default: false] 순서출력 유무\n * @param {Boolean}   options.showProcess   [default: true] 다운로드 시 프로세스 창을 보여줄지 여부\n * @param {Boolean}   options.massStorage   [default: true] 대용량 다운로드 여부 (default는 true 이 옵션을 true로 하고 showConfirm을 false로 한 경우에 IE에서 신뢰할만한 사이트를 체크하는 옵션이 뜬다.)\n * @param {Boolean}   options.numberToText   [default: false] numberExtraction=\"true\"이고 dataType=\"number\"로 설정된 열의 데이터를 Excel 파일로 다운로드할 때 콤마 등 포맷에 포함된 기호를 유지.\n * @param {Boolean}   options.showConfirm   [default: false] 다운로드 확인창을 띄울지 여부(옵션을 킨 경우 advancedExcelDownload를 호출후 사용자가 window의 버튼을 한번더 클릭해야 한다. massStorage는 자동으로 true가 된다)\n * @param {String} options.dataProvider   [default: 없음] 대량데이터 처리 및 사용자 데이터를 가공할 수 있는 Provider Package\n * @param {String} options.splitProvider   [default: 없음] 대량데이터 처리를 위해 데이터를 분할해서 처리할 수 있는 Provider Package\n * @param {String} options.providerRequestXml  [default: 없음] Provider 내부에서 사용할 XML 문자열\n * @param {String} options.userDataXml    [default: 없음] 사용자가 서버모듈 개발 시 필요한 데이터를 전송 할 수 있는 변수\n * @param {Boolean}   options.bodyWordwrap   [default: false] 다운로드시 body의 줄 바꿈 기능\n * @param {Boolean}   options.subtotalWordwrap  [default: false] 다운로드시 subtotal의 줄 바꿈 기능\n * @param {Boolean}   options.footerWordwrap  [default: false] 다운로드시 footer의 줄 바꿈 기능\n * @param {String} options.useEuroLocale   [default: false] 다운로드시 유로화 처리 기능(,와 .이 반대인 경우처리)\n * @param {String} options.useHeader    [default: true] 다운로드시 Header를 출력 할지 여부( \"true\"인경우 출력, \"false\"인경우 미출력)\n * @param {String} options.useSubTotal    [default: false] 다운로드시 SubTotal을 출력 할지 여부( \"true\"인경우 출력, \"false\"인경우 미출력), expression을 지정한 경우 avg,sum,min,max,targetColValue,숫자를 지원 함.\n * @param {String} options.useFooter    [default: true] 다운로드시 Footer를 출력 할지 여부( \"true\"인경우 출력, \"false\"인경우 미출력)\n * @param {String} options.useHeaderCheckBoxLabel [default: false] 다운로드시 header가 checkbox인 경우 checked 값 대신 label을 출력 할지 여부( \"true\"인경우 header column value 출력, \"false\"인경우 checked값 출력)\n * @param {String} options.separator    [default: ,] 다운로드시 서버로 데이터 전송할때, 데이터를 구분짓는 구분자, default는 comma(,)\n * @param {Number} options.subTotalScale   [default: -1] 다운로드시 subTotal 평균계산시 소수점 자리수를 지정\n * @param {String} options.subTotalRoundingMode [default: 없음] 다운로드시 subTotal 평균계산시 Round를 지정 한다. (\"CEILING\", \"FLOOR\", \"HALF_UP\")\n * @param {String} options.useStyle    [default: false] 다운로드시 css를 제외한, style을 excel에도 적용할 지 여부 (배경색,폰트)\n * @param {String} options.freezePane    [default: \"\"] 틀고정을 위한 좌표값 및 좌표값의 오픈셋 ( ex) freezePane=\"3,4\" X축 3, Y축 4에서 틀고정, freezePane=\"0,1,0,5\" X축 0, Y축 1에서 X축으로 0, Y축으로 5로 틀공정 )\n * @param {String} options.autoSizeColumn   [default: false] 너비자동맞춤 설정 유무\n * @param {String} options.displayGridlines  [default: false] 엑셀 전체 셀의 눈금선 제거 유무\n * @param {String} options.colMerge    [default: false] colMerge된 컬럼을 Merge해서 출력 할 지 여부\n * @param {String} options.colMergeTextAlign  [default: center] colMerge된 컬럼의 textAlign설정 (bottom, center, top 설정)\n * @param {String} options.mergeCell    [default: false] gridView mergeCell API로 cell 머지시, excel에도 동일하게 머지되어 다운로드 할지 여부\n * @param {String} options.useDataFormat   [default: 없음] \"true\"인 경우 dataType에 따라 Excel 파일에 표시 형식을 출력. dataType=\"text\"인 셀은 Excel의 표시형식에 '텍스트' 출력, dataType=\"number\" 혹은 \"bigDecimal\" 셀은 \"숫자\" 출력.\n * @param {String} options.indent     [default: 없음] 그리드 dataType이 drilldown인 경우, indent 표시를 위한 공백 삽입 개수, default값은 0\n * @param {String} options.columnMove    [default: false] 그리드 컬럼이동시 이동된 상태로 다운로드 유무 ( \"true\"인경우 컬럼이동 순서대로 출력 )\n * @param {String} options.columnOrder    [default: 없음] 엑셀 다운로드시 다운로드되는 컬럼 순서를 지정 할 수 있는 속성 ( ex) \"0,3,2,1\"로 지정시 지정한 순서로 다운로드된다 )\n * @param {String} options.columnMoveWithFooter [default: 없음] 그리드 컬럼이동시 Footer영역이 이동된 상태로 다운로드 유무\n * @param {String} options.optionParam    [default: 없음] DRM 연계시 사용자 정의 class에 HashMap 인자로 전달할 값. key는 \"optionParam\"으로 참조한다.\n * @param {String} options.rowHeight    [default: 없음] 엑셀 파일로 다운로드 할 때 엑셀의 셀 높이. (단위: pixel)\n * @param {String} options.pwd      [default: 없음] 엑셀 파일로 다운로드할 때 비밀번호를 설정. 사용 조건: (1) 비밀번호는 BASE64로 인코딩후 전송해야 함. (2) websquare.xml에 <encrypt tempDir>을 설정해야 함. (3) POI 3.10으로 업그레이드 필요.\n * @param {String} options.maxCellCount   [default: 없음] 엑셀 다운로드를 제한할 셀 개수 ( ex) 1000 설정시 grid의 셀 개수가 1000개를 넘어가면 서버로 요청을 보내지 않는다. )\n * @param {String} options.maxRowCount     [default: 없음] 엑셀 다운로드를 제한할 행 개수 ( ex) 1000 설정시 grid의 행 개수가 1000개를 넘어가면 서버로 요청을 보내지 않는다. )\n * @param {String} options.headerAutoFilter  [default: false] Header에 filter를 적용할지 여부\n * @param {String} options.filterRowIndex   [default: -1] filter를 적용할 header의 row Index\n * @param {Object} options.printSet    JSON형태로 저장된 Excel Print관련 설정\n * @param {String} options.printSet.fitToPage  [default: false] 엑셀 프린터 출력시 쪽맞춤 사용 유무\n * @param {String} options.printSet.landScape  [default: false] 엑셀 프린터 출력시 가로 방향 출력 유무\n * @param {String} options.printSet.fitWidth  [default: 1] 엑셀 프린터 출력시 용지너비\n * @param {String} options.printSet.fitHeight  [default: 1] 엑셀 프린터 출력시 용지높이\n * @param {String} options.printSet.scale   [default: 100] 엑셀 프린터 출력시 확대/축소 배율, scale을 사용할 경우 fitToPage는 false로 설정 해야 한다.\n * @param {String} options.printSet.pageSize  [default: A4] 엑셀 프린터 출력시 인쇄 용지 크기 (예: \"A3\", \"A4\", \"A5\", \"B4\") 단, fitToPage: true 인 경우에만 유효.\n * @param {Number} options.timeout     [default: 없음] 요청 최대 대기시간. millisecond 단위. timeout까지 응답이 오지 않을 시 다운로드를 fail 처리한다.\n * @param {Number} options.checkInterval   [default: 1000] 응답 확인 간격. millisecond 단위. 지정된 주기마다 응답을 확인한다.\n * @param {Function}  options.onSuccessCallback  [default: 없음] 요청 성공 시 불리는 callback 함수.\n * @param {Function}  options.onFailureCallback  [default: 없음] 요청 실패 시 불리는 callback 함수.\n *\n * @param {Object[]}  [infoArr]      subTotalFontName 그리드에 대한 내용을 추가로 다른 셀에 표현하는 경우 사용하는 배열\n * @param {Number} infoArr.rowIndex    내용을 표시할 행번호\n * @param {Number} infoArr.colIndex    내용을 표시할 열번호\n * @param {Number} infoArr.rowSpan     병합할 행의 수\n * @param {Number} infoArr.colSpan     병합할 열의 수\n * @param {String} infoArr.text     표시할 내용\n * @param {String} infoArr.textAlign    표시할 내용의 정렬 방법 (left, center, right)\n * @param {String} infoArr.fontSize    font size 설정 ( ex) \"20px\" )\n * @param {String} infoArr.fontName    font name 설정\n * @param {String} infoArr.color     font color 설정 ( ex) \"red\" )\n * @param {String} infoArr.fontWeight    font weight 설정 ( ex) \"bold\" )\n * @param {String} infoArr.drawBorder    cell의 border 지정 ( ex) true )\n * @param {String} infoArr.borderColor    cell의 border color를 지정 ( ex) \"#FF0000\", \"red\" )\n * @param {String} infoArr.borderWidth    cell의 border width 지정 ( \"thin\", \"medium\", \"thick\" )\n * @param {String} infoArr.wordWrap    cell의 줄 바꿈 기능 ( ex) \"true\" )\n * @param {String} infoArr.bgColor     cell의 배경 color 설정 ( ex) \"red\" )\n *\n * @memberOf com.data\n * @date 2020.05.16\n * @return {file} <b>Excel file</b>\n * @author Inswave Systems\n * @example\nvar infoArr = {};\nvar options = {\n   fileName : \"downLoadExcel.xlsx\" //[default : excel.xlsx] options.fileName 값이 없을 경우 default값 세팅\n};\ncom.data.downloadGridViewExcel(grdObj, options, infoArr);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.downloadGridViewCSV",
+			"FUNC_TITLE": "그리드를 CSV파일을 다운로드 한다.",
+			"FUNC_DESC": "/**\n * 그리드를 CSV파일을 다운로드 한다.\n *\n * @param {Object}   grdObj GridView Object\n * @param {Object[]} options      JSON형태로 저장된 그리드의 엑셀 다운로드 옵션\n * @param {String}   options.fileName   [default: csvfile.csv] 엑셀파일 선택 대화상자가 나타날 때 기본으로 지정 될 파일 이름\n * @param {String}   options.type    [default: 1, 0] Grid 저장 형태 (0이면 데이터 형태,1이면 표시 방식)\n * @param {String}   options.delim    [default: ';'] CSV 파일에서 데이터를 구분할 구분자\n * @param {String}   options.removeColumns  [default: 없음] 저장 하지 않을 columns index, 여러컬럼인 경우 콤마(,)로 구분해서 정의 한다.\n * @param {String}   options.header    [default: 1, 0] Grid의 숨겨진 Column에 대한 저장 여부(0이면 저장 하지 않음,1이면 저장)\n * @param {Number}   options.hidden    [default: 0, 1] Grid의 숨겨진 Column에 대한 저장 여부(0이면 저장 하지 않음,1이면 저장)\n * @param {String}   options.checkButton  [default: 1, 0] Grid의 Control(Check, Radio, Button) Column에 대해 히든 여부 (0이면 control Coliumn히든,1이면 보여줌)\n * @param {Array} options.saveList   [default: 없음] hidden에 관계없이 최우선순위로 저장할 column id들의 array\n * @param {String}   options.columnMove   [default: false] 그리드 컬럼이동시 이동된 상태로 다운로드 유무 ( \"true\"인경우 컬럼이동 순서대로 출력 )\n * @param {String}   options.columnOrder  [default: 없음] csv 다운로드시 다운로드되는 컬럼 순서를 지정 할 수 있는 속성 ( ex) \"0,3,2,1\"로 지정시 지정한 순서로 다운로드된다 )\n * @param {String}   options.spanAll   [default: false] drilldown gridView인 경우 전체목록을 펼쳐서 다운로드 할 수 있는 속성. (true이면 전체출력, false면 보여지는 목록만 출력)\n * @param {String}   options.aposPrefixOnNum [default: 0, 1] dataType이 number이고 length가 12자리이상인 경우 '(apos)를 붙일지 여부 (0 이면 apos를 붙이지않음, 1이면 붙임)\n * @param {String}   options.ignoreSpan   [default: 0, 1] span되어 있는 경우 span을 무시하고 데이터를 채울지 여부 (0이면 저장하지 않음, 1이면 저장)\n * @param {String}   options.removeQuotation [default: 0, 1] value에 \", ' 가 들어있는 경우 \", '를 지울지 여부 (0이면 지원지 않음, 1이면 지움)\n * @param {String}   options.removeNewLine  [default: 1, 0] value내에 \\r\\n이 있을 경우 삭제유무 (0이면 지원지 않음, 1이면 지움)\n * @param {String}   options.optionParam  [default: 없음] DRM 연계시 사용자 정의 class에 HashMap 인자로 전달할 값. key는 \"optionParam\"으로 참조한다.\n * @memberOf com.data\n * @date 2020.05.16\n * @return {file} CSV file\n * @author Inswave Systems\n * @example\nvar options = {\n fileName : \"downLoadCSV.csv\" //[default : excel.csv] options.fileName 값이 없을 경우 default값 세팅\n};\ncom.data.downloadGridViewCSV(grdObj, options);\n//return 예시) 엑셀 파일 다운로드\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.uploadGridViewExcel",
+			"FUNC_TITLE": "엑셀 xls, xlsx 업로드",
+			"FUNC_DESC": "/**\n * 엑셀 xls, xlsx 업로드\n *\n * @param {Object} grdObj GridView Object\n * @param {Object} options JSON형태로 저장된 그리드의 엑셀 업로드 옵션\n *\n * @param {String}  options.type    [default: 0] 1이면 엑셀 파일이 그리드의 보이는 결과로 만들어져있을때 0이면 엑셀 파일이 그리드의 실제 데이터로 구성되어있을때\n * @param {Number}  options.sheetNo    [default: 0] excel파일에서 그리드의 데이터가 있는 sheet번호\n * @param {Number}  options.startRowIndex  [default: 0] excel파일에서 그리드의 데이터가 시작되는 행의 번호(헤더 포함)\n * @param {Number}  options.startColumnIndex [default: 0] excel파일에서 그리드의 데이터가 시작되는 열의 번호\n * @param {Number}  options.endColumnIndex  [default: 0] excel파일에서 그리드의 데이터가 끝나는 열의 index ( 엑셀컬럼수가 그리드컬럼수 보다 작은 경우 그리드 컬러수를 설정)\n * @param {String}  options.headerExist   [default: 0] excel파일에서 그리드의 데이터에 header가 있는지 여부(1이면 header 존재 0이면 없음)\n * @param {String}  options.footerExist   [default: 1] excel파일에서 그리드의 데이터에 footer가 있는지 여부(1이면 footer 존재 0이면 없음 기본값은 1 그리드에 footer가 없으면 적용되지 않음)\n * @param {String}  options.append    [default: 0] excel파일에서 가져온 데이터를 그리드에 append시킬지 여부(1이면 현재 그리드에 데이터를 추가로 넣어줌 0이면 현재 그리드의 데이터를 삭제하고 넣음)\n * @param {String}  options.hidden    [default: 0] 읽어들이려는 엑셀파일에 hidden column이 저장되어 있는지 여부를 설정하는 int형 숫자(0이면 엑셀파일에 hidden 데이터가 없으므로 그리드 hidden column에 빈 데이터를 삽입 1 : 엑셀파일에 hidden 데이터가 있으므로 엑셀 파일로부터 hidden 데이터를 삽입 )\n * @param {String}  options.fillHidden   [default: 0] Grid에 hiddenColumn에 빈 값을 넣을지를 결정하기 위한 int형 숫자(1이면 hidden Column에 빈 값을 저장하지 않음,0이면 hidden column이 저장되어있지 않은 Excel File이라 간주하고 hidden Column에 빈 값을 넣어줌)(hidden이 0인 경우에는 fillhidden은 영향을 끼치지 않음)\n * @param {String}  options.skipSpace   [default: 0] 공백무시 여부(1이면 무시 0이면 포함)\n * @param {Array}   options.insertColumns  radio, checkbox와 같은 컬럼을 엑셀에서 받아 오지 않고, 사용자 컬럼 설정 으로 업로드 ( 데이터 구조 : [ { columnIndex:1, columnValue:\"1\" } ] )\n * @param {String}  options.removeColumns  [default: 없음] 저장 하지 않을 column index, 여러컬럼인 경우 콤마(,)로 구분해서 정의 한다.\n * @param {String}  options.popupUrl   업로드시에 호출할 popup의 url\n * @param {String}  options.delim    업로드시 데이터를 구분하는 구분자 (default: , )\n * @param {String}  options.status    [default: R]업로드된 데이터의 초기 상태값, 설정하지 않으면 \"R\"로 설정되며 \"C\"값을 설정 할 수 있다.\n * @param {String}  options.pwd     엑셀파일에 암호가 걸려 있는 경우, 비밀번호\n * @param {String}  options.optionParam   [default: 없음] DRM 연계시 사용자 정의 class에 HashMap 인자로 전달할 값. key는 \"optionParam\"으로 참조한다.\n * @param {String}  options.cellDataConvertor [default: true] 컬럼값을 사용자가 수정할수 있는 연계 클래스의 전체 패키지명. (AbstractCellDataProvider class를 상속후 convertValue method를 구현해야 함.\n * @param {String}  options.decimal    [default: 4] 셀의 데이터가 소수인 경우, 최종 소수점 자리수. (기본값: 4) (예: 3인경우 4자리에서 반올림해서 3자리를 최종 표시.)\n * @param {String}  options.useModalDisable  [default: false] 업로드 팝업창이 활성화 될때 부모창의 컴포넌트 disabled 처리 유무.\n * @param {String}  options.useMaxByteLength [default: false] ignoreChar 속성으로 설정한 문자를 제외하고 maxByteLength 속성으로 설정한 길이만큼의 데이터만 업로드.\n * @param {String}  options.dateFormat   [default: yyyy-MM-dd] 엑셀의 셀포맷이 날짜형식으로 되어 있는경우 format. 기본값은 \"yyyy-MM-dd\"\n * @param {String}  options.byteCheckEncoding [default: EUC-KR] useMaxByteLength 설정되어 있는경우 byte처리시 지정할 인코딩. EUC-KR인경우 2byte처리 UTF-8일경우 3byte처리한다. (default는 EUC-KR)\n * @param {String}  options.features   upload화면이 뜰 때 string 형식의 스타일 정보. 지정되지 않은경우 upload창이 기본 스타일로 생성\n * @memberOf com.data\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\nvar options = {};\ncom.data.uploadGridViewExcel(grd_basicInfo,  options);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.uploadGridViewCSV",
+			"FUNC_TITLE": "엑셀 CSV 업로드",
+			"FUNC_DESC": "/**\n *  엑셀 CSV 업로드\n *\n * @param {String}  options.type   [default: 1, 0]데이터 형태 (0이면 실 데이터 형태,1이면 display 표시 방식)\n * @param {String}  options.header   [default: 1, 0]Grid header 존재 유무 (0이면 header row수를 무시하고 전부 업로드하고 1이면 header row수 만큼 skip한다.)\n * @param {String}  options.delim   [default: ',']CSV 파일에서 데이터를 구분할 구분자\n * @param {String}  options.escapeChar  CSV 데이터에서 제거해야 되는 문자셋 ( ex) '\\'' )\n * @param {Number}  options.startRowIndex  [default: 0] csv파일에서 그리드의 데이터가 시작되는 행의 번호, startRowIndex가 설정되면, header 설정은 무시된다.\n * @param {String}  options.append   [default: 0, 1]csv파일에서 가져온 데이터를 그리드에 append시킬지 여부(1이면 현재 그리드에 데이터를 추가로 넣어줌 0이면 현재 그리드의 데이터를 삭제하고 넣음)\n * @param {Number}  options.hidden   [default: 0, 1]hidden Column에 대한 저장 여부(0이면 저장하지않음,1이면 저장)\n * @param {String}  options.fillHidden  [default: 0, 1]hidden Column에 빈 값을 넣을지를 결정하기 위한 int형 숫자(1이면 hidden Column에 빈 값을 저장하지 않음,0이면 hidden column이 저장되어있지 않은 csv File이라 간주하고 hidden Column에 빈 값을 넣어줌)(hidden이 0인 경우에는 fillhidden은 영향을 끼치지 않음)\n * @param {String}  options.skipSpace  [default: 0, 1]공백무시 여부(1이면 무시 0이면 포함)\n * @param {String}  options.expression  [default: 1, 0]expression 컬럼 데이터를 포함하고 있는지 여부, 기본값은 미포함(1이면 미포함, 0이면 포함)\n * @param {String}  options.popupUrl  업로드시에 호출할 popup의 url\n * @param {String}  options.status   [default: R]업로드된 데이터의 초기 상태값, 설정하지 않으면 \"R\"로 설정되며 \"C\"값을 설정 할 수 있다.\n * @param {String}  options.ignoreSpan  [default: 0, 1] span되어 있는 경우 span을 무시하고 데이터를 읽을지 여부 (0이면 머지되어 있는 컬럼을 하나로 본다, 1이면 머지되어 있는 컬럼을 각각읽는다)\n * @param {String}  options.optionParam  [default: 없음] DRM 연계시 사용자 정의 class에 HashMap 인자로 전달할 값. key는 \"optionParam\"으로 참조한다.\n * @memberOf com.data\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\nvar options = {};\ncom.data.uploadGridViewCSV(grdObj,  options);\n// return 예시) 엑셀 파일(.CSV) 업로드\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.validateGroup",
+			"FUNC_TITLE": "그룹안에 포함된 컴포넌트의 입력 값에 대한 유효성을 검사한다.",
+			"FUNC_DESC": "/**\n * 그룹안에 포함된 컴포넌트의 입력 값에 대한 유효성을 검사한다.\n *\n * 컴포넌트 속성 유효성 검사를 수행하고, valInfoArr 유효성 검사 옵션에 대해서 유효성 검사를 수행한다.\n * valInfoArr 유효성 검사 옵션 파라미터를 전달하지 않은 경우 컴포넌트 속성(mandatory, allowChar, ignoreChar, maxLength, maxByteLength, minLength, minByteLength)에 대해서만 유효성 검사를 수행한다.\n *\n * @memberOf com.data\n * @date 2020.05.16\n * @param {Object} grpObj 그룹 컴포넌트 객체\n * @param {Object[]} options 유효성 검사 옵션 <br/>\n * @param {String} options[].id 유효성 검사 대상 DataCollection 컬럼 아이디\n * @param {String} options[].label 유효성 검사 실패 시 출력할 레이블 명 (DataCollection 컬럼명을 참조하지 않고 싶은 경우 사용함)\n * @param {Boolean} options[].mandatory 필수 입력 값 여부\n * @param {Number} options[].minLength 최소 입력 자리수\n * @param {Number} options[].minByteLength 최소 입력 자리수 (Byte 단위)\n * @param {Boolean} options[].isEmail 이메일 유효성 검사 실행\n * @param {Boolean} options[].isPhone 전화번호 유효성 검사 수행\n * @param {requestCallback} options[].valFunc 사용자 유효성 검사 함수\n * @param {String} tacId 그룹이 포함된 TabControl 컴포넌트 아이디\n * @param {String} tabId 그룹이 포함된 TabControl 컴포넌트의 Tab 아이디\n * @returns {Boolean} 유효성 검사 결과\n * @example\n\nif (com.data.validateGroup(grp_LoginInfo)) {\n if (confirm(\"변경된 데이터를 저장하시겠습니까?\")) {\n  com.sbm.execute(\"sbm_saveData\");\n }\n}\n\nvar valInfo = [ { id : \"grpCd\", mandatory : true, minLength : 5 },\n    { id : \"grpNm\", mandatory : true } ];\n\nif (com.data.validateGroup(grp_LoginInfo, valInfo)) {\n if (confirm(\"변경된 데이터를 저장하시겠습니까?\")) {\n  com.sbm.execute(\"sbm_saveCode\");\n }\n}\n\nvar valInfo = [ { id : \"grpCd\", label : \"공통그룹코드\", mandatory : true, minLength : 5 },\n    { id : \"grpNm\", label : \"공통그룹명\", mandatory : true } ];\n\nif (com.data.validateGroup(grp_code, valInfo)) {\n if (win.com.win.confirm(\"변경된 데이터를 저장하시겠습니까?\")) {\n  com.sbm.execute(\"sbm_saveCode\");\n }\n};\n\nvar valInfo = [ { id : \"prntMenuCd\", mandatory : true },\n    { id : \"menuCd\", mandatory : true,\n     valFunc : function(value) {\n      if (dmaMenu.get(\"prntMenuCd\") == dmaMenu.get(\"menuCd\")) {\n       return \"상위 메뉴 코드와 메뉴 코드가 같아서는 안됩니다.\";\n      }\n     } },\n     { id : \"menuNm\", mandatory : true },\n     { id : \"menuLevel\", mandatory : true },\n     { id : \"menuSeq\", mandatory : true },\n     { id : \"urlPath\", mandatory : true },\n     { id : \"isUse\", mandatory : true } ];\n\nif (com.data.validateGroup(tblMenuInfo, valInfo, tacMenuInfo, \"tabMenuInfo1\") == false) {\n return false;\n}\n\n * @description\n필수 입력, 입력 허용 문자, 입력 허용 불가 문자, 최대 입력 문자수 설정은 컴포넌트의 속성에서 설정한다. <br/>\n- mandatory : 필수 입력 항목 여부 <br/>\n- allowChar : 입력 허용 문자 <br/>\n- ignoreChar : 입력 허용 불가 문자 <br/>\n- maxLength : 최대 입력 문자수 <br/>\n- maxByteLength : 최대 입력 바이트수 <br/>\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.validateGridView",
+			"FUNC_TITLE": "GridView를 통해서 입력된 데이터에 대해서 유효성을 검증한다.",
+			"FUNC_DESC": "/**\n * GridView를 통해서 입력된 데이터에 대해서 유효성을 검증한다.\n *\n * @memberOf com.data\n * @date 2020.05.16\n * @param {Object} gridViewObj GridView 객체\n * @param {Object[]} options 데이터 유효성 검증 옵션\n * @param {String} options[].id 유효성 검사 대상 DataCollection 컬럼 아이디\n * @param {Boolean} options[].mandatory 필수 입력 값 여부\n * @param {Number} options[].minLength 최소 입력 자리수\n * @param {Boolean} options[].isEmail 이메일 유효성 검사 실행\n * @param {Boolean} options[].isPhone 전화번호 유효성 검사 수행\n * @param {requestCallback} options[].valFunc 사용자 유효성 검사 함수\n * @param {Object} tacObj GridView가 포함된 TabControl 컴포넌트 객체\n * @param {String} tabId GridView가 포함된 TabControl 컴포넌트의 Tab 아이디\n * @returns {Boolean} 유효성검사 결과\n * @example\nvar valInfo = [ {id: \"grpCd\", mandatory: true, minLength: 5},\n      {id: \"grpNm\", mandatory: true} ];\n\nif (com.data.validateGridView(grd_MenuAuthority, valInfo)) {\n   if (confirm(\"변경된 데이터를 저장하시겠습니까?\")) {\n    scwin.saveGroup();\n   }\n}\n\nvar valInfo = [ {id: \"grpCd\", label : \"공통그룹코드\", mandatory: true, minLength: 5},\n      {id: \"grpNm\", label : \"공통그룹명\", mandatory: true} ];\n\nif (com.data.validateGridView(grd_MenuAuthority, valInfo)) {\n   if (confirm(\"변경된 데이터를 저장하시겠습니까?\")) {\n    scwin.saveGroup();\n   }\n}\n\nvar valInfo = [ { id : \"prntMenuCd\", mandatory : true },\n    { id : \"menuCd\", mandatory : true,\n      valFunc : function(value, dataCollectionObj, rowIndex) {\n     if (dmaMenu.get(\"prntMenuCd\") == dmaMenu.get(\"menuCd\")) {\n      return \"상위 메뉴 코드와 메뉴 코드가 같아서는 안됩니다.\";\n     }\n      }\n    },\n    { id : \"menuNm\", mandatory : true },\n    { id : \"menuLevel\", mandatory : true },\n    { id : \"menuSeq\", mandatory : true },\n    { id : \"urlPath\", mandatory : true },\n    { id : \"isUse\", mandatory : true } ];\n\nif (com.data.validateGridView(grd_MenuAuthority, valInfo, tacMenuInfo, \"tabMenuInfo1\") == false) {\n   return false;\n}\n\n * @description\n입력 허용 문자, 입력 허용 불가 문자, 최대 입력 문자수 설정은 GridView의 Column의 속성에서 설정한다. <br/>\n- allowChar : 입력 허용 문자 <br/>\n- ignoreChar : 입력 허용 불가 문자 <br/>\n- maxLength : 최대 입력 문자수 <br/>\n- maxByteLength : 최대 입력 바이트수 <br/>\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.createDataList",
+			"FUNC_TITLE": "DataList를 동적으로 생성한다.",
+			"FUNC_DESC": "/**\n * DataList를 동적으로 생성한다.\n *\n * @memberOf com.data\n * @date 2020.05.16\n * @param {String} dsId DataList의 아이디\n * @param {Array} colArr 컬럼정보\n * @param {Array} typeArr 컬럼들의 dataType 정의\n * @param {Object} options dataCollection의 속성[baseNode, repeatNode, saveRemovedData, scwinObj]\n * @return {Object} dataCollection(dataList)\n * @author Inswave Systems\n * @example\nvar dcoptions = {\n baseNode : \"list\",\n repeatNode : \"map\",\n saveRemovedData : \"true\"\n};\nvar dlObj = com.data.createDataList(\"dlt_code\", [\"cdGrp\", \"cd\", \"nm\", \"ord\"], [\"text\", \"text\", \"text\", \"text\"] , dcoptions);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.createDataMap",
+			"FUNC_TITLE": "DataMap을 동적으로 생성한다.",
+			"FUNC_DESC": "/**\n * DataMap을 동적으로 생성한다.\n *\n * @memberOf com.data\n * @date 2020.05.16\n * @param {String} dsId dataMap 의 아이디\n * @param {Array} colArr 컬럼정보\n * @param {Object} options DataMap 생성 옵션\n * @author Inswave Systems\n * @return {Object} dataCollection(dataMap)\n * @example\nvar mapObj = com.data.createDataMap(\"dma_test\", [\"col1\", \"col2\", \"col3\"] , [\"text\", \"text\", \"text\"]);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.undoAll",
+			"FUNC_TITLE": "전체 데이터를 초기 설정 된 데이터(originalData)로 바꾸고 행의 상태를 초기화(R) 시킨다.",
+			"FUNC_DESC": "/**\n * 전체 데이터를 초기 설정 된 데이터(originalData)로 바꾸고 행의 상태를 초기화(R) 시킨다.\n * 초기 설정 된 데이터 란 setJSON, setXML 등과 같은 API들을 통해 설정 된 데이터가 이에 속한다.\n * 추가(C)된 행은 제거한다\n *\n * @param {Object|String} dltId DataList 객체 또는 DataList 아이디\n * @memberOf com.data\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\ncom.data.undoAll(dlt_grdAllData);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.undoRow",
+			"FUNC_TITLE": "지정한 GridView에 선택컬럼(chk)이 체크된 Row들을 취소(Undo) 처리한다.",
+			"FUNC_DESC": "/**\n * 지정한 GridView에 선택컬럼(chk)이 체크된 Row들을 취소(Undo) 처리한다.\n *\n * @param {Object|String} dltId DataList 객체 또는 DataList 아이디\n * @memberOf com.data\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\ncom.data.undoRow(dlt_data1);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.deleteRow",
+			"FUNC_TITLE": "지정한 GridView에 선택컬럼(chk)이 체크된 Row들을 삭제(Delete) 처리한다.",
+			"FUNC_DESC": "/**\n * 지정한 GridView에 선택컬럼(chk)이 체크된 Row들을 삭제(Delete) 처리한다.\n *\n * @param {Object|String} dltId DataList 객체 또는 DataList 아이디\n * @memberOf com.data\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\ncom.data.deleteRow(dlt_data1);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.getMatchedJSON",
+			"FUNC_TITLE": "검색 조건에 맞는 데이터를 반환한다.",
+			"FUNC_DESC": "/**\n * 검색 조건에 맞는 데이터를 반환한다.\n * @date 2021.02.16\n * @memberOf com.data\n * @author Inswave Systems\n * @param {Object} dataListObj : DataList Id 또는 DataList 객체\n * @param {Array|Object} condArr 비교 조건\n * @param {String} condArr.columnId 컬럼 아이디\n * @param {String} condArr.operator 비교 연산자 ( ==, !=, >, <, >=, <=, LIKE )\n * @param {String|Number|Boolean} condArr.value 비교 값\n * @param {String} condArr.logical 논리 연산자 ( &&, ||)\n * @returns {Object} DataList Id 또는 DataList 객체\n * @example\ncom.data.getMatchedJSON(dlt_memberList, { columnId : \"POSITION_CD\", operator : \"==\", value : \"03\"});\n\ncom.data.getMatchedJSON(dlt_memberList, [\n { columnId : \"POSITION_CD\", operator : \"==\", value : \"03\" },\n { columnId : \"DUTY_CD\", operator : \"==\", value : \"02\", logical : \"&&\" }\n]);\n\ncom.data.getMatchedJSON(dlt_memberList, [\n { columnId : \"POSITION_CD\", operator : \"==\", value : \"03\" },\n { columnId : \"DUTY_CD\", operator : \"==\", value : \"02\" }\n]);\n\ncom.data.getMatchedJSON(dlt_memberList, [\n { columnId : \"POSITION_CD\", operator : \"==\", value : \"03\"},\n { columnId : \"DUTY_CD\", operator : \"lIKE\", value : \"0\", logical : \"||\" }\n]);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.setChangeCheckedDc",
+			"FUNC_TITLE": "데이터가 수정되어있는 경우 창이 닫힐때 창을 닫을 지 여부를 묻는 컨펌창을 호출한다.",
+			"FUNC_DESC": "/**\n * 데이터가 수정되어있는 경우 창이 닫힐때 창을 닫을 지 여부를 묻는 컨펌창을 호출한다.\n *\n * @private\n * @memberOf com.data\n * @date 2021.12.30\n * @param {Object} dataObjArr 창이 닫힐때 수정된 여부를 체크할 데이터컬렉션 객체(데이터 맵또는 데이터 리스트)\n * @return {Object} topFrame 객체\n * @author Inswave Systems\n * @example \ncom.data.setChangeCheckedDc([dma_sample, dlt_grdAllData]);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.setUserData",
+			"FUNC_TITLE": "컴포넌트에 사용자 정의 데이터를 세팅한다.",
+			"FUNC_DESC": "/**\n * 컴포넌트에 사용자 정의 데이터를 세팅한다.\n *\n * @memberOf com.data\n * @date 2022.02.10\n * @param {Object} comObj 컴포넌트 객체\n * @param {String} key 사용자 정의 데이터 Key\n * @param {String} value 사용자 정의 데이터 value\n * @author Inswave Systems\n * @example \ncom.data.setUserData(btn_search, \"userId\", \"M000001\");\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.data.getUserData",
+			"FUNC_TITLE": "컴포넌트에 저장된 사용자 정의 데이터를 반환한다.",
+			"FUNC_DESC": "/**\n * 컴포넌트에 저장된 사용자 정의 데이터를 반환한다.\n *\n * @memberOf com.data\n * @date 2022.02.10\n * @param {Object} comObj 컴포넌트 객체\n * @param {String} key 사용자 정의 데이터 Key\n * @return {String} value 사용자 정의 데이터 value\n * @author Inswave Systems\n * @example \nvar userId = com.data.getUserData(btn_search, \"userId\");\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.getJSON",
+			"FUNC_TITLE": "JSON Object로 변환해서 반환한다.",
+			"FUNC_DESC": "/**\n * JSON Object로 변환해서 반환한다.\n *\n * @memberOf com.util\n * @date 2020.05.16\n * @param {String|XML} value JSON 문자열 또는 XML Document\n * @return {Object} JSON 객체 or null\n * @author Inswave Systems\n * @example\n// 유효하지 않은 JSON 문자열 일 경우\ncom.util.getJSON(\"\");\n// return 예시) null\n\n// 유효한 JSON 문자열\nvar json = '{\"tbx_sPrjNm\":\"1\", \"tbx_sPrtLv\":\"2\", \"tbx_sReqLv\":\"3\"}';\ncom.util.getJSON(json);\n// return 예시) {tbx_sPrjNm: \"1\", tbx_sPrtLv: \"2\", tbx_sReqLv: \"3\"}\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.isJSON",
+			"FUNC_TITLE": "JSON Object인지 여부를 검사한다.",
+			"FUNC_DESC": "/**\n * JSON Object인지 여부를 검사한다.\n *\n * @param {Object} jsonObj JSON Object가 맞는지 검사할 JSON Object\n * @memberOf com.util\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Boolean} true or false\n * @example\ncom.util.isJSON(\"123\");\n// return 예시) false\ncom.util.isJSON([1,2,3]);\n// return 예시) false\ncom.util.isJSON([{\"name\" : \"홍길동\"}, {\"name\" : \"허균\"}]);\n// return 예시) true\ncom.util.isJSON( {\"tbx_sPrjNm\": \"1\", \"tbx_sPrtLv\": \"2\", \"tbx_sReqLv\": \"3\"} );\n// return 예시) true\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.isArray",
+			"FUNC_TITLE": "배열 객체인지 여부를 확인한다.",
+			"FUNC_DESC": "/**\n * 배열 객체인지 여부를 확인한다.\n *\n * @memberOf com.util\n * @date 2020.05.16\n * @param {Object}  array :: I :: N :: :: Array Object or String\n * @return {Boolean} Array 배열 판단 여부(Array 객체인 경우 true, 아닌경우 false)\n * @author Inswave Systems\n * @example\ncom.util.isArray(arrObject); // return true\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.isEmpty",
+			"FUNC_TITLE": "값이 Empty 상태(undefined, null, \"\")인지 판별한다.",
+			"FUNC_DESC": "/**\n * 값이 Empty 상태(undefined, null, \"\")인지 판별한다.\n * @memberOf com.util\n * @date 2020.05.16\n * @param value Empty 여부를 판단할 값\n * @return Empty 여부 (true : Empty, false : Not Empty)\n * @example\nif (com.util.isEmpty(empCd) === false) {\n console.log(\"empCd : \" + empCd);\n}\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.getObjectType",
+			"FUNC_TITLE": "객체의 typeof 값을 반환하며 typeof의 값이 object인 경우 array, json, xml, null로 체크하여 반환한다.",
+			"FUNC_DESC": "/**\n * 객체의 typeof 값을 반환하며 typeof의 값이 object인 경우 array, json, xml, null로 체크하여 반환한다.\n *\n * @memberOf com.util\n * @date 2020.05.16\n * @param {Object} obj type을 반환 받을 객체(string,boolean,number,object 등)\n * @author Inswave Systems\n * @return {String} 객체의 타입으로 typeof가 object인 경우 array, json, xml, null로 세분화하여 반환한다. 그외 object타입이 아닌경우 원래의 type(string,boolean,number 등)을 반환한다.\n * @example\n com.util.getObjectType(\"WebSquare\");\n // return 예시) \"string\"\n\n com.util.getObjectType({\"name\":\"WebSquare\"});\n // return 예시) \"json\"\n\n com.util.getObjectType([\"1\", \"2\"]);\n // return 예시) \"array\"\n*/",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.isPlainObject",
+			"FUNC_TITLE": "값이 Plain Object인지 검사한다. ",
+			"FUNC_DESC": "/**\n * 값이 Plain Object인지 검사한다. \n *\n * @memberOf com.util\n * @date 2021.04.19\n * @param {Object} obj Plain Object인지 검사할 값\n * @author Inswave Systems\n * @return Plain 객체 여부\n * @example\ncom.util.isPlainObject(1); // false\ncom.util.isPlainObject(\"name\"); // false\ncom.util.isPlainObject([1,2,3]); // false\ncom.util.isPlainObject({}); // true\ncom.util.isPlainObject({ \"name\" : \"홍길동\"}); // true\ncom.util.isPlainObject([{ \"name\" : \"홍길동\"}]); // false\n*/",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.isMobile",
+			"FUNC_TITLE": "현재 클라이언트 브라우저 환경의 모바일 여부를 반환한다.",
+			"FUNC_DESC": "/**\n * 현재 클라이언트 브라우저 환경의 모바일 여부를 반환한다.\n *\n * @memberOf com.util\n * @date 2020.05.16\n * @author Inswave Systems\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.isXmlDoc",
+			"FUNC_TITLE": "XML Document 객체인지 여부를 검사한다.",
+			"FUNC_DESC": "/**\n * XML Document 객체인지 여부를 검사한다.\n *\n * @memberOf com.util\n * @date 2020.05.16\n * @param {Object} data XML Document 객체인지 여부를 검사한다.\n * @author Inswave Systems\n * @return {Boolean} true or false\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.setGridViewDelCheckBox",
+			"FUNC_TITLE": "GridView Row 삭제를 위한 CheckBox 동작을 세팅한다.",
+			"FUNC_DESC": "/**\n * GridView Row 삭제를 위한 CheckBox 동작을 세팅한다.\n * GridView에 삭제용 CheckBox가 있을 경우 onPageLoad 이벤트에서 com.util.setGridViewDelCheckBox 함수를 호출한다.\n * 이 함수가 정상 동작하려면 GridView의 Delete 처리용 CheckBox의 ColumnId와 Header Id를 \"chk\"로 설정해야 한다.\n *\n * @memberOf com.util\n * @date 2020.05.16\n * @author Inswave Systems\n * @param {Array} gridViewObj GridView 객체 배열\n * @example\ncom.util.setGridViewDelCheckBox(grd_OrganizationBasic);\ncom.util.setGridViewDelCheckBox([grd_Menu, grd_MenuAccess]);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.getChildren",
+			"FUNC_TITLE": "특정 컴포넌트의 자식 컴포넌트를 배열로 반환한다.",
+			"FUNC_DESC": "/**\n * 특정 컴포넌트의 자식 컴포넌트를 배열로 반환한다.\n *\n * @memberOf com.util\n * @date 2020.05.16\n * @param {Object} comObj 컴포넌트 객체\n * @param {Object} options 하위 컴포넌트 검색 옵션 정보\n * @param {String} options.excludeId 제외할 컴포넌트 id. 인자가 여러개일 경우 공백을 구분자로 사용\n * @param {String} options.excludePlugin 제외할 컴포넌트 plugin 이름. 인자가 여러개일 경우 공백을 구분자로 사용.\n * @param {String} options.includePlugin 포함 컴포넌트 플러그인 이름. 인자가 여러 개일 경우 공백을 구분자로 사용함.\n * @author Inswave Systems\n * @example\ncom.util.getChildren(grp_content);\ncom.util.getChildren(grp_content, {excludePlugin : \"trigger input\", excludeId : \"treeview1_tooltip windowContainer1_tooltip\");\ncom.util.getChildren(grp_content, {excludeId : \"ibx_name sbx_payTy\"});\ncom.util.getChildren(grp_content, {includePlugin : \"selectbox\"});\ncom.util.getChildren(grp_content, {excludeId : \"ibx_name sbx_payTy\", includePlugin : \"input selectbox\"});\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.getGridViewDataList",
+			"FUNC_TITLE": "GridView와 바인딩된 DataList 객체를 반환한다.",
+			"FUNC_DESC": "/**\n * GridView와 바인딩된 DataList 객체를 반환한다.\n *\n * @param {Object} gridViewObj 바인딩 된 DataList가 존재하는지 검증할 GridView 객체\n * @memberOf com.util\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Object} 바인딩 된 DataList 객체 반환 (바인된 객체가 없을 경우 null 반환)\n * @example\n// 바인딩 되어있는 경우\ncom.util.getGridViewDataList(grd_First);\n// return 예시) \"dlt_first\"\n\n// 바인딩 되어있지 않은 경우\ncom.util.getGridViewDataList(grd_First);\n// return 예시) undefined\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.getComponent",
+			"FUNC_TITLE": "주어진 아이디에 해당하는 웹스퀘어 컴포넌트를 찾아 반환한다.",
+			"FUNC_DESC": "/**\n * 주어진 아이디에 해당하는 웹스퀘어 컴포넌트를 찾아 반환한다.\n *\n * @param {String} compId 컴포넌트 아이디\n * @memberOf com.util\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Object} 바인딩 된 DataList 객체 반환 (바인된 객체가 없을 경우 null 반환)\n * @example\nvar object = com.util.getGridViewDataList(compId);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.createComponent",
+			"FUNC_TITLE": "주어진 인자를 통해 동적으로 Component를 생성합니다.",
+			"FUNC_DESC": "/**\n * 주어진 인자를 통해 동적으로 Component를 생성합니다.\n *\n * @memberOf com.util\n * @date 2020.05.16\n * @param {String} strCompId 컴포넌트 ID\n * @param {String} strCompName 컴포넌트 태그명\n * @param {Object} option 컴포넌트 옵션\n * @param {String} parent 컴포넌트 생성 부모 노드 위치\n * @param {Object} itemSet 컴포넌트 setItemset 옵션\n * @return {Object} 생성된 컴포넌트 객체\n * @author Inswave Systems\n * @example\ncom.util.createComponent(\"ibx_input1\", \"input\" );\ncom.util.createComponent(\"ibx_input2\", \"input\", { style: \"width:120px; height:40px; float:left; margin : 20px;\" });\ncom.util.createComponent(\"ibx_input2\", \"input\", { style: \"width:120px; height:40px; float:left; margin : 20px;\" }, grp_content1);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.setInterval",
+			"FUNC_TITLE": "사용자가 지정한 함수가 주기적으로 실행된다.",
+			"FUNC_DESC": "/**\n * 사용자가 지정한 함수가 주기적으로 실행된다.\n *\n * @memberOf com.util\n * @date 2020.05.16\n * @param {Function} func 실행할 함수\n * @param {Object} options options인자로는 아래와 같은 인자가 사용된다.\n * @param {String} options.key timer를 구별하기 위한 키값. 이 값이 지정되지 않은 경우 키값을 func.toString().slice(0,30)을 키값으로 사용한다.\n * @param {Number} options.delay setInterval의 2번째 인자값. func함수가 delay시간 이후에 실행되도록 한다.  기본값은 1이다.\n * @param {Object} options.caller func내에서 this값을 caller로 변경한다.\n * @param {Object} options.args func에 전달할 인자값. array형태로 인자를 전달한다.\n * @param {Function} options.before_call : func 함수가 실행되기 직전에 실행할 함수. func함수와 마찬가지로 data를 인자로 받는다.\n * @param {Function} options.callback : func함수가 실행된 후에 실행할 함수. func함수의 return값을 인자로 받는다\n * @author Inswave Systems\n * @description\n실행할 함수를 함수를 setInterval로 등록하여 함수가 주기적으로 계속 실행되도록 한다.SPA모드에서 페이지 이동 시 이 함수로 등록한 타이머를 자동으로 제거한다.\n * @example\ncom.util.setInterval(\n function() {\n  com.win.alert(\"처리가 완료 되었습니다\");\n },\n { caller : grd_data1, delay : 2000, key : \"interval1\" }\n);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.clearInterval",
+			"FUNC_TITLE": "com.util.setInterval API를 이용하여 등록 한 함수를 직접 Clear시킨다.",
+			"FUNC_DESC": "/**\n * com.util.setInterval API를 이용하여 등록 한 함수를 직접 Clear시킨다.\n *\n * @memberOf com.util\n * @date 2020.10.23\n * @param {String} keyName key로 지정한 값. ( com.util.setInterval API 호출 시 options에 등록 한 key명)\n * @param {Boolean} force keyName으로 지정 된 Interval 객체를 해제하기 전 해당 함수를 한 번 실행할지에 대한 여부. 기본값은 false.\n * @author Inswave Systems\n * @description\n실행할 함수를 함수를 setInterval로 등록하여 함수가 주기적으로 계속 실행되도록 한다.SPA모드에서 페이지 이동 시 이 함수로 등록한 타이머를 자동으로 제거한다.\n * @example\ncom.util.clearInterval(\"timer1\");\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.setTimeout",
+			"FUNC_TITLE": "사용자가 지정한 함수가 일정 시간 후에 실행된다.",
+			"FUNC_DESC": "/**\n * 사용자가 지정한 함수가 일정 시간 후에 실행된다.\n *\n * @memberOf com.util\n * @date 2020.05.16\n * @param {Function} func 실행할 함수\n * @param {Object} options options인자로는 아래와 같은 인자가 사용된다.\n * @param {String} options.key timeout을 구별하기 위한 키값. 이 값이 지정되지 않은 경우 키값을 func.toString().slice(0,30)을 키값으로 사용한다.\n * @param {Number} options.delay func로 지정한 함수가 실행 될 간격으로 기본값은 1ms(millisecond / 1000분의 1초)이다. javascript setTimeout의 2번째 인자값.\n * @param {Object} options.caller func로 지정한 함수내에서 this값으로 지정 할 객체(웹스퀘어 컴포넌트 포함).\n * @param {Object} options.args func에 전달할 인자값. array형태로 인자를 전달한다.\n * @param {Function} options.before_call : func로 지정한 함수가 실행되기 직전에 실행 할 함수. func함수와 마찬가지로 data를 인자로 받는다.\n * @param {Function} options.callback : func로 지정한 함수가 실행된 후에 실행 할 함수. func로 지정한 함수의 return값을 인자로 받는다.\n * @author Inswave Systems\n * @description\n실행할 함수를 함수를 setInterval로 등록하여 함수가 주기적으로 계속 실행되도록 한다.SPA모드에서 페이지 이동 시 이 함수로 등록한 타이머를 자동으로 제거한다.\n * @example\ncom.util.setTimeout(\n function() {\n  com.win.alert(\"5분이 지났습니다.\");\n },\n { delay : 300000, key : \"loginTimeout\" }\n);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.clearTimeout",
+			"FUNC_TITLE": "com.util.setTimeout API를 이용하여 등록 한 함수를 직접 Clear시킨다.",
+			"FUNC_DESC": "/**\n * com.util.setTimeout API를 이용하여 등록 한 함수를 직접 Clear시킨다.\n *\n * @memberOf com.util\n * @date 2020.10.23\n * @param {String} keyName key로 지정한 값. ( com.util.setTimeout API 호출 시 options에 등록 한 key명)\n * @param {Boolean} force keyName으로 지정 된 Interval 객체를 해제하기 전 해당 함수를 한 번 실행할지에 대한 여부. 기본값은 false.\n * @author Inswave Systems\n * @description\n실행할 함수를 함수를 setInterval로 등록하여 함수가 주기적으로 계속 실행되도록 한다.SPA모드에서 페이지 이동 시 이 함수로 등록한 타이머를 자동으로 제거한다.\n * @example\ncom.util.clearTimeout(\"timer1\");\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.copyClipboard",
+			"FUNC_TITLE": "입력 가능한 컴포넌트(input, textarea 등) 객체의 내용을 클립보드에 저장한다.",
+			"FUNC_DESC": "/**\n * 입력 가능한 컴포넌트(input, textarea 등) 객체의 내용을 클립보드에 저장한다.\n *\n * @param {Object} 컴포넌트 객체\n * @memberOf com.util\n * @date 2020.05.16\n * @author Inswave Systems\n * @descripton\n※ 주의사항\n- IE 10+, Chrome 43+, Opera 29+, Firefox에서만 사용 가능함\n- IE의 경우 클립복드 복사 허용을 묻는 확인 창이 뜸\n * @example\n// ibx_message InputBox내 Text가 Select 되면서 Clipboard에 복사된다.\ncom.util.copyClipboard(ibx_message);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.getObject",
+			"FUNC_TITLE": "객체 아이디 및 이벤트 객체에서 컴포넌트 객체 찾아서 반환한다.",
+			"FUNC_DESC": "/**\n * 객체 아이디 및 이벤트 객체에서 컴포넌트 객체 찾아서 반환한다.\n * \n * @memberOf com.util\n * @date 2022.02.10\n * @author Inswave Systems\n * @param {String|Object} _objectId 객체 ID 또는 이벤트 객체\n * @param {String} _scopeObj 객체 적용 Scope ID [\"parent\" 최상위 예외 scope ID 적용]\n * @returns {Object} 찾은 객체\n * @example\ncom.util.getObject(\"btn_toggle_menu\");\ncom.util.getObject(\"wfm_header\", \"top\");\ncom.util.getObject(\"wfm_header\", \"parent\");\ncom.util.getObject(\"btn_toggle_menu\", \"wfm_header\");\ncom.util.getObject(this);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.getFunction",
+			"FUNC_TITLE": "함수 명을 통해 함수 객체 찾아서 반환한다.",
+			"FUNC_DESC": "/**\n * 함수 명을 통해 함수 객체 찾아서 반환한다.\n * \n * @memberOf com.util\n * @date 2021.07.27\n * @author Inswave Systems\n * @param {String} _funcStr 함수명\n * @param {String} _scopeId 함수 존재 scopeId [default: 현재 호출 scopeId (페이지)]\n * @returns {Function} 특정 함수명의 함수객체\n * @example\ncom.util.getFunction(\"scwin.btn_logout_onclick\");\ncom.util.getFunction(\"scwin.initMainLoad\", \"top\");\ncom.util.getFunction(\"scwin.initMainLoad\", \"parent\");\ncom.util.getFunction(\"scwin.toggleMenu\", \"wfm_header\");\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.util.getUserAgent",
+			"FUNC_TITLE": "접속한 사용자의 웹 브라우저 종류를 반환한다.",
+			"FUNC_DESC": "/**\n * 접속한 사용자의 웹 브라우저 종류를 반환한다.\n *\n * @memberOf com.util\n * @date 2020.10.07\n * @return {String} 웹 브라우저 종류\n * @author  Inswave Systems\n * @example\nvar userAgent = com.util.getUserAgent();\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.goHome",
+			"FUNC_TITLE": "최상위 page를 index화면으로 이동 (/)",
+			"FUNC_DESC": "/**\n * 최상위 page를 index화면으로 이동 (/)\n * \n * @date 2016.08.05\n * @memberOf com.win\n * @author Inswave Systems\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.logout",
+			"FUNC_TITLE": "로그아웃으로 WAS의 사용자 session을 삭제한다.",
+			"FUNC_DESC": "/**\n * 로그아웃으로 WAS의 사용자 session을 삭제한다.\n * 정상 처리 : /로 이동.\n * 오류 발생 : 기존 화면으로 오류 메세지 전송\n * \n * @date 2016.08.08\n * @memberOf com.win\n * @author Inswave Systems\n * @example\n * com.win.logout();\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.isAdmin",
+			"FUNC_TITLE": "로그인한 사용자가 시스템 관리자 인지의 여부를 반환한다.",
+			"FUNC_DESC": "/**\n * 로그인한 사용자가 시스템 관리자 인지의 여부를 반환한다.\n * \n * @date 2018.12.01\n * @memberOf com.win\n * @author Inswave Systems\n */",
+			"FUNC_REMARK": "요건 및 데이터 확인 필요",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.getFullPath",
+			"FUNC_TITLE": "contextRoot가 포함된 path를 반환한다.",
+			"FUNC_DESC": "/**\n * contextRoot가 포함된 path를 반환한다.\n *\n * @memberOf com.win\n * @date 2020.05.16\n * @param {String} path 파일경로(Context가 포함되지 않은)\n * @return {String} Context가 포함된 파일경로\n * @example\n// context가 /sample 인경우\ncom.win.getFullPath(\"/ui/dev/common/commonCode1.xml\");\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.setEnterKeyEvent",
+			"FUNC_TITLE": "해당 그룹 안의 컴포넌트에서 엔터키가 발생하면 해당 컴포넌트의 값을 DataColletion에 저장하고 objFunc 함수를 실행한다.",
+			"FUNC_DESC": "/**\n * 해당 그룹 안의 컴포넌트에서 엔터키가 발생하면 해당 컴포넌트의 값을 DataColletion에 저장하고 objFunc 함수를 실행한다.\n *\n * @param {Object} grpObj 그룹 객체\n * @param {Object} objFunc 함수 객체\n * @param {Number} rowIndex DataList가 바인딩된 gridView인 경우 ==> 현재 포커스된 focusedRowIndex [ex. gridViewId.getFocusedRowIndex()]\n *     <br/>아닌 경우 ==> rowIndex는 생략\n * @memberOf com.win\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\ncom.win.setEnterKeyEvent(grp_AuthorityDetail, scwin.search);\n// return 예시) \"엔터키가 발생 -> 해당 함수 실행 및 DataColletion에 UI 컴포넌트에 입력된 데이터를 DataCollection에 저장\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.alert",
+			"FUNC_TITLE": "Alert 메시지 창을 호출한다.",
+			"FUNC_DESC": "/**\n * Alert 메시지 창을 호출한다.\n *\n * @memberOf com.win\n * @date 2020.05.16\n * @param {String} messageStr 메시지\n * @param {String} closeCallbackFncName 콜백 함수명\n * @param {Object} opts 팝업 옵션\n * @author Inswave Systems\n * @example\ncom.win.alert(\"우편번호를 선택하시기 바랍니다.\");\ncom.win.alert(\"우편번호를 선택하시기 바랍니다.\", \"scwin.alertCallBack\");\n\n// 공통메시지 아이디를 전달하면 메시지로 변경하여 보여줌\ncom.win.alert(\"com.cfm.0002\") // 저장하시겠습니까?\n\n// 공통메시지에 치환값이 있는 경우는 Array로 전달\ncom.win.alert([\"bbs.cfm.0001\",  \"MA0101\", \"MA010101\"]) //\"카테고리 [MA0101]를 삭제하시겠습니까?\\n삭제 시, [MA0101]로 등록한 게시글을 조회할 수 없습니다.\"\n\n// 존재하지 않는 공통메시지 아이디인경우 String 인경우\ncom.win.alert(\"com.cfm.002\") // \"com.cfm.002\"\n\n// 존재하지 않는 공통메시지 아이디인경우 Array 인경우\ncom.win.alert([\"bbs.cfm.0001\",  \"MA0101\", \"MA010101\"]) //메시지 없음\n */",
+			"FUNC_REMARK": "Browser의 alert과 다르게, async 로 동작하기에, 확인 이후 작업은 콜백함수에서 수행해야함.",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.confirm",
+			"FUNC_TITLE": "Confirm 메시지 창을 호출한다.",
+			"FUNC_DESC": "/**\n * Confirm 메시지 창을 호출한다.\n *\n * @memberOf com.win\n * @date 2020.05.16\n * @param {String} messageStr 메시지\n * @param {String} closeCallbackFncName 콜백 함수명\n * @author Inswave Systems\n * @example\ncom.win.confirm(\"변경된 코드 그룹 정보를 저장하시겠습니까?\", \"scwin.saveCodeGrpConfirmCallback\");\ncom.win.confirm(\"하위에 새로운 조직을 추가하시겠습니까?\", \"scwin.insertConfirmCallBack\");\n */",
+			"FUNC_REMARK": "Browser의 confirm과 다르게, async 로 동작하기에, 확인, 취소 이후 작업은 콜백함수에서 수행해야함.",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.showToastMessage",
+			"FUNC_TITLE": "토스트 메시지를 보여준다.",
+			"FUNC_DESC": "/**\n * 토스트 메시지를 보여준다.\n *\n * @memberOf com.win\n * @date 2021.03.11\n * @param {String} 메시지 종류 ( 에러 : gcm.MESSAGE_CODE.STATUS_ERROR, 성공 : gcm.MESSAGE_CODE.STATUS_SUCCESS, 경고 : gcm.MESSAGE_CODE.STATUS_WARNING, 정보 : gcm.MESSAGE_CODE.STATUS_INFO )\n * @param {String} 메시지\n * @author Inswave Systems\n * @example\ncom.win.showToastMessage(gcm.MESSAGE_CODE.STATUS_SUCCESS, e.responseJSON.rsMsg.statusMsg);\n */",
+			"FUNC_REMARK": "요건 및 데이터 확인 필요",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.getLanguage",
+			"FUNC_TITLE": "언어 코드를 반환한다.",
+			"FUNC_DESC": "/**\n * 언어 코드를 반환한다.\n *\n * @memberOf com.win\n * @date 2020.05.16\n * @return {String} 언어코드 (ex. \"ko\", \"en\")\n * @author Inswave Systems\n * @example\nvar lang = com.win.getLanguage();\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.getPopupId",
+			"FUNC_TITLE": "팝업 아이디를 반환한다.",
+			"FUNC_DESC": "/**\n * 팝업 아이디를 반환한다.\n *\n * @memberOf com.win\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\nvar popupId = com.win.getPopupId();\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.openPopup",
+			"FUNC_TITLE": "팝업창을 연다.",
+			"FUNC_DESC": "/**\n * 팝업창을 연다.\n *\n * @param {String} url url 화면경로\n * @param {Array} options Popup창 옵션\n * @param {String} options.id] Popup창 아이디\n * @param {String} options.type] 화면 오픈 타입 (\"wframePopup\", \"browserPopup\")\n * @param {String} options.width] Popup창 넓이\n * @param {String} options.height] Popup창 높이\n * @param {String} options.popupName] useIframe : true시 popup 객체의 이름으로 popup 프레임의 표시줄에 나타납니다.\n * @param {String} options.useIFrame] [default : false] true : IFrame 을 사용하는 WebSquare popup / false: window.open 을 사용하는 popup\n * @param {String} options.style] Popup의 스타일을 지정합니다. 값이 있으면 left top width height는 적용되지 않습니다.\n * @param {String} options.resizable] [default : false]\n * @param {String} options.modal] [default : false]\n * @param {String} options.scrollbars] [default : false]\n * @param {String} options.title] [default : false]\n * @param {String} options.notMinSize [default : false]\n * @param {Object} data 팝업 화면에 전달할 데이터 객체 (type이 wframePopup인 경우만 지원)\n * @memberOf com.win\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\nvar data = { data : dma_authority.getJSON(), callbackFn : \"scwin.insertMember\" };\nvar options = { id : \"AuthorityMemberPop\",\n    popupName : \"직원 조회\",\n    modal : true,\n    width : 560, height: 400 };\ncom.win.openPopup(\"/ui/BM/BM002P01.xml\", options, data);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.closePopup",
+			"FUNC_TITLE": "팝업창을 닫는다.",
+			"FUNC_DESC": "/**\n * 팝업창을 닫는다.\n *\n * @memberOf com.win\n * @date 2020.05.16\n * @param {String|Object} callbackParam 부모 창에 전달한 데이터\n * @param {String} callbackFnStr 콜백 함수 명\n * @author Inswave Systems\n * @example\ncom.win.closePopup();\ncom.win.closePopup('{message:\"정상처리되었습니다\"}');\ncom.win.closePopup('정상처리되었습니다.', \"scwin.zipPopupCallback\");\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.closeAllPopup",
+			"FUNC_TITLE": "현재 오픈된 전체 팝업창을 닫는다.",
+			"FUNC_DESC": "/**\n * 현재 오픈된 전체 팝업창을 닫는다.\n *\n * @memberOf com\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\ncom.win.closeAllPopup();\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.isPopup",
+			"FUNC_TITLE": "현재 화면이 팝업 인지의 여부를 반환한다.",
+			"FUNC_DESC": "/**\n * 현재 화면이 팝업 인지의 여부를 반환한다.\n *\n * @memberOf com.win\n * @date 2020.05.16\n * @return {Boolean} 팝업인 경우 true, 팝업이 아닌 경우 false\n * @author Inswave Systems\n * @example\nif (com.win.isPopup()) {\n com.win.alert(\"현재 화면은 팝업입니다.\");\n};\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.openMenu",
+			"FUNC_TITLE": "특정 메뉴를 오픈한다. (메뉴 데이터와 무관하게 동작)",
+			"FUNC_DESC": "/**\n * 특정 메뉴를 오픈한다. (메뉴 데이터와 무관하게 동작)\n * \n * @date 2021.02.16\n * @param {String} menuNm 메뉴명 - 단위화면에서 해당 값으로 title을 설정한다.\n * @param {String} url 화면 파일 경로\n * @param {String} menuCode 메뉴코드 - DB에 저장되어있는 메뉴 코드\n * @param {Object} paramObj 화면에 전달할 JSON 데이터 객체\n * @param {Object} option 화면 오픈 옵션\n * @param {String} option.menuType 메뉴타입 (\"SP\" : 샘플화면)\n * @param {String} option.closable 닫기버튼 보여주기 여부\n * @param {Boolean} option.isHistory Browser History에 기록할 지 여부 (true, false)\n * @return {Boolean} Main Layout 안에 화면이 오픈 되었는지 여부\n * @author Inswave Systems\n * @example\ncom.win.openMenu(\"인사조회\", \"/tmp/tmp01.xml\", \"010001\");\n */",
+			"FUNC_REMARK": "요건 및 데이터 확인 필요",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.getFrame",
+			"FUNC_TITLE": "wframe안의 스크립트 영역에서 이 함수를 호출할 경우 자신을 감싼 wframe object를 반환한다. 전역스크립트에서 호출 시에는 null을 반환한다.",
+			"FUNC_DESC": "/**\n * wframe안의 스크립트 영역에서 이 함수를 호출할 경우 자신을 감싼 wframe object를 반환한다. 전역스크립트에서 호출 시에는 null을 반환한다.\n *\n * @memberOf com.win\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Object} 자신을 감싼 wframe object\n * @example\nvar frameObj = com.win.getFrame();\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.getParent",
+			"FUNC_TITLE": "자신의 부모 WFrame 객체를 찾아 반환한다.",
+			"FUNC_DESC": "/**\n * 자신의 부모 WFrame 객체를 찾아 반환한다.\n *\n * @memberOf com.win\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Object} 자신을 감싼 wframe object의 부모 wfrmae 객체\n * @example\nvar parentFrame = com.win.getParent();\nvar dltObj = parentFrame.dlt_dataList1; // 자기 부모 프레임 내에 있는 dlt_dataList1에 접근\nvar pScwinObj = parentFrame.scwin; // 자기 부모 프레임에 있는 scwin 객체에 접근\nif (!com.util.isEmpty(pScwinObj){\n pScwinObj.search(); // 부모화면에 있는 scwin.search 함수를 호출\n}\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.setLangCode",
+			"FUNC_TITLE": "언어 코드를 설정한다.",
+			"FUNC_DESC": "/**\n * 언어 코드를 설정한다.\n *\n * @memberOf com.win\n * @date 2019.11.22\n * @param {String} langCode 언어코드 (한국어 : \"ko\", 영어 : \"en\", 중국어 : \"zh\");\n * @author Inswave Systems\n * @example\ncom.win.setLangCode(\"ko\");\ncom.win.setLangCode(\"en\");\n*/",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.getLangCode",
+			"FUNC_TITLE": "언어 코드를 반환한다.",
+			"FUNC_DESC": "/**\n * 언어 코드를 반환한다.\n *\n * @memberOf com.win\n * @date 2019.11.22\n * @return langCode 언어코드 (한국어 : \"ko\", 영어 : \"en\", 중국어 : \"zh\");\n * @author Inswave Systems\n * @example\ncom.win.getLangCode();\n*/",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.reinitialize",
+			"FUNC_TITLE": "현재 화면 재로딩",
+			"FUNC_DESC": "/**\n * 현재 화면 재로딩\n * 브라우저를 refresh하지 않고 해당 페이지를 다시 로딩한다. (별도 팝업은 브라우저 refresh) \n * \n * @example\n       com.win.reinitialize();\n*/",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.num.round",
+			"FUNC_TITLE": "반올림 처리를 한다.",
+			"FUNC_DESC": "/**\n * 반올림 처리를 한다.\n *\n * @param {String|Number} value 반올림 처리를 할 값\n * @param {Number} point 반올림 처리를 할 소수점 자리 수 (Default : 0, 정수 값으로 반올림 처리)\n * @memberOf com.num\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Number} 반올림 처리를 한 숫자 값\n * @example\ncom.num.round(23.4567); // return 예시) 23\ncom.num.round(23.5567); // return 예시) 24\ncom.num.round(23.5567, 2); // return 예시) 23.56\ncom.num.round(23.5564, 3); // return 예시) 23.556\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.num.floor",
+			"FUNC_TITLE": "내림 처리를 한다.",
+			"FUNC_DESC": "/**\n * 내림 처리를 한다.\n *\n * @param {String|Number} value 내림 처리를 할 값\n * @param {Number} point 내림 처리를 할 소수점 자리 수 (Default : 0, 정수 값으로 내림 처리)\n * @memberOf com.num\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Number} 내림 처리를 한 숫자 값\n * @example\ncom.num.floor(23.5567); // return 예시) 23\ncom.num.floor(23.5567, 2); // return 예시) 23.55\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.num.ceil",
+			"FUNC_TITLE": "올림 처리를 한다.",
+			"FUNC_DESC": "/**\n * 올림 처리를 한다.\n *\n * @param {String} value 올림 처리를 할 값 (String 또는 Number 타입 지원)\n * @param {Integer} point 올림 처리를 할 소수점 자리 수 (Default : 0, 정수 값으로 올림 처리)\n * @memberOf com.num\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Number} 올림 처리를 한 숫자 값\n * @example\ncom.num.ceil(23.5567); // return 예시) 24\ncom.num.ceil(23.5567, 2); // return 예시) 23.56\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.num.formatMoney",
+			"FUNC_TITLE": "금액 포맷을 적용한다.",
+			"FUNC_DESC": "/**\n * 금액 포맷을 적용한다.\n * ex)세번째자리마다 콤마 표시, 금액\n *\n * @param {String|Number} value 포멧터를 적용할 값\n * @param {String} type 적용할 포멧터 형식(Default:null,dollar,plusZero,won)\n * @memberOf com.num\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {String} 포멧터가 적용된 문자열\n * @example\ncom.num.formatMoney(\"12345\"); // 12,345\ncom.num.formatMoney(\"12345\", \"dollar\"); // $12,345\ncom.num.formatMoney(\"12345\", \"plusZero\"); // 123,450\ncom.num.formatMoney(\"12345\", \"won\"); // 12,345원\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.num.formatNumber",
+			"FUNC_TITLE": "세째자리마다 콤마를 추가해서 반환한다.",
+			"FUNC_DESC": "/**\n * 세째자리마다 콤마를 추가해서 반환한다.\n *\n * @param {String|Number} value 포멧터를 적용할 값\n * @memberOf com.num\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {String} 포멧터가 적용된 문자열\n * @example\ncom.num.formatNumber(\"12345677\"); // \"12,345,677\"\ncom.num.formatNumber(12345677); // \"12,345,677\"\ncom.num.formatNumber(-12345677); // \"-12,345,677\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.num.isNumber",
+			"FUNC_TITLE": "숫자가 맞는지 여부를 검사한다.",
+			"FUNC_DESC": "/**\n * 숫자가 맞는지 여부를 검사한다.\n *\n * @param {String|Number} value 검사할 숫자 값\n * @memberOf com.num\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Boolean} 숫자 여부 (숫자이면 true, 아니면 false 반환)\n * @example\ncom.num.isNumber(\"123\"); // true;\ncom.num.isNumber(123); // true;\ncom.num.isNumber(\"123.123\"); // true;\ncom.num.isNumber(123.123); // true;\ncom.num.isNumber(\"-123.123\"); // true;\ncom.num.isNumber(-123.123); // true;\ncom.num.isNumber(\"a123\"); // false;\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.num.isOdd",
+			"FUNC_TITLE": "홀수가 맞는지 여부를 검사한다.",
+			"FUNC_DESC": "/**\n * 홀수가 맞는지 여부를 검사한다.\n *\n * @param {String|Number} value 검사할 값\n * @memberOf com.num\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Boolean} 홀수 여부 (홀수이면 true, 아니면 false 반환)\n * @example\ncom.num.isOdd(\"123\"); // true;\ncom.num.isOdd(123); // true;\ncom.num.isOdd(\"122\"); // false;\ncom.num.isOdd(122); // false;\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.num.parseInt",
+			"FUNC_TITLE": "문자열을 정수형으로 변환한다.",
+			"FUNC_DESC": "/**\n * 문자열을 정수형으로 변환한다.\n *\n * @param {String} value 변환할 문자열\n * @memberOf com.num\n * @date 2020.05.16\n * @author Inswave Systems\n * @param {String} 정수 문자열 \n * @param {Number} parseFloat 결과가 NaN일때 반환할 기본 값\n * @return {Number} 변환된 정수형 값\n * @example\ncom.num.parseInt(\"5231\"); // 5231;\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.num.parseFloat",
+			"FUNC_TITLE": "문자열을 실수형으로 변환한다.",
+			"FUNC_DESC": "/**\n * 문자열을 실수형으로 변환한다.\n *\n * @param {String} value 변환할 문자열\n * @memberOf com.num\n * @date 2020.05.16\n * @author Inswave Systems\n * @param {String} 실수 문자열 \n * @param {Number} parseFloat 결과가 NaN일때 반환할 기본 값\n * @return {Number} 변환된 실수형 값\n * @example\ncom.num.parseFloat(\"5231.22\"); // 5231.22;\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.num.formatByte",
+			"FUNC_TITLE": "바이트 값을 적절한 단위(KB, MB, GB)를 변환해서 반환한다.",
+			"FUNC_DESC": "/**\n * 바이트 값을 적절한 단위(KB, MB, GB)를 변환해서 반환한다.\n *\n * @memberOf com.num\n * @date 2020.05.16\n * @param {String} value 변환할 값\n * @author Inswave Systems\n * @example\ncom.num.formatByte(32132);\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.serialize",
+			"FUNC_TITLE": "XML, JSON 객체를 String 타입으로 반환한다.",
+			"FUNC_DESC": "/**\n * XML, JSON 객체를 String 타입으로 반환한다.\n *\n * @param {Object} object String으로 변환할 JSON 객체\n * @param {String} replacer 치환할 문자열\n * @param {Number} space 여백 수\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {String} String으로 변환된 객체\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.lpad",
+			"FUNC_TITLE": "좌측에 문자열 채우기",
+			"FUNC_DESC": "/**\n * 좌측에 문자열 채우기\n *\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @param {String} str 포멧터를 적용할 문자열\n * @param {Number} length 0 으로 채울 길이\n * @param {String} char : 채우고자하는 문자(char)\n * @return {String} 일정길이 만큼 char 으로 채워진 문자열\n * @example\ncom.str.lpad(\"24\", 4, \"0\"); // \"0024\"\ncom.str.lpad(\"11321\", 8, \"A\"); // \"AAA11321\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.rpad",
+			"FUNC_TITLE": "우측에 문자열 채우기",
+			"FUNC_DESC": "/**\n * 우측에 문자열 채우기\n *\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @param {String} str 포멧터를 적용할 문자열\n * @param {Number} length 0 으로 채울 길이\n * @param {String} char : 채우고자하는 문자(char)\n * @return {String} 일정길이 만큼 char 으로 채워진 문자열\n * @example\ncom.str.rpad(\"24\", 4, \"0\"); // \"2400\"\ncom.str.rpad(\"11321\", 8, \"A\"); // \"11321AAA\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.formatSSN",
+			"FUNC_TITLE": "주민번호 문자열에 Formatter(######-#######)를 적용하여 반환한다.",
+			"FUNC_DESC": "/**\n * 주민번호 문자열에 Formatter(######-#######)를 적용하여 반환한다.\n *\n * @param {String} str 주민번호 문자열\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {String} 포멧터가 적용된 주민번호 문자열\n * @example\ncom.str.formatSSN(\"1234561234567\");  // \"123456-1234567\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.formatPhone",
+			"FUNC_TITLE": "문자열에 전화번호 형식 Formatter를 적용하여 반환한다.",
+			"FUNC_DESC": "/**\n * 문자열에 전화번호 형식 Formatter를 적용하여 반환한다.\n *\n * @param {String} str 포멧터를 적용할 문자열\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {String} 포멧터가 적용된 문자열\n * @example\ncom.str.formatPhone(\"0212345678\");  // \"02-1234-5678\"\ncom.str.formatPhone(\"05051234567\"); // \"0505-123-4567\"\ncom.str.formatPhone(\"03112345678\"); // \"031-1234-5678\"\ncom.str.formatPhone(\"0311234567\");  // \"031-123-4567\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.formatTime",
+			"FUNC_TITLE": "문자열에 시간 형식 Formatter를 적용하여 반환한다.",
+			"FUNC_DESC": "/**\n * 문자열에 시간 형식 Formatter를 적용하여 반환한다.\n *\n * @param {String} str 포멧터를 적용할 문자열\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {String} 포멧터가 적용된 문자열\n * @author Inswave Systems\n * @example\ncom.str.formatTime(\"123402\"); // 12:34:02\ncom.str.formatTime(\"1234\"); // 12:34:02\n*/",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.getLocale",
+			"FUNC_TITLE": "문자(char)의 유형을 리턴한다.",
+			"FUNC_DESC": "/**\n * 문자(char)의 유형을 리턴한다.\n *\n * @param {String} str 어떤 유형인지 리턴받을 문자\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Number} 유니코드 기준 <br><br>\n * 한글음절[ 44032 ~ 55203 ] => 1 <br>\n * 한글자모[ 4352 ~ 4601 ] => 2 <br>\n * 숫자[ 48 ~ 57 ] => 4 <br>\n * 특수문자[ 32 ~ 47 || 58 ~ 64 || 91 ~ 96 || 123 ~ 126 ] => 8 <br>\n * 영문대[ 65 ~ 90 ] => 16 <br>\n * 영문소[ 97 ~ 122 ] => 32 <br>\n * 기타[그외 나머지] => 48\n * @example\ncom.str.getLocale(\"가\"); // 1\ncom.str.getLocale(\"ㅏ\"); // 2\ncom.str.getLocale(\"1\");  // 4\ncom.str.getLocale(\"!\");  // 8\ncom.str.getLocale(\"A\");  // 16\ncom.str.getLocale(\"a\");  // 32\ncom.str.getLocale(\"¿\");  // 48\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.existKorean",
+			"FUNC_TITLE": "입력받은 문자열에 한글이 포함되어 있는지 여부를 검사한다.",
+			"FUNC_DESC": "/**\n * 입력받은 문자열에 한글이 포함되어 있는지 여부를 검사한다.\n *\n * @param {String} value 한글 유형인지 검증할 문자열\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Boolean} true or false\n * @example\ncom.str.existKorean(\"abc\"); // false\ncom.str.existKorean(\"abc무궁화\"); // true\ncom.str.existKorean(\"무궁화꽃이\"); // true\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.isKorean",
+			"FUNC_TITLE": "입력받은 문자열 전체가 한글인지를 검사한다.",
+			"FUNC_DESC": "/**\n * 입력받은 문자열 전체가 한글인지를 검사한다.\n *\n * @param {String} str 한글이 포함되어 있는지 검증 받을 문자열\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Boolean} true or false\n * @example\ncom.str.isKorean(\"abcd\"); // false\ncom.str.isKorean(\"abcd무궁화\"); // false\ncom.str.isKorean(\"무궁화\"); // true\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.isFinalConsonant",
+			"FUNC_TITLE": "종성이 존재하는지 여부를 검사한다.",
+			"FUNC_DESC": "/**\n * 종성이 존재하는지 여부를 검사한다.\n *\n * @param {String} str 종성의 여부를 검사할 문자열\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Boolean} true or false\n * @example\ncom.str.isFinalConsonant(\"종서\")\n// return 예시) false\n\ncom.str.isFinalConsonant(\"종성\")\n// return 예시) true\n\ncom.str.isFinalConsonant(\"입니다\")\n// return 예시) false\n\ncom.str.isFinalConsonant(\"입니당\")\n// return 예시) true\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.attachPostposition",
+			"FUNC_TITLE": "단어 뒤에 '은'이나 '는'을 붙여서 반환한다.",
+			"FUNC_DESC": "/**\n * 단어 뒤에 '은'이나 '는'을 붙여서 반환한다.\n *\n * @param {String} str 은, 는 붙일 문자열\n * @memberOf com.str\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {String} 변환된 문자열\n * @example\ncom.str.attachPostposition(\"나\");\n// return 예시)\"나는\"\n\ncom.str.attachPostposition(\"나와 너\");\n// return 예시)\"나와 너는\"\n\ncom.str.attachPostposition(\"그래서\");\n// return 예시)\"그래서는\"\n\ncom.str.attachPostposition(\"그랬습니다만\");\n// return 예시)\"그랬습니다만은\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.isBizID",
+			"FUNC_TITLE": "사업자번호 유효성을 검사한다.",
+			"FUNC_DESC": "/**\n * 사업자번호 유효성을 검사한다.\n *\n * @memberOf com.str\n * @date 2020.05.16\n * @param {String} str 사업자번호 문자열\n * @return {Boolean} 정상이면 true, 비정상이면 false를 반환\n * @example\ncom.str.isBizID(\"1102112345\"); // false\ncom.str.isBizID(\"1078616054\"); // true\ncom.str.isBizID(\"2208139938\"); // true\ncom.str.isBizID(\"1248100998\"); // true\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.isSSN",
+			"FUNC_TITLE": "내외국인 주민등록번호 유효성을 검사한다.",
+			"FUNC_DESC": "/**\n * 내외국인 주민등록번호 유효성을 검사한다.\n *\n * @memberOf com.str\n * @date 2020.05.16\n * @param {String} str 문자열\n * @returns {Boolean} 정상이면 true, 비정상이면 false를 반환\n * @example\ncom.str.isSSN(\"9701011234567\");\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.isEmail",
+			"FUNC_TITLE": "이메일 주소의 유효성을 검사한다.",
+			"FUNC_DESC": "/**\n * 이메일 주소의 유효성을 검사한다.\n *\n * @memberOf com.str\n * @date 2020.05.16\n * @param {String} str 메일주소\n * @return {Boolean} 정상이면 true, 비정상이면 false를 반환\n * @example\ncom.str.isEmail(\"emailTest@email.com\");  // true\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.isPhone",
+			"FUNC_TITLE": "전화번호의 유효성을 검사한다.",
+			"FUNC_DESC": "/**\n * 전화번호의 유효성을 검사한다.\n *\n * @memberOf com.str\n * @date 2020.05.16\n * @param {String} str :: I :: Y :: :: 전화번호\n * @return {Boolean} 정상이면 true 그외는 false 반환\n * @author Inswave Systems\n * @example\ncom.str.isPhone(\"01094832134\"); // true\ncom.str.isPhone(\"02094832134\"); // false\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.replaceAll",
+			"FUNC_TITLE": "문자열을 치환한다.",
+			"FUNC_DESC": "/**\n * 문자열을 치환한다.\n *\n * @memberOf com.str\n * @date 2020.05.16\n * @param {String} str 문자열\n * @param {String} orgStr 검색할 문자\n * @param {String} repStr 치환할 문자\n * @return   {String} 치환문자열\n * @author  Inswave Systems\n * @example com.str.replaceAll(obj.getValue(), \"/\", \"\");\n*/",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.trim",
+			"FUNC_TITLE": "입력된 문자열의 좌우측 공백을 제거한 문자열을 구한다.",
+			"FUNC_DESC": "/**\n * 입력된 문자열의 좌우측 공백을 제거한 문자열을 구한다.\n *\n * @memberOf com.str\n * @date 2020.05.16\n * @param {String} str 좌우측 공백문자를 제거하려는 문자열\n * @return {String} 입력된 문자열에서 좌우측 공백이 제거된 문자열\n * @author Inswave Systems\n * @example com.str.trim(\"   a   \");  // return \"a\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.str.getByteLength",
+			"FUNC_TITLE": "문자열의 바이트 기준 문자열 길이를 반환한다.",
+			"FUNC_DESC": "/**\n * 문자열의 바이트 기준 문자열 길이를 반환한다.\n *\n * @memberOf com.str\n * @date 2020.05.16\n * @param {String} str 문자열\n * @param {String} ignoreChar 길이 측정 시 무사할 문자열\n * @return {Number} 문자열 길이\n * @author Inswave Systems\n * @example\ncom.str.getByteLength(\"1231aABC\");  // 8\ncom.str.getByteLength(\"1231a한글\");  // 9\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.addMinute",
+			"FUNC_TITLE": "입력된 날짜에 지정된 만큼의 분을 더한다.",
+			"FUNC_DESC": "/**\n * 입력된 날짜에 지정된 만큼의 분을 더한다.\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String} pYmd 날짜 형식의 문자열 (yyyyMMdd or yyyyMMddHHmmss)\n * @param {Number} offset 더할 분 수.\n * @return {String} 지정된 offset만큼의 날짜가 더해진 입력 날짜.\n * @author Inswave Systems\n * @example\ncom.date.addMinute(\"201708191210\", 10); // \"201708191220\"\ncom.date.addMinute(\"201708191210\", -10); // \"201708191200\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.addHour",
+			"FUNC_TITLE": "입력된 날짜에 지정된 만큼의 시간을 더한다.",
+			"FUNC_DESC": "/**\n * 입력된 날짜에 지정된 만큼의 시간을 더한다.\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String} pYmd 날짜 형식의 문자열 (yyyyMMdd or yyyyMMddHHmmss)\n * @param {Number} offset 더할 시간 수.\n * @return {String} 지정된 offset만큼의 날짜가 더해진 입력 날짜.\n * @author Inswave Systems\n * @example\ncom.date.addHour(\"2017081912\", 10); // \"2017081922\"\ncom.date.addHour(\"2017081912\", -10); // \"2017081902\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.addDate",
+			"FUNC_TITLE": "입력된 날짜에 지정된 만큼의 날을 더한다.",
+			"FUNC_DESC": "/**\n * 입력된 날짜에 지정된 만큼의 날을 더한다.\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String} pYmd 날짜 형식의 문자열 (yyyyMMdd or yyyyMMddHHmmss)\n * @param {Number} offset 더할 날짜 수.\n * @return {String} 지정된 offset만큼의 날짜가 더해진 입력 날짜.\n * @author Inswave Systems\n * @example\ncom.date.addDate(\"20170819\", 2); // \"20170821\"\ncom.date.addDate(\"20170819\", -10); // \"20170809\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.addMonth",
+			"FUNC_TITLE": "입력된 날짜에 지정된 만큼의 달을 더한다.",
+			"FUNC_DESC": "/**\n * 입력된 날짜에 지정된 만큼의 달을 더한다.\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String} pYmd 날짜 형식의 문자열 (yyyyMMdd or yyyyMMddHHmmss)\n * @param {Number} offset 더할 개월 수.\n * @return {String} 지정된 offset만큼의 개월이 더해진 입력 날짜.\n * @author Inswave Systems\n * @example\ncom.date.addMonth(\"20170819\", 2); // \"20171019\"\ncom.date.addMonth(\"20170819\", -10); // \"20161019\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.getServerDateTime",
+			"FUNC_TITLE": "서버 날짜 반환한다. (default format: yyyyMMdd)",
+			"FUNC_DESC": "/**\n * 서버 날짜 반환한다. (default format: yyyyMMdd)\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String:N} sDateFormat 날짜 포맷<br/>\n * y Year 1996; 96<br/>\n * M Month in year 07<br/>\n * d Day in month 10<br/>\n * H Hour in day (0-23) 0<br/>\n * m Minute in hour 30<br/>\n * s Second in minute 55<br/>\n * S Millisecond 978<br/>\n * @return  String 현재날짜\n * @example\ncom.date.getServerDateTime(\"yyyy-MM-dd HH:mm:ss SSS\");\ncom.date.getServerDateTime(\"yyyy-MM-dd\");\ncom.date.getServerDateTime();\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.formatDate",
+			"FUNC_TITLE": "문자열에 날짜 Formatter를 적용하여 반환한다.",
+			"FUNC_DESC": "/**\n * 문자열에 날짜 Formatter를 적용하여 반환한다.\n *\n * @param {String} str 포멧터를 적용할 파라메터 (String 또는 Number 타입 지원)\n * @param {String} type 적용할 포멧터 형식 Default:null,slash,date\n * @memberOf com.date\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {String} 포멧터가 적용된 문자열\n * @example\ncom.date.formatDate(20120319, \"slash\");\n// return 예시) 12/03/19\n\ncom.date.formatDate(20120319, \"date\");\n// return 예시) 2012/03/19\n\ncom.date.formatDate(20120319, \"colon\");\n// return 예시) 2012:03:19\n\ncom.date.formatDate(20120319);\n// return 예시) 2012년 03월 19일\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.formatTime",
+			"FUNC_TITLE": "시간 - 입력된 String 또는 Number에 포메터를 적용하여 반환한다.",
+			"FUNC_DESC": "/**\n * 시간 - 입력된 String 또는 Number에 포메터를 적용하여 반환한다.\n *\n * @param {String} value 시간 Formatter를 적용한 값 (String 또는 Number 타입 지원)\n * @memberOf com.date\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {String} 포멧터가 적용된 문자열\n * @example\ncom.date.formatTime(\"123402\");\n// return 예시) \"12:34:02\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.formatDateTime",
+			"FUNC_TITLE": "날짜 객체에 포매팅을 적용한다. (default format: yyyyMMdd)",
+			"FUNC_DESC": "/**\n * 날짜 객체에 포매팅을 적용한다. (default format: yyyyMMdd)\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {Date} 포맷팅을 적용할 날짜 객체\n * @param {String:N} sDateFormat 날짜 포맷<br/>\n * y Year 1996; 96<br/>\n * M Month in year 07<br/>\n * d Day in month 10<br/>\n * H Hour in day (0-23) 0<br/>\n * m Minute in hour 30<br/>\n * s Second in minute 55<br/>\n * S Millisecond 978<br/>\n * @return {String} 현재날짜\n * @example\ncom.date.formatDateTime(new Date());  // \"20190822\"\ncom.date.formatDateTime(new Date(), \"yyyy-MM-dd HH:mm:ss SSS\");  // \"2019-08-22 15:55:35 705\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.isDate",
+			"FUNC_TITLE": "입력된 값이 Date 형식의 값인지 확인한다.",
+			"FUNC_DESC": "/**\n * 입력된 값이 Date 형식의 값인지 확인한다.\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String|number} sDate 날짜 문자열 (yyyyMMdd or yyyyMMddHHmmss)\n * @param {Boolean} timeChk 시간체크. (true/false)\n * @return {Boolean} Date 형식에 일치하면 true, 아니면 false\n * @author Inswave Systems\n * @example\ncom.date.isDate(\"20170819\"); // return true\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.diffDate",
+			"FUNC_TITLE": "fromDate, toDate 를 입력받아 두 날짜의 차이를 반환한다.",
+			"FUNC_DESC": "/**\n * fromDate, toDate 를 입력받아 두 날짜의 차이를 반환한다.\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String} fromDate 시작일자 (date형식은 yyyyMMdd or yyyyMMddHHmmss)\n * @param {String} toDate 종료일자 (date형식은 yyyyMMdd or yyyyMMddHHmmss)\n * @return {Number} 종료일자에서 시작일자의 날짜 차이 수.\n * @author Inswave Systems\n * @example\ncom.date.diffDate(\"20170821\", \"20180621\"); // 304\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.isLeafYear",
+			"FUNC_TITLE": "입력된 양력의 날짜가 윤년인지 검사한다.",
+			"FUNC_DESC": "/**\n * 입력된 양력의 날짜가 윤년인지 검사한다.\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String} pYmd :: I :: Y ::  :: 윤달 확인 날짜.\n * @return {boolean} 윤달 유무( true : 윤달)\n * @author Inswave Systems\n * @example\ncom.date.isLeafYear(\"20201212\");  // return true\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.getDay",
+			"FUNC_TITLE": "특정 날짜의 요일을 반환한다.",
+			"FUNC_DESC": "/**\n * 특정 날짜의 요일을 반환한다.\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String} value \"yyyyMMdd\" 포맷 형태의 날짜를 나타내는 문자열 (\"20190801\")\n * @param {String} type 반환형식 기본값은 날짜를 한글로 반환 , num 인경우 숫자로 반환 일요일 :  1 ~ 토요일 : 7\n * @return {String} 요일\n * @example\ncom.date.getDay(\"20190822\");  // \"목요일\"\ncom.date.getDay(\"20190824\");  // \"토요일\"\n\ncom.date.getDay(\"20191010\", \"num\");  // \"5\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.getLunar",
+			"FUNC_TITLE": "특정 날짜의 음력 날짜를 반환한다.",
+			"FUNC_DESC": "/**\n * 특정 날짜의 음력 날짜를 반환한다.\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String} \"yyyyMMdd\" 포맷 형태의 날짜를 나타내는 문자열\n * @return {String} 음력 날짜\n * @example\ncom.date.getLunar(\"20190824\");  // \"20190724\"\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.date.getLastDateOfMonth",
+			"FUNC_TITLE": "해당 월의 마지막 날짜를 반환한다.",
+			"FUNC_DESC": "/**\n * 해당 월의 마지막 날짜를 반환한다.\n *\n * @memberOf com.date\n * @date 2020.05.16\n * @param {String} yearMonth 년월 문자열 (yyyyMM)\n * @return 마지막 날짜\n * @author Inswave Systems\n * @example\ncom.date.getLastDateOfMonth(\"201510\");  // 31\n */",
+			"FUNC_REMARK": "",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "console.log",
+			"FUNC_TITLE": "일반 메시지를 웹 브라우저 콘솔에 출력한다.",
+			"FUNC_DESC": "/**\n * 일반 메시지를 웹 브라우저 콘솔에 출력한다.\n *\n * 추가 매개변수와 함께 문자열 치환을 사용할 수 있다.\n *\n * @param {Object} 출력할 메시지 문자열 또는 객체\n * @memberOf console\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\nvar user = { name : \"홍길동\", age : 29 };\nconsole.log(user);\n\nvar userList = [\n { name : \"홍길동\", age : 29 },\n { name : \"김용수\", age : 40 },\n { name : \"박찬용\", age : 40 }\n];\nconsole.log(userList);\n\nconsole.log(\"사용자 등록이 완료되었습니다.\");\nconsole.log(\"%s님의 %d번째 등록이 완료되었습니다\", \"홍길동\", 5);\n */",
+			"FUNC_REMARK": "브라우저 개발자모드(F12) 에서 확인",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "console.info",
+			"FUNC_TITLE": "정보 메시지를 웹 브라우저 콘솔에 출력한다.",
+			"FUNC_DESC": "/**\n * 정보 메시지를 웹 브라우저 콘솔에 출력한다.\n *\n * 추가 매개변수와 함께 문자열 치환을 사용할 수 있다.\n *\n * @param {Object} 출력할 메시지 문자열 또는 객체\n * @memberOf console\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\nvar user = { name : \"홍길동\", tel : \"010-2344-2323\" };\nconsole.info(user);\n\nvar userList = [\n { name : \"홍길동\", tel : \"010-2344-2323\" },\n { name : \"김용수\", tel : \"010-2112-7562\" },\n { name : \"박찬용\", tel : \"010-4241-2322\" }\n];\nconsole.info(userList);\n\nconsole.info(\"사용자 등록이 완료되었습니다.\");\nconsole.info(\"%s님의 %d번째 등록이 완료되었습니다\", \"홍길동\", 5);\n */",
+			"FUNC_REMARK": "브라우저 개발자모드(F12) 에서 확인",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "console.error",
+			"FUNC_TITLE": "오류 메시지를 웹 브라우저 콘솔에 출력한다.",
+			"FUNC_DESC": "/**\n * 오류 메시지를 웹 브라우저 콘솔에 출력한다.\n *\n * 추가 매개변수와 함께 문자열 치환을 사용할 수 있다.\n *\n * @param {Object} 출력할 메시지 문자열 또는 객체\n * @memberOf console\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\nvar user = { name : \"홍길동\", tel : \"010-2344-2323\" };\nconsole.error(user);\n\nvar userList = [\n { name : \"홍길동\", tel : \"010-2344-2323\" },\n { name : \"김용수\", tel : \"010-2112-7562\" },\n { name : \"박찬용\", tel : \"010-4241-2322\" }\n];\nconsole.error(userList);\n\nconsole.error(\"사용자 등록에 실패 했습니다.\");\nconsole.error(\"%s님의 %d번째 등록에 실패 했습니다.\", \"홍길동\", 5);\n\ntry {\n var idx = idx2;\n} catch(ex) {\n console.error(ex);\n}\n */",
+			"FUNC_REMARK": "브라우저 개발자모드(F12) 에서 확인",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "console.warn",
+			"FUNC_TITLE": "경고 메시지를 웹 브라우저 콘솔에 출력한다.",
+			"FUNC_DESC": "/**\n * 경고 메시지를 웹 브라우저 콘솔에 출력한다.\n *\n * 추가 매개변수와 함께 문자열 치환을 사용할 수 있다.\n *\n * @param {Object} 출력할 메시지 문자열 또는 객체\n * @memberOf console\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\nvar user = { name : \"홍길동\", tel : \"010-2344-2323\" };\nconsole.warn(user);\n\nvar userList = [\n { name : \"홍길동\", tel : \"010-2344-2323\" },\n { name : \"김용수\", tel : \"010-2112-7562\" },\n { name : \"박찬용\", tel : \"010-4241-2322\" }\n];\nconsole.warn(userList);\n\nconsole.warn(\"사용자 등록이 완료되었습니다.\");\nconsole.warn(\"%s님의 %d번째 등록이 완료되었습니다\", \"홍길동\", 5);\n */",
+			"FUNC_REMARK": "브라우저 개발자모드(F12) 에서 확인",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "console.dir",
+			"FUNC_TITLE": "인자로 전달된 객체를 덤프해서 보기 쉽게 표시한다.",
+			"FUNC_DESC": "/**\n * 인자로 전달된 객체를 덤프해서 보기 쉽게 표시한다.\n *\n * JSON이나 Array를 Console창에 출력 시에 적합함\n *\n * @param {Object} Console에 출력할 객체\n * @memberOf console\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Object} 콘솔 로그 출력\n * @example\nvar userList = [\n { name : \"홍길동\", tel : \"010-2344-2323\" },\n { name : \"김용수\", tel : \"010-2112-7562\" },\n { name : \"박찬용\", tel : \"010-4241-2322\" }\n];\nconsole.dir(userList);\n */",
+			"FUNC_REMARK": "브라우저 개발자모드(F12) 에서 확인",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "console.table",
+			"FUNC_TITLE": "인자로 전달된 객체를 테이블 형식으로 표시한다.",
+			"FUNC_DESC": "/**\n * 인자로 전달된 객체를 테이블 형식으로 표시한다.\n *\n * IE에서는 console.log 함수와 동일하게 동작함. (IE에서는 console.table() 미지원)\n *\n * JSON이나 Array를 Console창에 출력 시에 적합함.\n *\n * @param {Object} Console에 출력할 객체\n * @memberOf console\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Object} 콘솔 로그 출력\n * @example\nvar userList = [\n { name : \"홍길동\", tel : \"010-2344-2323\" },\n { name : \"김용수\", tel : \"010-2112-7562\" },\n { name : \"박찬용\", tel : \"010-4241-2322\" }\n];\nconsole.table(userList);\n */",
+			"FUNC_REMARK": "브라우저 개발자모드(F12) 에서 확인",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "console.count",
+			"FUNC_TITLE": "특정 행이 몇 번 실행되었는지 확인하기 위해서 사용한다.",
+			"FUNC_DESC": "/**\n * 특정 행이 몇 번 실행되었는지 확인하기 위해서 사용한다.\n *\n * @param {String} 카운터 레이블 (행의 카운터 체크를 위한 레이블)\n * @memberOf console\n * @date 2020.05.16\n * @author Inswave Systems\n * @example\nfor (var idx = 0; idx < 100; idx++) {\n console.count(\"Level1\");\n if (idx % 5 === 0) {\n  console.count(\"Level2\");\n }\n}\n */",
+			"FUNC_REMARK": "브라우저 개발자모드(F12) 에서 확인",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "console.time",
+			"FUNC_TITLE": "콘솔 창에 시간 측정을 시작한다. (밀리초 단위로 표시됨)",
+			"FUNC_DESC": "/**\n * 콘솔 창에 시간 측정을 시작한다. (밀리초 단위로 표시됨)\n *\n * @param {String} 시간 측정 아이디 (console.timeEnd 실행 시 console.time 아이디와 동일해야 함)\n * @memberOf console\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Date} 시간 출력\n * @example\nconsole.time(\"Check-1\");\nfor (var i = 0; i < 1000000; i++) { }\nconsole.timeEnd(\"Check-1\");\n */",
+			"FUNC_REMARK": "브라우저 개발자모드(F12) 에서 확인",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "console.timeEnd",
+			"FUNC_TITLE": "콘솔 창에 시간 측정을 종료한다. (밀리초 단위로 표시됨)",
+			"FUNC_DESC": "/**\n * 콘솔 창에 시간 측정을 종료한다. (밀리초 단위로 표시됨)\n *\n * @param {String} 시간 측정 아이디 (console.timeEnd 실행 시 console.time 아이디와 동일해야 함)\n * @memberOf console\n * @date 2020.05.16\n * @author Inswave Systems\n * @return {Time} 시간 출력\n * @example\nconsole.time(\"Check-1\");\nfor (var i = 0; i < 1000000; i++) { }\nconsole.timeEnd(\"Check-1\");\n */",
+			"FUNC_REMARK": "브라우저 개발자모드(F12) 에서 확인",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonPopup.js",
+			"FUNC": "com.pop.gridSortPop",
+			"FUNC_TITLE": "GridView 정렬 팝업창을 연다.",
+			"FUNC_DESC": "/**\n * GridView 정렬 팝업창을 연다.\n *\n * @memberOf com.pop\n * @date 2022.07.19\n * @param {String|Object} gridViewId 대상 그리드Obj or 그리드명\n * @author Inswave Systems\n * @example\ncom.pop.gridSortPop(grd_commonCode);\n */",
+			"FUNC_REMARK": "요건 및 데이터 확인 필요",
+			"FUNC_ASIS": ""
+		},
+		{
+			"FILE": "commonScope.js",
+			"FUNC": "com.win.openMenuCode",
+			"FUNC_TITLE": "메뉴코드에 해당하는 메뉴를 오픈한다.",
+			"FUNC_DESC": "/**\n * 메뉴코드에 해당하는 메뉴를 오픈한다.\n * \n * @date 2022.07.29\n * @param {String} menuCode 메뉴코드 - DB에 저장되어있는 메뉴 코드\n * @param {Object} paramObj 화면에 전달할 JSON 데이터 객체\n * @example\n//메뉴코드(010001) 화면 open \ncom.win.openMenuCode(\"010001\");\n\n//메뉴코드(010001) 화면 open & 파라미터 전송 \ncom.win.openMenuCode(\"010001\", {aaa:\"1234\"});\n */",
+			"FUNC_REMARK": "요건 및 데이터 확인 필요",
+			"FUNC_ASIS": ""
+		}
+	]
+}

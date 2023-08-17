@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+				<w2:dataMap baseNode="map" id="dma_fileDesc">
+					<w2:keyInfo>
+						<w2:key id="title" name="화면타이틀" dataType="text"></w2:key>
+						<w2:key id="desc" name="화면설명" dataType="text"></w2:key>
+					</w2:keyInfo>
+					<w2:data use="true">
+						<title><![CDATA[
+Common - Generator 1depth 형태
+						]]></title>
+						<desc><![CDATA[
+<pre style="font-size:14px;">
+본 화면은 generator컴포넌트를 통해서, 반복 테이블 형태의 항목 및 gridView의 컬럼의 유효성을 확인하는 방법을 제공한다.
+- generator는 특정 영역의 반복 혹은 동일한 영역의 동적 추가/삭제를 지원하는 컴포넌트 입니다. 
+- generator 컴포넌트의 안쪽(하위)에 정의된 영역이 반복되며 script를 통해 제어 가능합니다.
+
+- 자식 컴포넌트 접근방법 
+	1) Generator 하위에 정의한 자식 컴포넌트의 ID는 재설정되며 초기에 설정한 ID로 접근이 불가능.
+	2) Generator가 제공하는 API를 통해 자식 컴포넌트에 접근해야 함.
+	3) 반복부에 속한 컴포넌트는 동일한 반복부에 속한 다른 컴포넌트를 반환하는 API를 제공.
+	
+- 예시) 
+	//동일 반복부의 index 
+	var tmpIdx = this.getGeneratedIndex();
+	
+	//동일 반복부의 input1객체 반환
+	var tmpObj = this.getGeneratedComponent("input1");
+</pre>
+						]]></desc>
+					</w2:data>
+				</w2:dataMap>
+			</w2:dataCollection>
+			<w2:workflowCollection>
+			</w2:workflowCollection>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+				
+	};
+
+			
+	/*******************************************************/
+	/******************** user 정의 함수 *************************/		
+	/*******************************************************/			
+			
+	//generator 생성 
+	scwin.startGenerator = function(){
+		//generator 행추가 
+		var gen_idx = gen_first.insertChild();
+
+		//txt_gubun1 값 설정
+		var txt_gubun1Obj = gen_first.getChild( gen_idx , "txt_gubun1" );	 
+		txt_gubun1Obj.setValue("항목_" + gen_idx);			
+		  
+		//ipt_temp 값 설정   
+		var ipt_tempObj = gen_first.getChild( gen_idx , "ipt_temp" );
+		ipt_tempObj.setValue("ipt_temp_" + gen_idx);
+
+		//btn_action 값 설정   
+		var btn_actionObj = gen_first.getChild( gen_idx , "btn_action" );
+		btn_actionObj.setValue("확인_" + gen_idx);
+
+		//------------------------------------------------------------
+
+		//txt_gubun2 값 설정
+		var txt_gubun2Obj = gen_first.getChild( gen_idx , "txt_gubun2" ); 
+		txt_gubun2Obj.setValue("구분_" + gen_idx);
+		
+		//txt_temp 값 설정   
+		var txtbox2Obj = gen_first.getChild( gen_idx , "txt_temp" );	 
+		txtbox2Obj.setValue("txt_temp_" + gen_idx);
+		
+		//------------------------------------------------------------
+		
+		//txt_gubun3 값 설정
+		var txt_gubun3Obj = gen_first.getChild( gen_idx , "txt_gubun3" ); 
+		txt_gubun3Obj.setValue("파일_" + gen_idx);
+		
+		//btn_confirm 값 설정
+		var btn_confirmObj = gen_first.getChild( gen_idx , "btn_confirm" );	 
+		btn_confirmObj.setValue("업로드_" + gen_idx);
+		
+	};
+
+	
+	//확인 버튼 정보 
+	scwin.getActionInfo = function( genObj ){
+		var get_idx				= genObj.getGeneratedIndex();
+		var txt_gubun1Obj	= genObj.getGeneratedComponent("txt_gubun1");
+		var ipt_tempObj		= genObj.getGeneratedComponent("ipt_temp");
+	
+		var resultStr = ""
+			+ "===== 좌측 확인 버튼 클릭 결과 =========\n"		
+			+ "\n - 선택 row : " + get_idx
+			+ "\n - 항목 명 : " + txt_gubun1Obj.getValue()  
+			+ "\n - inputbox 값 : " + ipt_tempObj.getValue()
+		;
+		txa_result.setValue( resultStr );
+	};
+
+
+	//text박스 정보 
+	scwin.getTextInfo = function( genObj ){
+		var get_idx				= genObj.getGeneratedIndex();
+		var txt_gubun2Obj	= genObj.getGeneratedComponent("txt_gubun2");
+		var txt_tempObj		= genObj.getGeneratedComponent("txt_temp");
+		
+		var resultStr = ""
+			+ "===== 중앙 text박스 클릭 결과 =========\n"
+			+ "\n - 선택 row : " + get_idx
+			+ "\n - 구분 명 : " + txt_gubun2Obj.getValue()
+			+ "\n - textbox 값 : " + txt_tempObj.getValue()
+		;
+		txa_result.setValue( resultStr );		
+	};
+	
+	
+	//업로드 결과 정보  
+	scwin.getUploadInfo = function( genObj, retXml ){
+		var get_idx			= genObj.getGeneratedIndex();										//generator 생성 index 
+		var confirmObj		= genObj.getGeneratedComponent("btn_confirm");				//generator로 생성된 업로드 버튼 object 
+		var uploadObj		= genObj.getGeneratedComponent("upd_singleFileUpload");	//generator로 생성된 upload object
+		
+		//업로드 결과 (넘어오는 결과 데이터는 xml형태임)  
+		//var resultData = com.util.getJSON(retXml);
+		var resultData = JSON.parse(WebSquare.json.XML2JSONString(retXml));
+		//console.dir(resultData);			
+
+		var resultStr = ""
+			+ "===== 업로드 클릭 결과 =========\n"
+			+ "\n - 선택 row : " + get_idx
+			+ "\n - 업로드 버튼명 : " + confirmObj.getValue()
+			//+ "\n - 업로드 결과 : " + com.str.serialize( resultData )
+			+ "\n - 업로드 결과 : " + JSON.stringify( resultData )
+		;
+		txa_result.setValue( resultStr );			
+	};	
+
+
+
+	/*******************************************************/
+	/**************** component 이벤트 함수 ***********************/		
+	/*******************************************************/
+		
+	//생성 버튼 클릭 시 
+	scwin.btn_startGen_onclick = function(e) {
+		scwin.startGenerator();
+	};
+	
+	//확인 버튼 클릭 시 
+	scwin.btn_action_onclick = function(e) {
+		scwin.getActionInfo( this );
+	};
+	
+	//text박스 클릭 시 
+	scwin.txt_temp_onclick = function(e) {
+		scwin.getTextInfo( this );
+	};
+	
+	//업로드 처리 결과 callback 함수 
+	scwin.upd_singleFileUpload_ondone = function(retXml) {
+		scwin.getUploadInfo( this, retXml );
+	};
+	
+	//업로드 버튼 클릭 시 
+	scwin.btn_confirm_onclick = function(e) {
+		var get_idx			= this.getGeneratedIndex();										//generator 생성 index 
+		var uploadObj		= this.getGeneratedComponent("upd_singleFileUpload");	//generator로 생성된 upload object
+	
+		//업로드 설정 =>  server.config.xml 파일 에서 설정 
+		//업로드 경로 => 해당파일의  websquare / upload / baseDir@value
+		if ( uploadObj.getValue() == "" ){	
+			alert("업로드 할 파일을 선택 하십시오.");
+			return;
+		}
+
+		//파일 업로드 START     
+		uploadObj.submit(); 
+	};	
+	
+	]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group id="" class="sub_contents ">
+			<!-- <w2:wframe id="wfm_contentHeader" src="/ui/SP/contentHeader.xml"></w2:wframe> -->
+			<!-- <w2:wframe id="wfm_contentDesc" src="/ui/SP/contentDesc.xml"></w2:wframe> -->
+			<xf:group class="" id="" style="height:37px;">
+				<xf:trigger class="btn_cm" ev:onclick="scwin.btn_startGen_onclick" id="btn_startGen"
+					style="width: 120px;height: 27px;float:right;" type="button">
+					<xf:label><![CDATA[반복부 생성]]></xf:label>
+				</xf:trigger>
+			</xf:group>
+			<xf:group class="sub_title_area" id="" style="">
+				<w2:textbox class="sub_title_h2" dataType="" id="" label="Generator - 1depth 생성" style="" tagname="h2"></w2:textbox>
+				<xf:group class="btn_moduleGrp" id="" style=""></xf:group>
+			</xf:group>
+			<xf:group id="" class="bts_table_ty1 ">
+				<xf:group tagname="table" style="width: 100%;" id="table1" class="w2tb">
+					<w2:attributes>
+						<w2:summary></w2:summary>
+					</w2:attributes>
+					<xf:group tagname="colgroup">
+						<xf:group tagname="col" style="width:80px"></xf:group>
+						<xf:group tagname="col" style=""></xf:group>
+						<xf:group tagname="col" style="width:80px"></xf:group>
+						<xf:group tagname="col" style=""></xf:group>
+						<xf:group tagname="col" style="width:80px"></xf:group>
+						<xf:group tagname="col" style=""></xf:group>
+					</xf:group>
+
+					<!-- generator START -->
+					<w2:generator tagname="tbody" style="position: relative;width: 100%;" id="gen_first">
+						<xf:group tagname="tr">
+							<xf:group tagname="th" style="" id="" class="w2tb_th">
+								<w2:textbox style="" id="txt_gubun1" label=""></w2:textbox>
+							</xf:group>
+							<xf:group tagname="td" style="" class="w2tb_td">
+								<xf:group style="" id="" class="">
+									<xf:input style="" id="ipt_temp" class="ipt_sty"></xf:input>
+									<w2:anchor ev:onclick="scwin.btn_action_onclick" style="margin-left: 5px;" id="btn_action" type="button" class="btn_cm"
+										outerDiv="">
+										<xf:label><![CDATA[확인]]></xf:label>
+									</w2:anchor>
+								</xf:group>
+								
+							</xf:group>
+							<xf:group tagname="th" style="" id="" class="w2tb_th">
+								<w2:textbox style="" id="txt_gubun2" label=""></w2:textbox>
+							</xf:group>
+							<xf:group tagname="td" style="" class="w2tb_td">
+								<xf:group id="">
+									<w2:textbox ev:onclick="scwin.txt_temp_onclick" style="height: 25px;text-decoration-line: underline;cursor: pointer;" id="txt_temp" label=""></w2:textbox>
+								</xf:group>
+							</xf:group>
+							<xf:group tagname="th" style="" id="" class="w2tb_th">
+								<w2:textbox style="" id="txt_gubun3" label=""></w2:textbox>
+							</xf:group>
+							<xf:group tagname="td" style="" class="w2tb_td">
+								<xf:group class="" id="" style="">
+									<w2:upload class="file_singleUp" ev:ondone="scwin.upd_singleFileUpload_ondone" id="upd_singleFileUpload" imageStyle=""
+										inputStyle="" style="height: 25px;" tabIndex="" title="파일업로드" type="image">
+									</w2:upload>
+									<w2:anchor class="btn_cm" ev:onclick="scwin.btn_confirm_onclick" id="btn_confirm" outerDiv="" style="margin-left: 5px;"
+										title="업로드">
+										<xf:label><![CDATA[업로드]]></xf:label>
+									</w2:anchor>
+								</xf:group>
+							</xf:group>
+						</xf:group>
+					</w2:generator>
+					<!-- generator END -->
+
+				</xf:group>
+			</xf:group>
+			<xf:group class="sub_title_area" id="" style="">
+				<w2:textbox class="sub_title_h2" dataType="" id="" label="결과정보" style="margin-top: 10px;" tagname="h2"></w2:textbox>
+				<xf:group class="btn_moduleGrp" id="" style=""></xf:group>
+			</xf:group>
+			<xf:group id="" class="">
+				<xf:group tagname="table" style="width: 100%" id="group1" class="w2tb ">
+					<w2:attributes>
+						<w2:summary></w2:summary>
+					</w2:attributes>
+					<xf:group tagname="colgroup">
+						<xf:group tagname="col" style="width:120px;"></xf:group>
+						<xf:group tagname="col" style=""></xf:group>
+					</xf:group>
+					<xf:group tagname="tr" style="">
+						<xf:group tagname="th" style="" class="w2tb_th">
+							Result
+							<w2:attributes>
+								<w2:scope>row</w2:scope>
+							</w2:attributes>
+						</xf:group>
+						<xf:group tagname="td" style="" class="w2tb_td">
+							<xf:group id="" style="width: 100%;">
+								<xf:textarea ref="" readOnly="true" style="height:150px;" id="txa_result"></xf:textarea>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

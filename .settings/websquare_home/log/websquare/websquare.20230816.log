@@ -1,0 +1,183 @@
+08/16 10:08:13.177 [main/INFO] [WebSquareConfig.getStringValue] key[//wqDefiner/@value] value[] defaultValue[]
+08/16 10:08:13.180 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/@support] value[false] defaultValue[true]
+08/16 10:08:13.202 [main/INFO] [WebSquareConfig.getStringValue] key[//compression/@value] value[] defaultValue[true]
+08/16 10:08:13.203 [main/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@value] value[] defaultValue[default]
+08/16 10:08:13.345 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@baseFolder] value[] defaultValue[]
+08/16 10:08:13.480 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@coverage] value[notsupport] defaultValue[notsupport]
+08/16 10:08:13.480 [main/SEVERE] LoadingModule [websquare.WebSquareEngine][3708175][1]
+08/16 10:08:54.420 [http-nio-7070-exec-9/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@etag] value[] defaultValue[support]
+08/16 10:08:54.610 [http-nio-7070-exec-10/INFO] [WebSquareConfig.getStringValue] key[//date/encoding/@value] value[] defaultValue[UTF-8]
+08/16 10:12:43.783 [main/INFO] [WebSquareConfig.getStringValue] key[//wqDefiner/@value] value[] defaultValue[]
+08/16 10:12:43.786 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/@support] value[false] defaultValue[true]
+08/16 10:12:43.811 [main/INFO] [WebSquareConfig.getStringValue] key[//compression/@value] value[] defaultValue[true]
+08/16 10:12:43.812 [main/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@value] value[] defaultValue[default]
+08/16 10:12:43.958 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@baseFolder] value[] defaultValue[]
+08/16 10:12:44.094 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@coverage] value[notsupport] defaultValue[notsupport]
+08/16 10:12:44.094 [main/SEVERE] LoadingModule [websquare.WebSquareEngine][3708175][1]
+08/16 10:12:48.180 [http-nio-7070-exec-7/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@etag] value[] defaultValue[support]
+08/16 10:12:48.425 [http-nio-7070-exec-6/INFO] [WebSquareConfig.getStringValue] key[//date/encoding/@value] value[] defaultValue[UTF-8]
+08/16 10:58:28.915 [main/INFO] [WebSquareConfig.getStringValue] key[//wqDefiner/@value] value[] defaultValue[]
+08/16 10:58:28.917 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/@support] value[false] defaultValue[true]
+08/16 10:58:28.940 [main/INFO] [WebSquareConfig.getStringValue] key[//compression/@value] value[] defaultValue[true]
+08/16 10:58:28.941 [main/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@value] value[] defaultValue[default]
+08/16 10:58:29.083 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@baseFolder] value[] defaultValue[]
+08/16 10:58:29.207 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@coverage] value[notsupport] defaultValue[notsupport]
+08/16 10:58:29.207 [main/SEVERE] LoadingModule [websquare.WebSquareEngine][3708175][1]
+08/16 10:58:35.364 [http-nio-7070-exec-4/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@etag] value[] defaultValue[support]
+08/16 10:58:35.557 [http-nio-7070-exec-8/INFO] [WebSquareConfig.getStringValue] key[//date/encoding/@value] value[] defaultValue[UTF-8]
+08/16 12:58:18.457 [http-nio-7070-exec-3/SEVERE] [DefaultRequestDispatcherImpl.doDispatch] multipartResolver is null...
+08/16 12:58:21.299 [http-nio-7070-exec-5/SEVERE] [DefaultRequestDispatcherImpl.doDispatch] multipartResolver is null...
+08/16 12:59:37.497 [http-nio-7070-exec-7/SEVERE] [DefaultRequestDispatcherImpl.doDispatch] multipartResolver is null...
+08/16 13:06:50.388 [http-nio-7070-exec-10/SEVERE] [DefaultRequestDispatcherImpl.doDispatch] multipartResolver is null...
+08/16 13:11:03.501 [main/INFO] [WebSquareConfig.getStringValue] key[//wqDefiner/@value] value[] defaultValue[]
+08/16 13:11:03.504 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/@support] value[true] defaultValue[true]
+08/16 13:11:03.504 [main/INFO] [WebSquareConfig.getStringValue] key[/websquare/upload/maxUploadSize/@value] value[5000000] defaultValue[1048576]
+08/16 13:11:03.510 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/encoding/@value] value[UTF-8] defaultValue[KSC5601]
+08/16 13:11:03.513 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/baseDir/@value] value[C:/upload] defaultValue[null]
+08/16 13:11:03.514 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/folderName/@value] value[] defaultValue[]
+08/16 13:11:03.538 [main/INFO] [WebSquareConfig.getStringValue] key[//compression/@value] value[] defaultValue[true]
+08/16 13:11:03.539 [main/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@value] value[] defaultValue[default]
+08/16 13:11:03.703 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@baseFolder] value[] defaultValue[]
+08/16 13:11:03.825 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@coverage] value[notsupport] defaultValue[notsupport]
+08/16 13:11:03.825 [main/SEVERE] LoadingModule [websquare.WebSquareEngine][3708175][1]
+08/16 13:11:07.213 [http-nio-7070-exec-8/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@etag] value[] defaultValue[support]
+08/16 13:11:07.462 [http-nio-7070-exec-9/INFO] [WebSquareConfig.getStringValue] key[//date/encoding/@value] value[] defaultValue[UTF-8]
+08/16 13:11:24.327 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//upload/duplicatedFilePostFix/@override] value[] defaultValue[false]
+08/16 13:11:24.328 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//upload/duplicatedFilePostFix/@overrideDelimeter] value[] defaultValue[]
+08/16 13:11:24.328 [http-nio-7070-exec-3/SEVERE] [MultiPartResolver.resolveMultipart] [화면 캡처 2023-07-31 130522.png]This file has been rejected by the server. Please check the settings websquare.xml[/websquare/upload/allowedExtension or /websquare/upload/imgUpload/allowedExtension]
+08/16 13:11:24.331 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//upload/fileUpload/@use] value[] defaultValue[true]
+08/16 13:11:24.332 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//upload/uploadMode/@value] value[session] defaultValue[session]
+08/16 13:11:24.332 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//upload/firstFilePostFix/@value] value[] defaultValue[false]
+08/16 13:11:24.338 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//upload/fileDefiner/@value] value[] defaultValue[websquare.upload.handl.impl.DefaultUploadFileDefinerImpl]
+08/16 13:11:24.339 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//upload/imgUpload/imageDefiner/@value] value[] defaultValue[websquare.upload.handl.impl.DefaultUploadImageDefinerImpl]
+08/16 13:11:24.339 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//excel/upload/decrypt/@value] value[] defaultValue[]
+08/16 13:11:24.340 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//csv/upload/decrypt/@value] value[] defaultValue[]
+08/16 13:11:24.340 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//upload/decrypt/@value] value[] defaultValue[]
+08/16 13:11:24.340 [http-nio-7070-exec-3/SEVERE] [UploadFileManager.initialize] ###################initialize UploadFileManager#####################
+08/16 13:11:24.340 [http-nio-7070-exec-3/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadfileDefiner        : websquare.upload.handl.impl.DefaultUploadFileDefinerImpl
+08/16 13:11:24.340 [http-nio-7070-exec-3/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadImageDefiner       : websquare.upload.handl.impl.DefaultUploadImageDefinerImpl
+08/16 13:11:24.340 [http-nio-7070-exec-3/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadExcelDecryptDefinerName : 
+08/16 13:11:24.340 [http-nio-7070-exec-3/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadCSVDecryptDefinerName : 
+08/16 13:11:24.340 [http-nio-7070-exec-3/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadFILEDecryptDefinerName : 
+08/16 13:11:24.343 [http-nio-7070-exec-3/SEVERE] [UploadFileManager.initialize] ##################################################################
+08/16 13:11:24.344 [http-nio-7070-exec-3/INFO] [WebSquareConfig.getStringValue] key[//upload/callback/removeKeyPath/@value] value[] defaultValue[]
+08/16 13:11:24.344 [http-nio-7070-exec-3/INFO] [DefaultFileUploadController.writeCallback] <ret><key>C:/upload/folderName_16921590843360.5121934164029341_0</key><storedFileList></storedFileList><localfileList></localfileList><fileSizeList></fileSizeList><maxUploadSize>5000000</maxUploadSize><subSize></subSize><deniedList>화면 캡처 2023-07-31 130522.png</deniedList><deniedCodeList>101</deniedCodeList></ret>
+08/16 13:12:33.704 [http-nio-7070-exec-3/SEVERE] [MultiPartResolver.resolveMultipart] [화면 캡처 2023-07-31 130522.png]This file has been rejected by the server. Please check the settings websquare.xml[/websquare/upload/allowedExtension or /websquare/upload/imgUpload/allowedExtension]
+08/16 13:12:33.704 [http-nio-7070-exec-3/INFO] [DefaultFileUploadController.writeCallback] <ret><key>C:/upload/folderName_16921590843360.5121934164029341_0</key><storedFileList></storedFileList><localfileList></localfileList><fileSizeList></fileSizeList><maxUploadSize>5000000</maxUploadSize><subSize></subSize><deniedList>화면 캡처 2023-07-31 130522.png</deniedList><deniedCodeList>101</deniedCodeList></ret>
+08/16 13:14:57.809 [http-nio-7070-exec-8/INFO] [DefaultFileUploadController.uploadAfter] :인트라넷개발정보_20230808.txt
+08/16 13:14:57.810 [http-nio-7070-exec-8/INFO] [WebSquareConfig.getStringValue] key[//upload/decrypt/@tempDir] value[] defaultValue[]
+08/16 13:14:57.810 [http-nio-7070-exec-8/INFO] [WebSquareConfig.getStringValue] key[//upload/imgUpload/verifyHeader/@value] value[] defaultValue[true]
+08/16 13:14:57.811 [http-nio-7070-exec-8/INFO] [DefaultFileUploadController.writeCallback] <ret><key>C:/upload/folderName_16921590843360.5121934164029341_0</key><storedFileList>인트라넷개발정보_20230808.txt</storedFileList><localfileList>인트라넷개발정보_20230808.txt</localfileList><fileSizeList>1829</fileSizeList><maxUploadSize>5000000</maxUploadSize><subSize></subSize><deniedList></deniedList><deniedCodeList></deniedCodeList></ret>
+08/16 13:21:51.193 [main/INFO] [WebSquareConfig.getStringValue] key[//wqDefiner/@value] value[] defaultValue[]
+08/16 13:21:51.196 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/@support] value[true] defaultValue[true]
+08/16 13:21:51.196 [main/INFO] [WebSquareConfig.getStringValue] key[/websquare/upload/maxUploadSize/@value] value[5000000] defaultValue[1048576]
+08/16 13:21:51.201 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/encoding/@value] value[UTF-8] defaultValue[KSC5601]
+08/16 13:21:51.205 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/baseDir/@value] value[C:/upload] defaultValue[null]
+08/16 13:21:51.205 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/folderName/@value] value[up] defaultValue[]
+08/16 13:21:51.229 [main/INFO] [WebSquareConfig.getStringValue] key[//compression/@value] value[] defaultValue[true]
+08/16 13:21:51.230 [main/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@value] value[] defaultValue[default]
+08/16 13:21:51.378 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@baseFolder] value[] defaultValue[]
+08/16 13:21:51.500 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@coverage] value[notsupport] defaultValue[notsupport]
+08/16 13:21:51.500 [main/SEVERE] LoadingModule [websquare.WebSquareEngine][3708175][1]
+08/16 13:23:42.340 [http-nio-7070-exec-8/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@etag] value[] defaultValue[support]
+08/16 13:23:42.625 [http-nio-7070-exec-5/INFO] [WebSquareConfig.getStringValue] key[//date/encoding/@value] value[] defaultValue[UTF-8]
+08/16 13:24:07.698 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/duplicatedFilePostFix/@override] value[] defaultValue[false]
+08/16 13:24:07.699 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/duplicatedFilePostFix/@overrideDelimeter] value[] defaultValue[]
+08/16 13:24:07.703 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/fileUpload/@use] value[] defaultValue[true]
+08/16 13:24:07.703 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/uploadMode/@value] value[session] defaultValue[session]
+08/16 13:24:07.703 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/firstFilePostFix/@value] value[] defaultValue[false]
+08/16 13:24:07.706 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/fileDefiner/@value] value[] defaultValue[websquare.upload.handl.impl.DefaultUploadFileDefinerImpl]
+08/16 13:24:07.706 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/imgUpload/imageDefiner/@value] value[] defaultValue[websquare.upload.handl.impl.DefaultUploadImageDefinerImpl]
+08/16 13:24:07.707 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//excel/upload/decrypt/@value] value[] defaultValue[]
+08/16 13:24:07.707 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//csv/upload/decrypt/@value] value[] defaultValue[]
+08/16 13:24:07.707 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/decrypt/@value] value[] defaultValue[]
+08/16 13:24:07.708 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] ###################initialize UploadFileManager#####################
+08/16 13:24:07.708 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadfileDefiner        : websquare.upload.handl.impl.DefaultUploadFileDefinerImpl
+08/16 13:24:07.708 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadImageDefiner       : websquare.upload.handl.impl.DefaultUploadImageDefinerImpl
+08/16 13:24:07.708 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadExcelDecryptDefinerName : 
+08/16 13:24:07.708 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadCSVDecryptDefinerName : 
+08/16 13:24:07.708 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadFILEDecryptDefinerName : 
+08/16 13:24:07.710 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] ##################################################################
+08/16 13:24:07.711 [http-nio-7070-exec-2/INFO] [DefaultFileUploadController.uploadAfter] :화면 캡처 2023-07-31 130522.png
+08/16 13:24:07.711 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/decrypt/@tempDir] value[] defaultValue[]
+08/16 13:24:07.712 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/imgUpload/verifyHeader/@value] value[] defaultValue[true]
+08/16 13:24:07.840 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/callback/removeKeyPath/@value] value[] defaultValue[]
+08/16 13:24:07.840 [http-nio-7070-exec-2/INFO] [DefaultFileUploadController.writeCallback] <ret><key>C:/upload/folderName_16921590843360.5121934164029341_0</key><storedFileList>화면 캡처 2023-07-31 130522.png</storedFileList><localfileList>화면 캡처 2023-07-31 130522.png</localfileList><fileSizeList>92949</fileSizeList><maxUploadSize>5000000</maxUploadSize><subSize></subSize><deniedList></deniedList><deniedCodeList></deniedCodeList></ret>
+08/16 13:25:48.875 [main/INFO] [WebSquareConfig.getStringValue] key[//wqDefiner/@value] value[] defaultValue[]
+08/16 13:25:48.878 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/@support] value[true] defaultValue[true]
+08/16 13:25:48.878 [main/INFO] [WebSquareConfig.getStringValue] key[/websquare/upload/maxUploadSize/@value] value[5000000] defaultValue[1048576]
+08/16 13:25:48.883 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/encoding/@value] value[UTF-8] defaultValue[KSC5601]
+08/16 13:25:48.886 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/baseDir/@value] value[C:/upload] defaultValue[null]
+08/16 13:25:48.887 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/folderName/@value] value[up] defaultValue[]
+08/16 13:25:48.910 [main/INFO] [WebSquareConfig.getStringValue] key[//compression/@value] value[] defaultValue[true]
+08/16 13:25:48.910 [main/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@value] value[] defaultValue[default]
+08/16 13:25:49.054 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@baseFolder] value[] defaultValue[]
+08/16 13:25:49.175 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@coverage] value[notsupport] defaultValue[notsupport]
+08/16 13:25:49.175 [main/SEVERE] LoadingModule [websquare.WebSquareEngine][3708175][1]
+08/16 13:25:58.660 [http-nio-7070-exec-7/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@etag] value[] defaultValue[support]
+08/16 13:25:58.939 [http-nio-7070-exec-4/INFO] [WebSquareConfig.getStringValue] key[//date/encoding/@value] value[] defaultValue[UTF-8]
+08/16 13:26:03.915 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/duplicatedFilePostFix/@override] value[] defaultValue[false]
+08/16 13:26:03.916 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/duplicatedFilePostFix/@overrideDelimeter] value[] defaultValue[]
+08/16 13:26:03.920 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/fileUpload/@use] value[] defaultValue[true]
+08/16 13:26:03.920 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/uploadMode/@value] value[random] defaultValue[session]
+08/16 13:26:03.921 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/firstFilePostFix/@value] value[] defaultValue[false]
+08/16 13:26:03.923 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/fileDefiner/@value] value[] defaultValue[websquare.upload.handl.impl.DefaultUploadFileDefinerImpl]
+08/16 13:26:03.923 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/imgUpload/imageDefiner/@value] value[] defaultValue[websquare.upload.handl.impl.DefaultUploadImageDefinerImpl]
+08/16 13:26:03.924 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//excel/upload/decrypt/@value] value[] defaultValue[]
+08/16 13:26:03.924 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//csv/upload/decrypt/@value] value[] defaultValue[]
+08/16 13:26:03.925 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/decrypt/@value] value[] defaultValue[]
+08/16 13:26:03.925 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] ###################initialize UploadFileManager#####################
+08/16 13:26:03.925 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadfileDefiner        : websquare.upload.handl.impl.DefaultUploadFileDefinerImpl
+08/16 13:26:03.925 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadImageDefiner       : websquare.upload.handl.impl.DefaultUploadImageDefinerImpl
+08/16 13:26:03.925 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadExcelDecryptDefinerName : 
+08/16 13:26:03.925 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadCSVDecryptDefinerName : 
+08/16 13:26:03.925 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] UploadFileManager.uploadFILEDecryptDefinerName : 
+08/16 13:26:03.928 [http-nio-7070-exec-2/SEVERE] [UploadFileManager.initialize] ##################################################################
+08/16 13:26:03.928 [http-nio-7070-exec-2/INFO] [DefaultFileUploadController.uploadAfter] :화면 캡처 2023-07-31 130522.png
+08/16 13:26:03.929 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/decrypt/@tempDir] value[] defaultValue[]
+08/16 13:26:03.929 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/imgUpload/verifyHeader/@value] value[] defaultValue[true]
+08/16 13:26:04.025 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//upload/callback/removeKeyPath/@value] value[] defaultValue[]
+08/16 13:26:04.025 [http-nio-7070-exec-2/INFO] [DefaultFileUploadController.writeCallback] <ret><key>C:/upload/up</key><storedFileList>화면 캡처 2023-07-31 130522.png</storedFileList><localfileList>화면 캡처 2023-07-31 130522.png</localfileList><fileSizeList>92949</fileSizeList><maxUploadSize>5000000</maxUploadSize><subSize></subSize><deniedList></deniedList><deniedCodeList></deniedCodeList></ret>
+08/16 13:26:52.937 [http-nio-7070-exec-9/INFO] [DefaultFileUploadController.uploadAfter] :화면 캡처 2023-07-31 130522.png
+08/16 13:26:52.938 [http-nio-7070-exec-9/INFO] [WebSquareConfig.getStringValue] key[//upload/duplicatedFilePostFix/@value] value[yyyy-MM-dd(HH mm ss)] defaultValue[yyyy-MM-dd(HH mm ss)]
+08/16 13:26:52.939 [http-nio-7070-exec-9/INFO] [WebSquareConfig.getStringValue] key[//upload/duplicatedFilePostFix/@sequence] value[] defaultValue[false]
+08/16 13:26:52.966 [http-nio-7070-exec-9/INFO] [DefaultFileUploadController.writeCallback] <ret><key>C:/upload/up</key><storedFileList>화면 캡처 2023-07-31 130522_2023-08-16(13 26 52).png</storedFileList><localfileList>화면 캡처 2023-07-31 130522.png</localfileList><fileSizeList>92949</fileSizeList><maxUploadSize>5000000</maxUploadSize><subSize></subSize><deniedList></deniedList><deniedCodeList></deniedCodeList></ret>
+08/16 13:52:33.037 [main/INFO] [WebSquareConfig.getStringValue] key[//wqDefiner/@value] value[] defaultValue[]
+08/16 13:52:33.039 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/@support] value[true] defaultValue[true]
+08/16 13:52:33.040 [main/INFO] [WebSquareConfig.getStringValue] key[/websquare/upload/maxUploadSize/@value] value[5000000] defaultValue[1048576]
+08/16 13:52:33.046 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/encoding/@value] value[UTF-8] defaultValue[KSC5601]
+08/16 13:52:33.048 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/baseDir/@value] value[C:/upload] defaultValue[null]
+08/16 13:52:33.049 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/folderName/@value] value[up] defaultValue[]
+08/16 13:52:33.073 [main/INFO] [WebSquareConfig.getStringValue] key[//compression/@value] value[] defaultValue[true]
+08/16 13:52:33.073 [main/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@value] value[] defaultValue[default]
+08/16 13:52:33.219 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@baseFolder] value[] defaultValue[]
+08/16 13:52:33.340 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@coverage] value[notsupport] defaultValue[notsupport]
+08/16 13:52:33.340 [main/SEVERE] LoadingModule [websquare.WebSquareEngine][3708175][1]
+08/16 13:52:41.700 [http-nio-7070-exec-5/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@etag] value[] defaultValue[support]
+08/16 13:52:41.948 [http-nio-7070-exec-2/INFO] [WebSquareConfig.getStringValue] key[//date/encoding/@value] value[] defaultValue[UTF-8]
+08/16 14:01:24.827 [main/INFO] [WebSquareConfig.getStringValue] key[//wqDefiner/@value] value[] defaultValue[]
+08/16 14:01:24.831 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/@support] value[true] defaultValue[true]
+08/16 14:01:24.832 [main/INFO] [WebSquareConfig.getStringValue] key[/websquare/upload/maxUploadSize/@value] value[5000000] defaultValue[1048576]
+08/16 14:01:24.840 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/encoding/@value] value[UTF-8] defaultValue[KSC5601]
+08/16 14:01:24.844 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/baseDir/@value] value[C:/upload] defaultValue[null]
+08/16 14:01:24.845 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/folderName/@value] value[up] defaultValue[]
+08/16 14:01:24.880 [main/INFO] [WebSquareConfig.getStringValue] key[//compression/@value] value[] defaultValue[true]
+08/16 14:01:24.881 [main/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@value] value[] defaultValue[default]
+08/16 14:01:25.072 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@baseFolder] value[] defaultValue[]
+08/16 14:01:25.195 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@coverage] value[notsupport] defaultValue[notsupport]
+08/16 14:01:25.196 [main/SEVERE] LoadingModule [websquare.WebSquareEngine][3708175][1]
+08/16 14:01:39.246 [http-nio-7070-exec-7/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@etag] value[] defaultValue[support]
+08/16 14:01:39.517 [http-nio-7070-exec-1/INFO] [WebSquareConfig.getStringValue] key[//date/encoding/@value] value[] defaultValue[UTF-8]
+08/16 14:09:40.595 [main/INFO] [WebSquareConfig.getStringValue] key[//wqDefiner/@value] value[] defaultValue[]
+08/16 14:09:40.599 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/@support] value[true] defaultValue[true]
+08/16 14:09:40.600 [main/INFO] [WebSquareConfig.getStringValue] key[/websquare/upload/maxUploadSize/@value] value[5000000] defaultValue[1048576]
+08/16 14:09:40.608 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/encoding/@value] value[UTF-8] defaultValue[KSC5601]
+08/16 14:09:40.613 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/baseDir/@value] value[C:/upload] defaultValue[null]
+08/16 14:09:40.614 [main/INFO] [WebSquareConfig.getStringValue] key[//upload/folderName/@value] value[up] defaultValue[]
+08/16 14:09:40.653 [main/INFO] [WebSquareConfig.getStringValue] key[//compression/@value] value[] defaultValue[true]
+08/16 14:09:40.654 [main/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@value] value[] defaultValue[default]
+08/16 14:09:40.841 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@baseFolder] value[] defaultValue[]
+08/16 14:09:40.954 [main/INFO] [WebSquareConfig.getStringValue] key[//engineType/@coverage] value[notsupport] defaultValue[notsupport]
+08/16 14:09:40.954 [main/SEVERE] LoadingModule [websquare.WebSquareEngine][3708175][1]
+08/16 14:09:53.790 [http-nio-7070-exec-10/INFO] [WebSquareConfig.getStringValue] key[//webpackType/@etag] value[] defaultValue[support]
+08/16 14:09:54.053 [http-nio-7070-exec-5/INFO] [WebSquareConfig.getStringValue] key[//date/encoding/@value] value[] defaultValue[UTF-8]
