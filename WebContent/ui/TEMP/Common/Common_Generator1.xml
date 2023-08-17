@@ -46,7 +46,6 @@ Common - Generator 1depth 형태
 		<script type="text/javascript" lazy="false"><![CDATA[
         
 	scwin.onpageload = function() {
-		console.log(1234);
 	};
 
 			
