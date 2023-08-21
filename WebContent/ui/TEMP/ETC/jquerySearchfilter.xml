@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection>
+			</w2:workflowCollection>
+		</xf:model>
+		<w2:layoutInfo>
+		</w2:layoutInfo>
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[/**
+ * jquery filter 기능을 통한 검색 
+ * 	- 검색 조건에 따른 데이터를 서버로 다시 조회하지 않고, 랜더링 된 코드에서 처리 
+ * 	- 처리방법 
+ * 		1) 보여주거나, 숨기기 처리할 데이터의 태그에 attribute 로 검색용도의 데이터 셋팅 
+ * 		2) 검색용도의 attribute 를 jquery 의 셀렉터 문구를 통해서 찾아서 style 변경 처리  
+ */
+
+scwin.onpageload = function() {
+	$(".btn_fav").click(function(){
+		$(".btn_fav").toggleClass("on");
+	});
+
+	scwin.setGenerator();
+};
+
+scwin.setGenerator = function() {
+	scwin.genData = [
+		"가가가"
+		,"가나다"
+		,"가나다라"
+		,"나다라"
+		,"다라"
+		,"라라라라"
+	];
+
+	for ( var i=0; i<scwin.genData.length; i++ ){
+		var gen_idx = gen_first.insertChild();
+		var tr_temp_obj = gen_first.getChild( gen_idx , "tr_temp" );	 
+		$('#'+tr_temp_obj.getID()).attr('data-search', scwin.genData[i]);		//검색을 하기 위한 데이터을 attribute 에 담기 
+
+		var txt_header_obj = gen_first.getChild( gen_idx , "txt_header" );	 
+		txt_header_obj.setValue("항목_" + i);
+
+		var txt_body_obj = gen_first.getChild( gen_idx , "txt_body" );	 
+		txt_body_obj.setValue(scwin.genData[i]);	
+	}
+
+	txt_cnt.setValue(scwin.genData.length);	
+};
+
+
+scwin.ipt_search_onkeyup = function(e) {
+	if( e.keyCode == "13"){
+		scwin.btn_search_onclick();
+	}
+};
+
+
+scwin.btn_search_onclick = function(e) {
+	var searchStr = ipt_search.getValue().trim().toLowerCase();
+	var gen_id = gen_first.getID();
+
+	//gen_first 하위에서 검색에 포함 데이터가 아닌 부분 비활성화 
+
+	//1. 전체 활성화 (gen_fisrt 하위의 tr 태그 object)
+	$( 'tr[data-search!=""]' , $('#'+gen_id) ).css('display', '');	
+
+	//2. 검색어가 있을 경우 검색어 포함 안되어있는 tr 는 비활성화 
+	var disableObjArr;			//disableObj array
+	var disableObjCnt = 0;	//disableObj count 
+	if ( searchStr != "" ){
+		disableObjArr = $( 'tr:not([data-search!=""][data-search*="'+searchStr+'"])' , $('#'+gen_id) );
+		disableObjArr.css('display', 'none');
+		disableObjCnt = disableObjArr.length;
+	}
+
+	//3. 건수 셋팅 ( 전체건수 - 비활성화건수 )
+	txt_cnt.setValue(scwin.genData.length - disableObjCnt);
+};
+
+
+scwin.txt_body_onclick = function(e) {
+	var gen_obj = this.getGenerator();
+	var gen_idx = this.getGeneratedIndex();
+	var txt_header_obj_val = this.getGeneratedComponent('txt_header').getValue();
+	var txt_body_obj_val = this.getGeneratedComponent('txt_body').getValue();
+
+	var resultStr = "";
+	resultStr += "\n-인덱스 : " + gen_idx;	
+	resultStr += "\n-항목 : " + txt_header_obj_val;
+	resultStr += "\n-데이터 : " + txt_body_obj_val;	
+
+	alert(resultStr);
+};
+
+
+
+//jquery filter Example 
+scwin.searchFilter = function() {
+	/*
+		How to use:
+		1)	Copy this jQuery to your project
+		2)	Add [data-search] to search input
+		3)	Add [data-filter-item] to the items that should be filtered
+		4)	Add [data-filter-name="SEARCH TERM"] to the filter-items
+	*/
+	$("[data-search]").on("keyup", function () {
+		var searchVal = $(this).val();
+		var filterItems = $("[data-filter-item]");
+		if (searchVal != "") {
+			filterItems.addClass("hidden");
+			$(
+				'[data-filter-item][data-filter-name*="' + searchVal.toLowerCase() + '"]'
+			).removeClass("hidden");
+		} else {
+			filterItems.removeClass("hidden");
+		}
+	});
+
+	/*
+	//예시 
+	var abc = "test";
+	var genId = "gen_test";
+	$("li[data-search-data!=''][data-search-data*='"+abc+"']" , $('#'+genId));
+	$("li:not([data-search-data!=''][data-search-data*='"+abc+"'])" , $('#'+genId));
+	*/
+
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents " id="" style="">
+			<xf:group class="pgtbox" id="" style="">
+				<xf:trigger class="btn_fav" id="" style="" type="button">
+					<xf:label />
+				</xf:trigger>
+				<w2:textbox class="pgt_tit" id="" label="화면타이틀" style="" tagname="" />
+				<xf:group class="breadcrumb" id="" style="">
+					<xf:group id="" style="" tagname="ul">
+						<xf:group class="home" id="" style="" tagname="li">
+							<w2:anchor id="" outerDiv="false" style="">
+								<xf:label><![CDATA[Home]]></xf:label>
+							</w2:anchor>
+						</xf:group>
+						<xf:group id="" style="" tagname="li">
+							<w2:anchor id="" outerDiv="false" style="">
+								<xf:label><![CDATA[1Depth Menu]]></xf:label>
+							</w2:anchor>
+						</xf:group>
+						<xf:group id="" style="" tagname="li">
+							<w2:anchor id="" outerDiv="false" style="">
+								<xf:label><![CDATA[2Depth Menu]]></xf:label>
+							</w2:anchor>
+						</xf:group>
+						<xf:group id="" style="" tagname="li">
+							<w2:span id="" label="3Depth Menu" style="" />
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+			<xf:group class="schbox" id="" style="">
+				<xf:group class="schbox_inner" id="" style="">
+					<xf:group adaptive="layout" adaptiveThreshold="768" class="w2tb tbl " id="" style="" tagname="table">
+						<w2:attributes>
+							<w2:summary />
+						</w2:attributes>
+						<xf:group tagname="colgroup">
+							<xf:group style="width:100px;" tagname="col" />
+							<xf:group style="" tagname="col" />
+							<xf:group style="width:100px;" tagname="col" />
+							<xf:group style="" tagname="col" />
+						</xf:group>
+						<xf:group class="" id="" style="" tagname="tr">
+							<xf:group class="w2tb_th" style="" tagname="th">
+								<w2:textbox class="req" id="" label="조회조건" style="" />
+							</xf:group>
+							<xf:group class="w2tb_td" style="" tagname="td">
+								<xf:select1 allOption="true" appearance="minimal" chooseOption="" class="" direction="auto" disabled="false"
+									disabledClass="w2selectbox_disabled" id="" ref="" renderType="" style="width:100px;" submenuSize="auto">
+									<xf:choices>
+										<xf:item>
+											<xf:label><![CDATA[new row]]></xf:label>
+											<xf:value />
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[new row]]></xf:label>
+											<xf:value />
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[new row]]></xf:label>
+											<xf:value />
+										</xf:item>
+									</xf:choices>
+								</xf:select1>
+								<xf:select1 allOption="true" appearance="minimal" chooseOption="" class="" direction="auto" disabled="false"
+									disabledClass="w2selectbox_disabled" id="" ref="" renderType="" style="width:100px;" submenuSize="auto">
+									<xf:choices>
+										<xf:item>
+											<xf:label><![CDATA[new row]]></xf:label>
+											<xf:value />
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[new row]]></xf:label>
+											<xf:value />
+										</xf:item>
+										<xf:item>
+											<xf:label><![CDATA[new row]]></xf:label>
+											<xf:value />
+										</xf:item>
+									</xf:choices>
+								</xf:select1>
+								<xf:trigger class="btn_cm " id="" style="" type="button">
+									<xf:label><![CDATA[조회]]></xf:label>
+								</xf:trigger>
+							</xf:group>
+							<xf:group class="w2tb_th" style="" tagname="th">
+								<w2:textbox class="req" id="" label="조회조건" style="" />
+							</xf:group>
+							<xf:group class="w2tb_td" id="" style="" tagname="td">
+								<xf:input class="ipt_sty" id="ipt_search" style="width: 100%;" ev:onkeyup="scwin.ipt_search_onkeyup"></xf:input>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="btn_schbox" id="" style="">
+					<xf:trigger class="btn_cm sch" disabled="" escape="false" id="btn_search" style="" type="button" ev:onclick="scwin.btn_search_onclick">
+						<xf:label><![CDATA[조회]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			</xf:group>
+			<xf:group class="titbox" id="" style="">
+				<w2:textbox class="" id="" label="서브타이틀" style="" tagname="h3" />
+				<w2:textbox class="" id="txt_cnt" label="" style="margin-left: 10px;" displayFormat="[ # 건 ] " tagname="h3"></w2:textbox><xf:group class="rt" id="" style="">
+					<xf:trigger class="btn_cm " id="" style="" type="button">
+						<xf:label><![CDATA[업무버튼]]></xf:label>
+					</xf:trigger>
+					<xf:trigger class="btn_cm " id="" style="" type="button">
+						<xf:label><![CDATA[업무버튼]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+				
+			</xf:group>
+			<xf:group class="tblbox" id="" style="">
+				<xf:group adaptive="layout" adaptiveThreshold="600" class="w2tb tbl" id="" style="" tagname="table">
+					<w2:attributes>
+						<w2:summary />
+					</w2:attributes>
+					<xf:group tagname="colgroup">
+						<xf:group style="width:150px;" tagname="col" />
+						<xf:group style="" tagname="col" />
+					</xf:group>
+					
+					<!-- generator START -->
+					<w2:generator tagname="tbody" style="" id="gen_first">
+						<xf:group style="" tagname="tr" id="tr_temp">
+							<xf:group class="w2tb_th " style="" tagname="th">
+								<w2:textbox class="req" id="txt_header" label="테이블헤더" ref="" style=""></w2:textbox>
+							</xf:group>
+							<xf:group class="w2tb_td" style="" tagname="td">
+								<w2:textbox class="req" id="txt_body" label="데이터" ref="" style="text-decoration: underline;cursor: pointer;margin-left: 10px;" dataType="link" ev:onclick="scwin.txt_body_onclick"></w2:textbox>
+							</xf:group>
+						</xf:group>
+					</w2:generator>
+					<!-- generator END -->
+					
+				</xf:group>
+			</xf:group>
+			<xf:group class="btnbox" id="" style="">
+				<xf:group class="rt" id="" style="">
+					<xf:trigger class="btn_cm" id="" style="" type="button">
+						<xf:label><![CDATA[업무버튼]]></xf:label>
+					</xf:trigger>
+					<xf:trigger class="btn_cm" id="" style="" type="button">
+						<xf:label><![CDATA[업무버튼]]></xf:label>
+					</xf:trigger>
+					<w2:textbox class="bar_btndiv" id="" label="" style="" />
+					<xf:trigger class="btn_cm pt" id="" style="" type="button">
+						<xf:label><![CDATA[저장]]></xf:label>
+					</xf:trigger>
+					<xf:trigger class="btn_cm " id="" style="" type="button">
+						<xf:label><![CDATA[삭제]]></xf:label>
+					</xf:trigger>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>
