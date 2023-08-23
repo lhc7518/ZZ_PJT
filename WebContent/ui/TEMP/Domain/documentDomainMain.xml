@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+			</w2:dataCollection>
+			<w2:workflowCollection></w2:workflowCollection>
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[/**
+ * Documnet.domain 테스트 (W5 컨설팅팀 예시 : https://inswave.com/confluence/pages/viewpage.action?pageId=24089877)
+ * 	- 부모와, iframe 의 화면에 document.domain 을 동일하게 적용 (document.domain = "inswave.kr")
+ * 		1. iframe 으로 타 도메인의 화면 로딩
+ * 		2. iframe 의 화면에서 부모창의 document 접근 가능 
+ */
+	
+scwin.onpageload = function() {
+	document.domain = "inswave.kr";
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group id="" style="padding:10px">
+			<xf:group style="width: 100%;height: 45px;" id="">
+				<w2:textbox style="width:50%;height:23px;padding:10px;font-size:18px;font-weight:bold;float:left;" id="" label="제목">
+				</w2:textbox>
+				<xf:trigger ev:onclick="" style="width:80px;height:26px;float:right;margin-top:10px;margin-right:10px;" id="btn_test"
+					type="button">
+					<xf:label><![CDATA[값 조회]]></xf:label>
+				</xf:trigger>
+			</xf:group>
+			<xf:group style="width:100%;height:200px;" id="grp_group1">
+				<w2:iframe src="https://wrm.inswave.kr/websquare/websquare.html?w2xPath=/cm/test/documentDomaiinSub.xml" style="width:100%;height:192px;" id=""></w2:iframe>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

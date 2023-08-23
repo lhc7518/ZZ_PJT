@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+    document.domain = "inswave.kr";
+};
+
+scwin.btn_test_onclick = function (e) { debugger;
+    top.document.getElementById("mf_wq_uuid_3").innerHTML = "test";
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:trigger ev:onclick="scwin.btn_test_onclick" id="btn_test" style="width:80px;height:26px;float:right;margin-top:10px;margin-right:10px;"
+    		type="button">
+    		<xf:label><![CDATA[값 조회]]></xf:label>
+    	</xf:trigger>
+    </body>
+</html>
