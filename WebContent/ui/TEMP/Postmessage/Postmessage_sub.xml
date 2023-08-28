@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+    //postMessage 등록 
+    window.addEventListener('message', scwin.responseMainMessage, false);
+};
+
+
+scwin.btn_temp_onclick = function(e) {
+    var sendValue = ipt_temp.getValue();
+
+    if ( sendValue.trim() == "" ){
+        alert("Main 에 전송할 메시지를 등록하세요");
+        ipt_temp.focus();
+        return;
+    }
+
+    var sendData = {};
+    sendData.key = "A1234";
+    sendData.value = sendValue;
+
+
+    //step1 : 부모 window 에 postMessage 요청 
+    parent.postMessage(sendData, "http://localhost:7070");
+};
+
+//postMessage 키값 다르게 전송 
+scwin.btn_temp2_onclick = function(e) {
+    var sendValue = ipt_temp.getValue();
+
+    if ( sendValue.trim() == "" ){
+        alert("Main 에 전송할 메시지를 등록하세요");
+        ipt_temp.focus();
+        return;
+    }
+
+    var sendData = {};
+    sendData.key = "AAAAA";
+    sendData.value = sendValue;
+
+
+    //step1 : 부모 window 에 postMessage 요청 
+    parent.postMessage(sendData, "http://localhost:7070");
+};
+
+
+
+scwin.responseMainMessage = function(e){
+    console.log("scwin.responseMainMessage START===", e);
+
+    //e.data: 전달받은 데이터
+    //e.origin: 메시지를 보낸 윈도우의 오리진
+    //e.source: 메지시를 보낸 윈도우의 레퍼런스. 이 레퍼런스로 다시 메시지를 보낼 수 있다.
+
+    if ( e.origin == "http://localhost:7070" ){
+
+        //sub에서 전달받은 data 
+        txa_subTemp.setValue(e.data);
+    }
+};
+
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group id="">
+    		<w2:textbox style="width: 300px;height: 23px;" id="" label="Postmessage SUB"></w2:textbox>
+    		<xf:input id="ipt_temp" style="width: 200px;height: 25px;"></xf:input>
+    		<xf:trigger type="button" id="btn_temp" style="width: 150px;height: 25px;margin-left: 10px;"
+    			ev:onclick="scwin.btn_temp_onclick">
+    			<xf:label><![CDATA[■STEP1 : send message]]></xf:label>
+    		</xf:trigger>
+    		<xf:trigger ev:onclick="scwin.btn_temp2_onclick" id="btn_temp2" style="width: 150px;height: 25px;margin-left: 10px;"
+    			type="button">
+    			<xf:label><![CDATA[send message (key invalid)]]></xf:label>
+    		</xf:trigger>
+    	</xf:group>
+    	<xf:group id="" style="margin-top: 10px;">
+    		<w2:textbox id="" label="■STEP3 : Main 으로 전달 후, 재전송 받은 메시지" style="width: 300px;height: 23px;"></w2:textbox>
+
+    		<xf:textarea id="txa_subTemp" style="width: 300px;height: 100px;"></xf:textarea>
+    	</xf:group></body>
+</html>

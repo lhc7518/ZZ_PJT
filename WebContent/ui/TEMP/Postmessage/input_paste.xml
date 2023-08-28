@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map"/>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+/**
+ * Input copy&paste 시 이벤트 (모바일에서) 
+ *  - 모바일에서는 keyup, keydown 이벤트 불가함
+ *  - paste 이벤트는 붙여넣기 시 호출되기에, 붙어넣어서 완성된 데이터를 알수 없음 
+ *  - 따라서, paste 시 이벤트 처리를 위해서는 oninput 이벤트로 처리 해야함
+ *  
+ */
+
+
+scwin.onpageload = function() {
+
+    ipt_temp.setValue("ABCD1234");
+
+    // paste 처리 시 실제 target 의 값 가져오기 => 모바일에서는 keyup, keydown 등의 key 이벤트는 처리 불가하기에... 
+    var iptId = ipt_temp.getID();
+
+    //step1. paste 이벤트 
+    $('#'+iptId).on('paste', function(e){
+        //console.log("past event START : ",e);
+
+        //step2. input 이벤트 
+        $('#'+this.id).on('input', function(e){
+            console.log("input event START : ", e);
+            console.log("input event value : ", this.value);
+
+            scwin.pasteEventResult(this.value);
+
+            //step3. input 이벤트 제거 (불필요한 input 이벤트 호출되기에, paste 시에는 활욯하고, 제거 )
+            $('#'+this.id).off("input");
+        });
+    });    
+
+};
+
+
+scwin.pasteEventResult = function(value){
+    txa_temp.setValue(value);
+};
+
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group id="">
+    		<w2:textbox style="width: 300px;height: 23px;" id="" label="Input copy&amp;past 시 이벤트 (모바일에서) "></w2:textbox>
+    		<xf:input id="ipt_temp" style="width:453px;height:25px;" ev:oneditkeyup="scwin.ipt_temp_oneditkeyup" ev:onkeyup="scwin.ipt_temp_onkeyup"></xf:input>
+    	</xf:group>
+    	<xf:group id="" style="margin-top: 10px;">
+    		<w2:textbox id="" label="■ paste 결과 " style="width: 300px;height: 23px;"></w2:textbox>
+
+    		<xf:textarea id="txa_temp" style="width: 300px;height: 100px;"></xf:textarea>
+    	</xf:group></body>
+</html>
