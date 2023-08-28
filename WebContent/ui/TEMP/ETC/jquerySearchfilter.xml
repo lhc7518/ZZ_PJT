@@ -70,12 +70,19 @@ scwin.btn_search_onclick = function(e) {
 	//gen_first 하위에서 검색에 포함 데이터가 아닌 부분 비활성화 
 
 	//1. 전체 활성화 (gen_fisrt 하위의 tr 태그 object)
+	//gen_id 컴포넌트 하위의 tr 중에 data-search attribute 의 값이 null 이 아닌 tr의 display style 을 초기화  
 	$( 'tr[data-search!=""]' , $('#'+gen_id) ).css('display', '');	
 
 	//2. 검색어가 있을 경우 검색어 포함 안되어있는 tr 는 비활성화 
 	var disableObjArr;			//disableObj array
 	var disableObjCnt = 0;	//disableObj count 
 	if ( searchStr != "" ){
+		//gen_id 컴포넌트 하위 tr 중에 data-search attribute 가 null 이 아니고, 검색어를 포함하는 tr 이외의 tr 컴포넌트 셀렉터 
+		//빈여백이 있을경우 제대로 동작하지 않음 
+		//tr:not 을 사용하는 경우에만 괄호()를 사용해야함.
+		//not을 미사용하는 경우에는 아래처럼 셀렉터 지정 해줘야 함 
+		//data-search 어트리뷰트가 검색어(abcd) 를 포함하는 tr 태그 엘리먼트 셀렉터  & 해당 tr 태그 엘리먼트는 gen_first 하위의 tr에서만 선택 
+		$('tr[data-search!=""][data-search*="abcd"]', $('#gen_first'))
 		disableObjArr = $( 'tr:not([data-search!=""][data-search*="'+searchStr+'"])' , $('#'+gen_id) );
 		disableObjArr.css('display', 'none');
 		disableObjCnt = disableObjArr.length;
