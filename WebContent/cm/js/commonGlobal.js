@@ -631,7 +631,7 @@ gcm.win.openPopup = function($p, url, opt, data) {
 			}
 			return true;
 		},
-		popupUrl : "../popup"
+		popupUrl : "../popup"		//jsp 호출 용도 (jsp로 처리하는경우가 아닐경우 걍 주석처리) 
 	};
 
 	$p.openPopup(gcm.CONTEXT_PATH + url, options);
