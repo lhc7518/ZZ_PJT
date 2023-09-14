@@ -6,7 +6,13 @@
         <destRoot value="_wpack_"/>
         <babelDestRoot value="_wpackbabel_"/>
         <loadingMode value="wpack"/>
-        <common name="" value=""/>
+        <!-- wpack에서 공통변수를 자동으로 치환해주는 기능(사용 시 치환할 대상이 되는 변수를 지정해줘야함) -->
+		<common name="com" value="true"/>
+		<commonPath>
+			<path src="/cm/js/commonGlobal.js"/>
+			<path src="/cm/js/commonScope.js"/>
+			<path src="/cm/js/main.js"/> 
+		</commonPath>
     </wpack>
     <allValue value="all"/>
     <docType value="standard"/>
@@ -38,7 +44,13 @@
     <style>
         <removeDefaultClass value="true"/>
     </style>
-    <engine/>
+    
+    <!-- 엔징 구동 시 초기 로딩시킬 js -->
+	<engine>
+		<module src="/cm/js/commonGlobal.js"/>
+		<module src="/cm/js/commonScope.js"/>
+	</engine>
+	
     <ModelUtil>
         <copyChildrenNodes refresh="false"/>
     </ModelUtil>
@@ -73,7 +85,9 @@
     <engineCache compression="true" enable="true" postfix="month"/>
     <userAgentPattern XPathParser="Edge|Trident|MSIE"/>
     <preserveWhiteSpace value="false"/>
-    <environment cache="nocache" mode="production" postfix="day"/>
+    
+    <!-- xml파일 cache 설정(nocache 일경우 매번 다르게 로딩, cache 일경우 postfix 기준으로 캐싱처리 : 개발시에는 cache 설정으로 할것...)  -->
+    <environment cache="cache" mode="production" postfix="day"/>
     <script postfix="environment"/>
     <emptyTag value="area,base,basefont,br,col,frame,hr,img,input,link,meta,param"/>
     <engineLoadingMode android="0" chrome="0" ie="0" iphone="0" moz="0" opera="0" safari="0"/>

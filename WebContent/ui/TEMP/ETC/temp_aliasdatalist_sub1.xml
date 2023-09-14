@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/ui/TEMP/ETC/ws5_example.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenName="P00325의 서브 페이지 01">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230810" meta_user="InswaveSystems" />
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<!-- 상위의 데이터리스트 연결 -->
+				<w2:aliasDataList scope="../dlt_books" id="adl_s01" />
+				
+				<!-- 상위의 wfm_sub1_2 wframe의 내부의 데이터리이스트 연결도 가능함  -->
+<!-- 				<w2:aliasDataList scope="../wfm_sub1_2/dlt_books2" id="adl_s01" /> -->
+					
+				
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //dataList ID 확인
+    //aliasDataList 의 ID 는 getID API 가져올 경우 참조 대상 dataList 의 ID 를 반환함.
+    //따라서, 실제 aliasDataList ID를 가져오려면  aliasDataListObj.id 로 가져와야 실제 ID 를 가져올 수 있음.
+    txt_temp2.setValue( "adl_s01.getID() : "+adl_s01.getID() );
+    txt_temp2.setStyle( "color", "orange" );
+    txt_temp2.setStyle( "font-weight", "bold" );
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<w2:textbox class="ws5_example_txt_normal" escape="false" id="" label="이 영역은 WFrame 입니다.&lt;br/&gt;파일명: P00325S01.xml" style="" />
+		<xf:group id="" class="mb_def_box nobottom">
+			<w2:textbox class="ws5_example_txt_normal" escape="false" id=""
+				label="AliasDataList의 scope : &apos;&lt;code class=&quot;ws5_exam_txt_blue&quot;&gt;../dlt_books&lt;/code&gt;&apos;" style="">
+			</w2:textbox>
+			<w2:textbox class="ws5_example_txt_normal" escape="false" id="txt_temp2" label="데이터리스트 ID" style="">
+			</w2:textbox><w2:gridView dataList="data:adl_s01" style="height:60px;" autoFit="allColumn" id="grd_exam1" class="gvw" defaultCellHeight="24"
+				autoFitMinWidth="222" visibleRowNum="2" editModeEvent="onclick" sortable="true">
+				<w2:caption style="" id="caption1" value="this is a grid caption." />
+				<w2:header style="" id="header1">
+					<w2:row style="" id="row1">
+						<w2:column width="146" inputType="text" id="column3" value="도서명" displayMode="label" />
+						<w2:column width="76" inputType="text" id="column1" value="출간일" displayMode="label" />
+					</w2:row>
+				</w2:header>
+				<w2:gBody style="" id="gBody1">
+					<w2:row style="" id="row2">
+						<w2:column textAlign="left" width="146" inputType="text" id="book_name" value="" displayMode="label" />
+						<w2:column dataType="date" width="76" displayFormat="yyyy-MM-dd" inputType="text" id="published_date" value=""
+							displayMode="label">
+						</w2:column>
+					</w2:row>
+				</w2:gBody>
+			</w2:gridView>
+			<w2:wframe id="wfm_sub2" src="/ui/TEMP/ETC/temp_aliasdatalist_sub2.xml"
+				style="min-height: 30px;border: 2px solid seagreen;padding: 6px 6px 0px 6px;" />
+			
+		</xf:group>
+	</body>
+</html>

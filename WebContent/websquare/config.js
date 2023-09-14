@@ -21,8 +21,21 @@ export default {
         "@value": "wpack"
       },
       "common": {
-        "@name": "",
-        "@value": ""
+        "@name": "com",
+        "@value": "true"
+      },
+      "commonPath": {
+        "path": [
+          {
+            "@src": "/cm/js/commonGlobal.js"
+          },
+          {
+            "@src": "/cm/js/commonScope.js"
+          },
+          {
+            "@src": "/cm/js/main.js"
+          }
+        ]
       }
     },
     "allValue": {
@@ -107,7 +120,16 @@ export default {
         "@value": "true"
       }
     },
-    "engine": {},
+    "engine": {
+      "module": [
+        {
+          "@src": "/cm/js/commonGlobal.js"
+        },
+        {
+          "@src": "/cm/js/commonScope.js"
+        }
+      ]
+    },
     "ModelUtil": {
       "copyChildrenNodes": {
         "@refresh": "false"
@@ -186,7 +208,7 @@ export default {
       "@value": "false"
     },
     "environment": {
-      "@cache": "nocache",
+      "@cache": "cache",
       "@mode": "production",
       "@postfix": "day"
     },

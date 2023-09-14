@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/ui/TEMP/ETC/ws5_example.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenName="[AliasDataList] 상위(부모, 조상) 화면의 DataList를 링크하여 사용하기">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230810" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" id="dlt_books" repeatNode="map" style="" valueAttribute="">
+					<w2:columnInfo>
+						<w2:column dataType="text" id="book_name" name="도서명"></w2:column>
+						<w2:column id="published_date" name="출간일" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<book_name><![CDATA[사람일까 상황일까]]></book_name>
+							<published_date><![CDATA[20190826]]></published_date>
+						</w2:row>
+						<w2:row>
+							<book_name><![CDATA[내가 틀릴 수도 있습니다]]></book_name>
+							<published_date><![CDATA[20220418]]></published_date>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //dataList ID 확인 
+    txt_temp1.setValue( "dlt_books.getID() : "+dlt_books.getID() );
+    txt_temp1.setStyle( "color", "red" );
+    txt_temp1.setStyle( "font-weight", "bold" );
+};
+
+
+/**
+ * 버튼 [DataList의 데이터 복원하기] 클릭 시
+ */
+scwin.btn_resetData_onclick = function(e) {
+    // DataList 'dlt_books'의 값을 복원합니다.
+    dlt_books.undoAll();
+
+    // DataList 'dlt_books'에 적용된 정렬을 제거합니다.
+    //dlt_books.removeColumnFilterAll();        //sort 까지도 초기화 시켜줌... (filter 와 sort 의 구분이 모호함??)
+    //dlt_books.clearFilter();
+    dlt_books.clearSort();
+};
+
+
+/**
+ * 버튼 [DataList의 첫 번째 행의 '출간일' 열의 셀 값 변경하기] 클릭 시
+ */
+scwin.btn_exam1_1_onclick = function(e) {
+    // DataList 'dlt_books'의 첫 번째 행의 '출간일' 열의 셀을 변경합니다.
+    dlt_books.setCellData(0, "published_date", "19900101");
+};
+
+
+/**
+ * 버튼 [DataList의 '도서명'을 오름차순으로 정렬하기] 클릭 시
+ */
+scwin.btn_exam2_1_onclick = function(e) {
+    // DataList 'dlt_books'의 '도서명'을 오름차순으로 정렬합니다.
+
+    //sort 는 (0,1,2)로 정렬처리하는데, 2 일 경우 sort 취소되지만, 그리드뷰 해더의 sort 이미지는 사라지지 않음(버그)
+    //dlt_books.sort("book_name", 0);
+    //dlt_books.sort("published_date", 1);      
+
+    //name 컬럼을 내림차순으로 첫번째 정렬 후 dept 컬럼을 오름차순으로 정렬
+    var options = {};
+    options.sortIndex = "published_date";
+    options.sortOrder = "-1";
+    dlt_books.multisort( options );    
+};
+
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents" id="" style="">
+			<xf:group class="ws_example_grp_desc" id="" style="">
+				<w2:textbox escape="false" id=""
+					label="AliasDataList의 동작 방식을 확인할 수 있는 예제로 속성 'scope' 적용 예제입니다.&lt;br/&gt;속성 'scope'에 상위(부모, 조상)의 DataList의 경로를 지정하면, 상위 DataList가 링크됩니다."
+					style="margin-bottom: 10px;">
+				</w2:textbox>
+				<w2:textbox escape="false" id="" label="버튼을 클릭하면 WFrame에 구성된 GridView의 데이터에도 반영되는 것을 확인할 수 있습니다."
+					style="margin-bottom: 10px;">
+				</w2:textbox>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap" id="">
+				<xf:group class="example_div_tr_style" id="" style="">
+					<xf:group class="example_div_td_style" id="" style="">
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:trigger class="btn_cm" id="btn_resetData" type="button" ev:onclick="scwin.btn_resetData_onclick">
+								<xf:label><![CDATA[DataList의 데이터 복원하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" ev:onclick="scwin.btn_exam1_1_onclick" id="btn_exam1_1" type="button">
+								<xf:label><![CDATA[DataList의 첫 번째 행의 '출간일' 열의 셀 값 변경하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group class="mb_def_box nobottom" style="">
+							<xf:trigger class="btn_exam_exec btn_txt_of" id="btn_exam2_1" type="button" ev:onclick="scwin.btn_exam2_1_onclick">
+								<xf:label><![CDATA[DataList의 '도서명'을 오름차순으로 정렬하기]]></xf:label>
+							</xf:trigger>
+						</xf:group>
+						<xf:group id="" class="mb_def_box nobottom">
+							<w2:textbox style="" id="" label="DataList의 ID : 'dlt_books'" class="ws5_example_txt_normal" escape="false">
+							</w2:textbox>
+							<w2:textbox class="ws5_example_txt_normal" escape="false" id="txt_temp1" label="데이터리스트 ID" style=""></w2:textbox>
+							<w2:gridView dataList="data:dlt_books" style="height:60px;floa" autoFit="allColumn" id="grd_exam1" class="gvw"
+								defaultCellHeight="24" autoFitMinWidth="222" visibleRowNum="2" editModeEvent="onclick" sortable="true">
+								<w2:caption style="" id="caption1" value="this is a grid caption."></w2:caption>
+								<w2:header style="" id="header1">
+									<w2:row style="" id="row1">
+										<w2:column width="146" inputType="text" id="column3" value="도서명" displayMode="label"></w2:column>
+										<w2:column width="76" inputType="text" id="column1" value="출간일" displayMode="label"></w2:column>
+									</w2:row>
+								</w2:header>
+								<w2:gBody style="" id="gBody1">
+									<w2:row style="" id="row2">
+										<w2:column textAlign="left" width="146" inputType="text" id="book_name" value=""
+											displayMode="label">
+										</w2:column>
+										<w2:column dataType="date" width="76" displayFormat="yyyy-MM-dd" inputType="text"
+											id="published_date" value="" displayMode="label">
+										</w2:column>
+									</w2:row>
+								</w2:gBody>
+							</w2:gridView>
+
+							<!-- 자식1 -->
+							<w2:wframe id="wfm_sub1" src="/ui/TEMP/ETC/temp_aliasdatalist_sub1.xml"
+								style="min-height: 30px;border: 2px solid orange;padding: 6px 6px 0px 6px;">
+							</w2:wframe>
+
+							<!-- 자식2 -->
+							<w2:wframe id="wfm_sub1_2" src="/ui/TEMP/ETC/temp_aliasdatalist_sub1_2.xml"
+								style="min-height: 30px;border: 2px solid orange;padding: 6px 6px 0px 6px;">
+							</w2:wframe>
+							
+							<w2:iframe src="/ui/TEMP/ETC/temp_aliasdatalist_sub1_2.xml" style="width: 480px;height: 300px;border: 2px solid orange;padding: 6px 6px 0px 6px;" id="ifr_temp"></w2:iframe>
+
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

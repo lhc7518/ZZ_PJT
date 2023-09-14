@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/ui/TEMP/ETC/ws5_example.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenName="[컴포넌트 공통] 문자열 출력 컴포넌트에 HTLM 태그 사용하기 - 속성 escape" meta_type="메인">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230814" meta_user="InswaveSystems"></w2:history>
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_exam1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="html_tag" name="HTML 태그" dataType="text"></w2:column>
+						<w2:column id="code" name="코드" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<html_tag><![CDATA[<span style="color:red;">0</span>건]]></html_tag>
+							<code><![CDATA[0]]></code>
+						</w2:row>
+						<w2:row>
+							<html_tag><![CDATA[<span style="color:blue;">50</span>건]]></html_tag>
+							<code><![CDATA[50]]></code>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+				<w2:dataMap baseNode="map" id="dma_exam1">
+					<w2:keyInfo>
+						<w2:key id="html_tag" name="HTML 태그" dataType="text"></w2:key>
+					</w2:keyInfo>
+					<w2:data use="true">
+						<html_tag><![CDATA[<span style="color:red;">0</span>건]]></html_tag>
+					</w2:data>
+				</w2:dataMap>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo />
+		<script lazy="false" type="text/javascript"><![CDATA[
+
+/**
+ * escape 설정 관련 
+ *      1. default 설정 : true  (출력할 문자열에 특수문자 있을 경우, HTML Escape 문자로 변환)
+ *      2. false 설정 시 HTML 태그를 그대로 출력해줌
+ *      3. autoComplete 의 경우 false 설정 시 보여지는 데이터는 정상적으로 출력되나, 검색을 위해서 edit 시 html 태그 코드가 그대로 출력됨 
+ */
+
+
+scwin.onpageload = function () {
+    // Checkcombobox 초기 선택 값 설정
+    ccb_exam1.setValue("0");
+    ccb_exam2.setValue("0");
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group class="sub_contents">
+			<xf:group class="ws_example_grp_desc">
+				<w2:textbox escape="true" label="출력용 컴포넌트의 속성 'escape' 적용 예시입니다." style="" class="nobottom"></w2:textbox>
+				<w2:textbox escape="true"
+					label="속성 'escape'는 출력할 문자열(value)에 &lt;&gt;&amp;&quot;이 포함되어 있으면 HTML Escape 문자로 변환하여 화면에 표시할지의 여부를 지정할 수 있습니다." style=""
+					class="nobottom">
+				</w2:textbox>
+				<w2:textbox escape="true" label="화면에서 직접 'value'를 할당하여 HTML 태그를 사용고자 할 때 설정 값을 'false'로 지정합니다." style=""></w2:textbox>
+				<w2:textbox escape="true" label="주의 사항은 다음과 같습니다." style="" class="nobottom"></w2:textbox>
+				<w2:textbox escape="true"
+					label="속성 'escape'를 'false'로 설정한 후 출력할 문자열에 '&lt;script&gt;'와 같이 실행 가능한 태그가 포함되어 있다면 실행될 수 있습니다. 해당 상황은 해킹으로 인해 서버(네트워크)에서 받은 데이터가 위변조된 경우에 발생하기도 합니다."
+					style="" class="nobottom">
+				</w2:textbox>
+				<w2:textbox escape="true"
+					label="이를 방지하기 위해 속성 'escapeFormatter'를 사용하여 문자열을 검사하거나, 서버에서 받은 데이터를 화면에 전달하기 전에 공통 모듈에서 데이터를 검수합니다." style="">
+				</w2:textbox>
+				<xf:group id="" style="" tagname="details">
+					<w2:textbox class="" id="" label="속성 'escape'를 지원하는 컴포넌트 목록" style="" tagname="summary"></w2:textbox>
+					<w2:textbox class="" escape="false" id=""
+						label="- Anchor&lt;br/&gt;- AutoComplete&lt;br/&gt;- Checkbox&lt;br/&gt;- Checkcombobox&lt;br/&gt;- GridView&lt;br/&gt;- Input&lt;br/&gt;- Multiselect&lt;br/&gt;- Output&lt;br/&gt;- Radio&lt;br/&gt;- Selectbox&lt;br/&gt;- Span&lt;br/&gt;- Textbox"
+						style="margin-bottom: 6px;">
+					</w2:textbox>
+				</xf:group>
+			</xf:group>
+			<xf:group class="example_div_tb_style_wrap">
+				<xf:group class="example_div_tr_style">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) escape 사용 - 단건 출력 컴포넌트" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<xf:group id="" class="mb_def_box nobottom">
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:60px;margin-right: 6px;" id="" label="Anchor" class="ws_exam_txt_list">
+								</w2:span>
+								<w2:anchor ref="data:dma_exam1.html_tag" outerDiv="false"
+									style="text-decoration: underline;min-width: 205px;display: inline-block;line-height: 26px;" id="" escape="true">
+								</w2:anchor>
+							</xf:group>
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:60px;margin-right: 6px;" id="" label="Output" class="ws_exam_txt_list">
+								</w2:span>
+								<xf:output label="" style="min-width: 205px;display: inline-block;line-height: 26px;" id="" ref='data:dma_exam1.html_tag'
+									escape="true">
+									<xf:label><![CDATA[]]>
+									</xf:label>
+								</xf:output>
+							</xf:group>
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:60px;margin-right: 6px;" id="" label="Span" class="ws_exam_txt_list">
+								</w2:span>
+								<w2:span label="" style="min-width: 205px;display: inline-block;line-height: 26px;" id="" ref="data:dma_exam1.html_tag"
+									escape="true">
+								</w2:span>
+							</xf:group>
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:60px;margin-right: 6px;" id="" label="Textbox" class="ws_exam_txt_list">
+								</w2:span>
+								<w2:textbox id="" label="" style="min-width: 205px;display: inline-block;line-height: 26px;"
+									ref="data:dma_exam1.html_tag" escape="true">
+								</w2:textbox>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="escape 미사용 - 단건 출력 컴포넌트" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<xf:group class="mb_def_box nobottom" id="">
+							<xf:group class="" id="" style="">
+								<w2:span id="" label="Anchor" style="display: inline-block;width:60px;margin-right: 6px;" class="ws_exam_txt_list">
+								</w2:span>
+								<w2:anchor escape="false" id="" outerDiv="false" ref="data:dma_exam1.html_tag"
+									style="text-decoration: underline;min-width: 205px;display: inline-block;line-height: 26px;"
+									href="/websquare/websquare.html?w2xPath=/ui/TEMP/ETC/temp_jquery.xml" target="_top">
+								</w2:anchor>
+							</xf:group>
+							<xf:group class="" id="" style="">
+								<w2:span id="" label="Output" style="display: inline-block;width:60px;margin-right: 6px;" class="ws_exam_txt_list">
+								</w2:span>
+								<xf:output escape="false" id="" label="" ref="data:dma_exam1.html_tag"
+									style="min-width: 205px;display: inline-block;line-height: 26px;">
+									<xf:label></xf:label>
+								</xf:output>
+							</xf:group>
+							<xf:group class="" id="" style="">
+								<w2:span id="" label="Span" style="display: inline-block;width:60px;margin-right: 6px;" class="ws_exam_txt_list">
+								</w2:span>
+								<w2:span escape="false" id="" label="" ref="data:dma_exam1.html_tag"
+									style="min-width: 205px;display: inline-block;line-height: 26px;">
+								</w2:span>
+							</xf:group>
+							<xf:group class="" id="" style="">
+								<w2:span id="" label="Textbox" style="display: inline-block;width:60px;margin-right: 6px;" class="ws_exam_txt_list">
+								</w2:span>
+								<w2:textbox escape="false" id="" label="" ref="data:dma_exam1.html_tag"
+									style="min-width: 205px;display: inline-block;line-height: 26px;">
+								</w2:textbox>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" style="">
+					<w2:textbox class="example_div_th_style" escape="false" id="" label="(기본 설정) escape 사용 - 다건 출력 컴포넌트" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<xf:group id="" class="mb_def_box nobottom">
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:100%;margin-bottom:4px;" id="" label="AutoComplete" class="ws_exam_txt_list">
+								</w2:span>
+								<w2:autoComplete editType="select" id="" useKeywordHighlight="false" style="width: 250px;height: 26px;"
+									submenuSize="auto" search="start" useLocale="false" allOption="" chooseOption="" ref="" escape="true">
+									<w2:choices>
+										<w2:itemset nodeset="data:dlt_exam1">
+											<w2:label ref="html_tag"></w2:label>
+											<w2:value ref="code"></w2:value>
+										</w2:itemset>
+									</w2:choices>
+								</w2:autoComplete>
+								<w2:anchor outerDiv="false" style="width: 100px;" id="">
+									<xf:label></xf:label>
+								</w2:anchor>
+							</xf:group>
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:100%;margin-bottom:4px;" id="" label="Checkbox" class="ws_exam_txt_list">
+								</w2:span>
+								<xf:select selectedindex="-1" id="" appearance="full" style="width: 250px;" cols="" rows="" ref="" escape="true">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_exam1">
+											<xf:label ref="html_tag"></xf:label>
+											<xf:value ref="code"></xf:value>
+										</xf:itemset>
+									</xf:choices>
+								</xf:select>
+							</xf:group>
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:100%;margin-bottom:4px;" id="" label="Checkcombobox" class="ws_exam_txt_list">
+								</w2:span>
+								<xf:checkcombobox id="ccb_exam1" displayAllOptionLabel="false" chooseOption="" displayMode="label"
+									style="width: 250px;height: 26px;" submenuSize="auto" allOption="" disabled="false" direction="auto" ref="" escape="true">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_exam1">
+											<xf:label ref="html_tag"></xf:label>
+											<xf:value ref="code"></xf:value>
+										</xf:itemset>
+									</xf:choices>
+								</xf:checkcombobox>
+							</xf:group>
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:100%;margin-bottom:4px;" id="" label="GridView" class="ws_exam_txt_list">
+								</w2:span>
+								<w2:gridView autoFit="allColumn" autoFitMinWidth="250" class="gvw" dataList="data:dlt_exam1" defaultCellHeight="24"
+									id="grd_exam1" readOnly="true" rowNumStatusResize="false" style="height:60px;" visibleRowNum="all" escape="true">
+									<w2:caption id="caption1" style="" value="this is a grid caption."></w2:caption>
+									<w2:header id="header1" style="">
+										<w2:row id="row1" style="">
+											<w2:column displayMode="label" id="column3" inputType="text" value="HTML 태그" width="146" textAlign="left"
+												style="text-indent: 6px;"></w2:column>
+										</w2:row>
+									</w2:header>
+									<w2:gBody id="gBody1" style="">
+										<w2:row id="row2" style="">
+											<w2:column displayMode="label" id="html_tag" inputType="text" textAlign="left" value="" width="146">
+											</w2:column>
+										</w2:row>
+									</w2:gBody>
+								</w2:gridView>
+							</xf:group>
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:100%;margin-bottom:4px;" id="" label="Radio" class="ws_exam_txt_list">
+								</w2:span>
+								<xf:select1 id="" selectedIndex="-1" appearance="full" style="width: 250px;" cols="" rows="" ref="" escape="true">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_exam1">
+											<xf:label ref="html_tag"></xf:label>
+											<xf:value ref="code"></xf:value>
+										</xf:itemset>
+									</xf:choices>
+								</xf:select1>
+							</xf:group>
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:100%;margin-bottom:4px;" id="" label="Multiselect" class="ws_exam_txt_list">
+								</w2:span>
+								<xf:select id="" appearance="minimal" style="width: 250px;" ref="" escape="true">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_exam1">
+											<xf:label ref="html_tag"></xf:label>
+											<xf:value ref="code"></xf:value>
+										</xf:itemset>
+									</xf:choices>
+								</xf:select>
+							</xf:group>
+							<xf:group style="" id="" class="">
+								<w2:span style="display: inline-block;width:100%;margin-bottom:4px;" id="" label="Selectbox" class="ws_exam_txt_list">
+								</w2:span>
+								<xf:select1 id="" chooseOption="" style="width: 250px;height: 26px;" submenuSize="auto" allOption="" disabled="false"
+									direction="auto" appearance="minimal" disabledClass="w2selectbox_disabled" ref="" escape="true">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_exam1">
+											<xf:label ref="html_tag"></xf:label>
+											<xf:value ref="code"></xf:value>
+										</xf:itemset>
+									</xf:choices>
+								</xf:select1>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+				<xf:group class="example_div_tr_style" style="">
+					<w2:textbox class="example_div_th_style" id="" label="escape 미사용 - 다건 출력 컴포넌트" style=""></w2:textbox>
+					<xf:group class="example_div_td_style">
+						<xf:group class="mb_def_box nobottom" id="">
+							<xf:group class="" id="" style="">
+								<w2:span class="ws_exam_txt_list" id="" label="AutoComplete" style="display: inline-block;width:100%;margin-bottom:4px;">
+								</w2:span>
+								<w2:autoComplete allOption="" chooseOption="" editType="select" escape="false" id="" ref="" search="start"
+									style="width: 250px;height: 26px;" submenuSize="auto" useKeywordHighlight="false" useLocale="false" renderType="component">
+									<w2:choices>
+										<w2:itemset nodeset="data:dlt_exam1">
+											<w2:label ref="html_tag"></w2:label>
+											<w2:value ref="code"></w2:value>
+										</w2:itemset>
+									</w2:choices>
+								</w2:autoComplete>
+								<w2:anchor id="" outerDiv="false" style="width: 100px;">
+									<xf:label></xf:label>
+								</w2:anchor>
+							</xf:group>
+							<xf:group class="" id="" style="">
+								<w2:span class="ws_exam_txt_list" id="" label="Checkbox" style="display: inline-block;width:100%;margin-bottom:4px;">
+								</w2:span>
+								<xf:select appearance="full" cols="" escape="false" id="" ref="" rows="" selectedindex="-1" style="width: 250px;">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_exam1">
+											<xf:label ref="html_tag"></xf:label>
+											<xf:value ref="code"></xf:value>
+										</xf:itemset>
+									</xf:choices>
+								</xf:select>
+							</xf:group>
+							<xf:group class="" id="" style="">
+								<w2:span class="ws_exam_txt_list" id="" label="Checkcombobox" style="display: inline-block;width:100%;margin-bottom:4px;">
+								</w2:span>
+								<xf:checkcombobox allOption="" chooseOption="" direction="auto" disabled="false" displayAllOptionLabel="false"
+									displayMode="label" escape="false" id="ccb_exam2" ref="" style="width: 250px;height: 26px;" submenuSize="auto">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_exam1">
+											<xf:label ref="html_tag"></xf:label>
+											<xf:value ref="code"></xf:value>
+										</xf:itemset>
+									</xf:choices>
+								</xf:checkcombobox>
+							</xf:group>
+							<xf:group class="" id="" style="">
+								<w2:span class="ws_exam_txt_list" id="" label="GridView" style="display: inline-block;width:100%;margin-bottom:4px;">
+								</w2:span>
+								<w2:gridView autoFit="allColumn" autoFitMinWidth="250" class="gvw" dataList="data:dlt_exam1" defaultCellHeight="24"
+									escape="false" id="grd_exam2" rowNumStatusResize="false" style="height:60px;" visibleRowNum="all" readOnly="true">
+									<w2:caption id="caption1" style="" value="this is a grid caption."></w2:caption>
+									<w2:header id="header1" style="">
+										<w2:row id="row1" style="">
+											<w2:column displayMode="label" id="column3" inputType="text" value="HTML 태그" width="146" textAlign="left"
+												style="text-indent: 6px;"></w2:column>
+										</w2:row>
+									</w2:header>
+									<w2:gBody id="gBody1" style="">
+										<w2:row id="row2" style="">
+											<w2:column displayMode="label" id="html_tag" inputType="text" textAlign="left" value="" width="146">
+											</w2:column>
+										</w2:row>
+									</w2:gBody>
+								</w2:gridView>
+							</xf:group>
+							<xf:group class="" id="" style="">
+								<w2:span class="ws_exam_txt_list" id="" label="Radio" style="display: inline-block;width:100%;margin-bottom:4px;">
+								</w2:span>
+								<xf:select1 appearance="full" cols="" escape="false" id="" ref="" rows="" selectedIndex="-1" style="width: 250px;">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_exam1">
+											<xf:label ref="html_tag"></xf:label>
+											<xf:value ref="code"></xf:value>
+										</xf:itemset>
+									</xf:choices>
+								</xf:select1>
+							</xf:group>
+							<xf:group class="" id="" style="">
+								<w2:span class="ws_exam_txt_list" id="" label="Multiselect" style="display: inline-block;width:100%;margin-bottom:4px;">
+								</w2:span>
+								<xf:select appearance="minimal" escape="false" id="" ref="" style="width: 250px;">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_exam1">
+											<xf:label ref="html_tag"></xf:label>
+											<xf:value ref="code"></xf:value>
+										</xf:itemset>
+									</xf:choices>
+								</xf:select>
+							</xf:group>
+							<xf:group class="" id="" style="">
+								<w2:span class="ws_exam_txt_list" id="" label="Selectbox" style="display: inline-block;width:100%;margin-bottom:4px;">
+								</w2:span>
+								<xf:select1 allOption="" appearance="minimal" chooseOption="" direction="auto" disabled="false"
+									disabledClass="w2selectbox_disabled" escape="false" id="" ref="" style="width: 250px;height: 26px;" submenuSize="auto">
+									<xf:choices>
+										<xf:itemset nodeset="data:dlt_exam1">
+											<xf:label ref="html_tag"></xf:label>
+											<xf:value ref="code"></xf:value>
+										</xf:itemset>
+									</xf:choices>
+								</xf:select1>
+							</xf:group>
+						</xf:group>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+	</body>
+</html>

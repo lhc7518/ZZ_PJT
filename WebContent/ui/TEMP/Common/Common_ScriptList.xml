@@ -45,7 +45,7 @@
 					</w2:data>
 				</w2:dataList>
 
-				<w2:dataList baseNode="list" repeatNode="map" id="dlt_master" saveRemovedData="true">
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_master" saveRemovedData="true" ev:ondataload="scwin.dlt_master_ondataload">
 					<w2:columnInfo>
 						<w2:column id="FILE" name="파일" dataType="text"></w2:column>
 						<w2:column id="FUNC" name="함수" dataType="text"></w2:column>
@@ -120,7 +120,7 @@ scwin.searchFn = function(flag) {
 //조회0 callback (데이터 그대로 셋팅)
 scwin.sbm_search0_callback = function(e){
 	//조회 건수 셋팅 
-	spn_GrpCnt.setValue( dlt_master.getRowCount() );
+	// spn_GrpCnt.setValue( dlt_master.getRowCount() );
 
 	//첫행 포커스 
 	grd_master.setFocusedCell(0, 0);
@@ -132,7 +132,11 @@ scwin.sbm_search1_callback = function(e){
 	console.log("sbm_search1_callback===\n", e.responseJSON);
 	var jsonData = e.responseJSON.dlt_temp;
 
-	//json 데이터 sort (func 컬럼으로 정렬) 		
+	//임시 dataList(dlt_temp) 에 셋팅된 데이터를 가공하여 최종적으로 dlt_master 에 셋팅하는 형태로 수행 
+	//즉, dlt_temp 는 전체 데이터를 담고 있으며, 정렬 및 검색어에 해당하는 데이터만 따로 array 에 담아 
+	//실제 화면에 처리해줄 dlt_master 에 setJSON 처리 => 조회 시 마다 서버 호출 없이, 화면 단에서 검색기능 구현 
+	//jquerySearchfilter.xml 파일에도 동일한 형태의 서버 호출 없이, 검색기능을 구현함 (jquery data-search 기능으로 대상 셀렉터를 찾아서 활성화/비활성화 처리 함 
+	//json 데이터 sort (func 컬럼으로 정렬)  : json 의 sort API 를 사용하여 데이터 정렬 처리 가능함 		
 	jsonData.sort(
 		function(a, b) {
 			if ( a.FUNC == b.FUNC ){
@@ -146,12 +150,12 @@ scwin.sbm_search1_callback = function(e){
 	//검색어 체크 
 	var gubun = dma_searchParam.get("gubun");
 	var searchWord = dma_searchParam.get("searchWord").trim();
-	searchWord = searchWord.toLowerCase();
+	searchWord = searchWord.toLowerCase();		//검색어 데이터 소문자로 치환 (jsonData 와 검색 비교를 위해서 소문자로 처리)
 
 	//검색어에 해당하는 데이터 담아서, dlt_master 에 셋팅 			
 	var searchArray = [];				
 	for ( var i=0; i<jsonData.length; i++ ){
-		var searchNm = jsonData[i][gubun].toLowerCase();
+		var searchNm = jsonData[i][gubun].toLowerCase();	//jsonData 에서 추출한 데이터 소문자로 치환 
 		if ( searchNm.indexOf(searchWord) > -1 ){
 			searchArray.push(jsonData[i]);
 		}
@@ -161,7 +165,7 @@ scwin.sbm_search1_callback = function(e){
 	dlt_master.setJSON(searchArray);
 	
 	//조회 건수 셋팅 
-	spn_GrpCnt.setValue( dlt_master.getRowCount() );
+	// spn_GrpCnt.setValue( dlt_master.getRowCount() );		//dataList ondataload 이벤트에서 처리 가능 
 	
 	//첫행 포커스 
 	grd_master.setFocusedCell(0, 0);		
@@ -174,12 +178,16 @@ scwin.sbm_search2_callback = function(e){
 	console.log("sbm_search2_callback===\n", e.responseJSON);
 
 	//임시 dataList 의 FUNC 컬럼의 값을 기준으로 오름차순으로 정렬한다.
+	//1. 서버단에서 받아온 전체 데이터를 dlt_temp 에 담기
+	//2. 담아둔 전체 데이터 dlt_temp 에 sort API 를 사용하여 정렬 처리 함
+	//3. 검색어 있을 경우 정렬 된 전체데이터에서 검색구분 
+	
 	dlt_temp.sort('FUNC', 0);
 
 	//검색어 체크 
-	var gubun = dma_searchParam.get("gubun");
-	var searchWord = dma_searchParam.get("searchWord").trim();
-	searchWord = searchWord.toLowerCase();
+	var gubun = dma_searchParam.get("gubun");			//FUNC 
+	var searchWord = dma_searchParam.get("searchWord").trim();		//입력한 검색어 (ex: com.create) 
+	searchWord = searchWord.toLowerCase();				//검색어 대소문자 구분 하지 않기 위해서 대상 및 비교자 toLowerCase 처리 함 
 
 	//검색어에 해당하는 데이터 담아서, dlt_master 에 셋팅 			
 	var searchArray = [];				
@@ -194,7 +202,9 @@ scwin.sbm_search2_callback = function(e){
 	dlt_master.setJSON(searchArray);
 
 	//조회 건수 셋팅 
-	spn_GrpCnt.setValue( dlt_master.getRowCount() );
+	//dataList ondataload 이벤트에서 건수 세팅 할수 있음(구조적으로 dataList 의 이벤트는 확인이 어려운 점이 있음)
+	//따라서 특별한 경우가 아니라면, submitCallback 에서 건수 등의 셋팅을 하는 방향이 좋음
+	// spn_GrpCnt.setValue( dlt_master.getRowCount() );
 	
 	//첫행 포커스 
 	grd_master.setFocusedCell(0, 0);
@@ -225,6 +235,19 @@ scwin.ipt_searchWord_onkeyup = function(e) {
 	if ( e.keyCode == "13" ){
 		scwin.searchFn(0);
 	}
+};
+
+scwin.dlt_master_ondataload = function() {
+	//dataList 변경(set) 발생 시 호출 
+	/*
+	DataList의 data가 전체적으로 변경(set)되는 경우 발생하며 data가 셋팅 된 이후 이벤트가 발생한다.
+	setJSON, setXML, setData 류의 API가 해당된다. ( 해당 API를 통해 append 할 경우에도 발생. )
+	단, removeAll 호출 시에는 해당 이벤트는 발생하지 않으며, 대신 onremoverow 이벤트가 발생한다.
+	*/
+	console.log("ondataload=>", this.getTotalRow());
+	spn_GrpCnt.setValue(this.getTotalRow());
+
+
 };
 ]]></script>
 	</head>

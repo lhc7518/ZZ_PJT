@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/ui/TEMP/ETC/ws5_example.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenName="P00325S01의 서브 페이지 01">
+		<w2:historyInfo>
+			<w2:history meta_no="01" meta_desc="최초작성" meta_date="20230810" meta_user="InswaveSystems" />
+		</w2:historyInfo>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<!-- 상위의 상위 데이터리스트 링크 -->
+				<w2:aliasDataList scope="../../dlt_books" id="adl_s0101" />
+
+				<!-- 최상위 화면의 데이터리스트 링크  -->
+<!-- 				<w2:aliasDataList scope="/dlt_books" id="adl_s0101" />		 -->
+
+				<!-- 상위의 상위 wfm_sub1_2 wframe 내부의 데이터리스트 링크도 가능-->
+<!-- 				<w2:aliasDataList scope="../../wfm_sub1_2/dlt_books2" id="adl_s0101" /> -->
+				
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function () {
+    //dataList ID 확인 
+    txt_temp3.setValue( "adl_s0101.getID() : "+adl_s0101.getID() );
+    txt_temp3.setStyle( "color", "seagreen" );
+    txt_temp3.setStyle( "font-weight", "bold" );
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group id="" style="">
+			<w2:textbox class="ws5_example_txt_normal" escape="false" id="" label="이 영역은 WFrame 입니다.&lt;br/&gt;파일명: P00325S01S01.xml"
+				style="" />
+			<xf:group id="" class="mb_def_box nobottom">
+				<w2:textbox style="" id=""
+					label="AliasDataList의 scope : &apos;&lt;code class=&quot;ws5_exam_txt_blue&quot;&gt;../../dlt_books&lt;/code&gt;&apos;"
+					class="ws5_example_txt_normal" escape="false">
+				</w2:textbox>
+				<w2:textbox class="ws5_example_txt_normal" escape="false" id="txt_temp3" label="데이터리스트 ID" style=""></w2:textbox>
+				<w2:anchor escape="false" href="/websquare/websquare.html?w2xPath=/ui/TEMP/ETC/temp_jquery.xml" id="" label="anchor" outerDiv="false" ref="data:dma_exam1.html_tag" style="text-decoration: underline;min-width: 205px;display: inline-block;line-height: 26px;" target="_self">
+				</w2:anchor><w2:gridView dataList="data:adl_s0101" style="height:60px;" autoFit="allColumn" id="grd_exam1" class="gvw nobottom"
+					defaultCellHeight="24" autoFitMinWidth="222" visibleRowNum="2" editModeEvent="onclick" sortable="true">
+					<w2:caption style="" id="caption1" value="this is a grid caption." />
+					<w2:header style="" id="header1">
+						<w2:row style="" id="row1">
+							<w2:column width="146" inputType="text" id="column3" value="도서명" displayMode="label" />
+							<w2:column width="76" inputType="text" id="column1" value="출간일" displayMode="label" />
+						</w2:row>
+					</w2:header>
+					<w2:gBody style="" id="gBody1">
+						<w2:row style="" id="row2">
+							<w2:column textAlign="left" width="146" inputType="text" id="book_name" value="" displayMode="label" />
+							<w2:column dataType="date" width="76" displayFormat="yyyy-MM-dd" inputType="text" id="published_date" value=""
+								displayMode="label">
+							</w2:column>
+						</w2:row>
+					</w2:gBody>
+				</w2:gridView>
+
+				
+			</xf:group>
+		</xf:group>
+	</body>
+</html>
