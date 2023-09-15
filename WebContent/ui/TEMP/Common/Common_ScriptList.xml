@@ -333,7 +333,7 @@ scwin.dlt_master_ondataload = function() {
 								displayMode="label">
 							</w2:column>
 							<w2:column width="120" inputType="text" style="" id="column7" value="함수" blockSelect="false" displayMode="label"></w2:column>
-							<w2:column width="300" inputType="text" style="" id="column5" value="Title" blockSelect="false" displayMode="label">
+							<w2:column width="300" inputType="text" style="" id="column5" value="-클라이언트 다국어 셋팅-" blockSelect="false" displayMode="label" localeRef="c_lable_2" useLocale="true">
 							</w2:column>
 							<w2:column removeBorderStyle="false" width="80" inputType="text" style="" id="column9" value="AS-IS" blockSelect="false"
 								displayMode="label">

@@ -247,10 +247,9 @@
     <fusionchart>
         <version value="3.19"/>
     </fusionchart>
-    <languagePack useLanguagePack="false">
-        <url lang="ko" value="/langpack/ko.js"/>
-        <url lang="en" value="/langpack/en.js"/>
-        <url lang="ch" value="/langpack/ch.js"/>
+    <languagePack useLanguagePack="true">
+        <url lang="ko" value="/cm/langpack/ko.js"/>
+        <url lang="en" value="/cm/langpack/en.js"/>
     </languagePack>
     <license value="true"/>
     <requirejs timeout="20"/>

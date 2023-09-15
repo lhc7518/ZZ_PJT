@@ -607,19 +607,15 @@ export default {
       }
     },
     "languagePack": {
-      "@useLanguagePack": "false",
+      "@useLanguagePack": "true",
       "url": [
         {
           "@lang": "ko",
-          "@value": "/langpack/ko.js"
+          "@value": "/cm/langpack/ko.js"
         },
         {
           "@lang": "en",
-          "@value": "/langpack/en.js"
-        },
-        {
-          "@lang": "ch",
-          "@value": "/langpack/ch.js"
+          "@value": "/cm/langpack/en.js"
         }
       ]
     },
