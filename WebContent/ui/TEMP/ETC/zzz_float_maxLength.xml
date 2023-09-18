@@ -37,7 +37,7 @@
 
 
 scwin.onpageload = function() { 
-	
+	console.log("1234");
 };
 ]]></script>
     </head>
