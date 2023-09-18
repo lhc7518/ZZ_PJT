@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map" />
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+
+/**
+ * group 에 기존 disabled 속성 유지 여부 : keepDisabled
+ *  - group 하위 컴포넌트를 전체 disabled 시킬경우, 다시 원복 시 기존의 disabled 설정을 유지해주지 못함.
+ *  - group 에 속성 keeDisabled : true  지정 시, 기존 disabled 설정을 유지해줌 
+ */
+
+scwin.onpageload = function() {
+	
+};
+
+scwin.btn_disable_onclick = function(e) {
+    grp_temp.setDisabled(true);
+};
+
+scwin.btn_enable_onclick = function(e) {
+    grp_temp.setDisabled(false); 
+};
+
+
+
+scwin.btn_disable2_onclick = function(e) {
+    grp_temp2.setDisabled(true);
+};
+
+scwin.btn_enable2_onclick = function(e) {
+    grp_temp2.setDisabled(false);
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<xf:group style="width:745px;height:85px;" id="" keepDisabled="true">
+			<w2:textbox id="" label="keepDisabled : false" style="width: 150px;height: 23px;"></w2:textbox>
+			<xf:group id="grp_temp" keepDisabled="false">
+				<xf:input style="width: 144px;height: 21px;" id="ipt_1"></xf:input>
+				<xf:input style="width: 144px;height: 21px;" id="ipt_2" disabled="true"></xf:input>
+				<xf:input style="width: 144px;height: 21px;" id="ipt_3"></xf:input>
+				<xf:input style="width: 144px;height: 21px;" id="ipt_4"></xf:input>
+			</xf:group>
+			<xf:trigger ev:onclick="scwin.btn_disable_onclick" style="width: 80px;height: 23px;" id="btn_disable" type="button">
+				<xf:label><![CDATA[disable]]></xf:label>
+			</xf:trigger>
+			<xf:trigger ev:onclick="scwin.btn_enable_onclick" style="width: 80px;height: 23px;" id="btn_enable" type="button">
+				<xf:label><![CDATA[enable]]></xf:label>
+			</xf:trigger>
+		</xf:group>
+		<xf:group id="" keepDisabled="true" style="width:745px;height:85px;">
+			<w2:textbox id="" label="keepDisabled : true" style="width: 150px;height: 23px;"></w2:textbox>
+			<xf:group id="grp_temp2" keepDisabled="true">
+				<xf:input id="ipt_11" style="width: 144px;height: 21px;"></xf:input>
+				<xf:input id="ipt_22" style="width: 144px;height: 21px;" disabled="true"></xf:input>
+				<xf:input id="ipt_33" style="width: 144px;height: 21px;"></xf:input>
+				<xf:input id="ipt_44" style="width: 144px;height: 21px;"></xf:input>
+			</xf:group>
+			<xf:trigger id="btn_disable2" style="width: 80px;height: 23px;" type="button" ev:onclick="scwin.btn_disable2_onclick">
+				<xf:label><![CDATA[disable]]></xf:label>
+			</xf:trigger>
+			<xf:trigger id="btn_enable2" style="width: 80px;height: 23px;" type="button" ev:onclick="scwin.btn_enable2_onclick">
+				<xf:label><![CDATA[enable]]></xf:label>
+			</xf:trigger>
+		</xf:group>
+	</body>
+</html>

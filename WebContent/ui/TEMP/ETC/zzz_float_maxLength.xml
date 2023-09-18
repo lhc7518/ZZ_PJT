@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+            <w2:dataCollection baseNode="map">
+            	<w2:dataMap baseNode="map" id="dataMap1">
+            		<w2:keyInfo>
+            			<w2:key id="col1" name="name1" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            	</w2:dataMap>
+            	<w2:dataMap baseNode="map" id="dataMap2">
+            		<w2:keyInfo>
+            			<w2:key id="col1" name="name1" dataType="text"></w2:key>
+            		</w2:keyInfo>
+            	</w2:dataMap>
+            </w2:dataCollection>
+            <w2:workflowCollection/>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+/**
+ * inputbox maxLength 관련 
+ *  - dataType : number 일 경우 maxLength 로 정수부 자릿수 체크 가능 
+ *  - dataType : float 일 경우에도 maxLength 로 정수부, 소수부 자릿수 체크 가능 
+ *      ex) maxLength = 5.2    //정수부 5자리, 소수부 2자리 로 체크 할수 있음 
+ * 
+ *  ※ displayFormat 으로 천단위(#,###) 형태로 표시하는 경우 (applyFormat: all 속성 적용 시)
+ *      - dataType : number 일 경우 컴마(,) 도 maxLength 자릿수 포함됨(버그??)
+ *      - dataType : float 일 경우 컴마(,) 제외하고 maxLength 자릿수 체크됨 
+ */
+
+
+scwin.onpageload = function() { 
+	
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    <xf:group id="" style="padding: 10px;"><xf:group id="">
+    		<w2:textbox style="width:500px;height:40px;" id="" label="dataType: number , maxLength : 5 &amp;nbsp;( applyFormat:all 시 컴마 자릿수차지함 )&lt;br/&gt;[ displayFormat 적용 시 유의 할것... ]" escape="false"></w2:textbox>
+    		<xf:input maxlength="5.0" dataType="number" validateOnInput="true" displayFormat="#,###" style="width: 200px;height: 21px;" id="ipt_temp" applyFormat="all" ref="">
+    		</xf:input>
+    	</xf:group><xf:group style="margin-top: 10px;" id="">
+    		<w2:textbox style="width:500px;height:40px;" id="" label="dataType: float , maxLength : 5.2 &amp;nbsp;( applyFormat:all 시 컴마 자릿수차지안함 )&lt;br/&gt;[ displayFormat 적용 시에도 정상동작 ]" escape="false"></w2:textbox>
+    		<xf:input maxlength="5.2" dataType="float" displayFormat="#,###.##" validateOnInput="true" style="width: 200px;height: 21px;" applyFormat="all" id="ipt_temp2" ref="">
+    		</xf:input>
+    	</xf:group></xf:group></body>
+</html>

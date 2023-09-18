@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head>
+		<w2:type>COMPONENT</w2:type>
+		<w2:buildDate />
+		<w2:MSA />
+		<xf:model>
+			<w2:dataCollection baseNode="map">
+				<w2:dataList baseNode="list" repeatNode="map" id="dataList1" saveRemovedData="true">
+					<w2:columnInfo>
+						<w2:column id="col1" name="name1" dataType="text"></w2:column>
+						<w2:column id="col2" name="name2" dataType="text"></w2:column>
+					</w2:columnInfo>
+					<w2:data use="true">
+						<w2:row>
+							<col1><![CDATA[a1]]></col1>
+							<col2><![CDATA[aaaa]]></col2>
+						</w2:row>
+						<w2:row>
+							<col1><![CDATA[b1]]></col1>
+							<col2><![CDATA[bbbb]]></col2>
+						</w2:row>
+					</w2:data>
+				</w2:dataList>
+			</w2:dataCollection>
+			<w2:workflowCollection />
+		</xf:model>
+		<w2:layoutInfo />
+		<w2:publicInfo method="" />
+		<script lazy="false" type="text/javascript"><![CDATA[
+/**
+ * gridView  cell 의 dataType 이 textArea 일 경우 
+ *  - 해당 cell readOnly 시에도 마우스 클릭 시 textArea 형태의 edit 모양이 출력됨
+ *  - readOnly 시에는 textArea 형태의 edit 모양 출력되지 않도록 처리 
+ *      => 해당 gridView 의 cell 에 showReadOnly : false 지정 
+ * 
+ * 
+ *  ※ 기타 잘 알려지지 않은 기능 참고용 (그리드뷰 속성) 
+ *      1. 모바일에서 그리드뷰의 세로 스크롤 속도가 빠른 경우 touchScrollDelta 속성을 부여해서 스크롤 속도 조절 가능 (모바일에서 빠를 경우)
+ *          - touchScrollDelta : 1 ~ 5 (1: 가장느림, 5: 가장빠름) 
+ */
+
+
+scwin.onpageload = function() { 
+	
+};
+]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload">
+		<w2:gridView checkAllType="false" defaultCellHeight="20" id="" style="width: 500px;height: 150px;" dataList="data:dataList1"
+			readOnly="true">
+			<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+			<w2:header style="" id="header2">
+				<w2:row style="" id="row3">
+					<w2:column width="200" inputType="text" style="" id="column4" value="showReadOnly : true" displayMode="label"></w2:column>
+					<w2:column width="200" inputType="text" style="" id="column3" value="showReadOnly : false" displayMode="label"></w2:column>
+				</w2:row>
+			</w2:header>
+			<w2:gBody style="" id="gBody2">
+				<w2:row style="" id="row4">
+					<w2:column width="200" inputType="textarea" style="" id="col1" value="" displayMode="label"></w2:column>
+					<w2:column width="200" inputType="textarea" style="" id="col2" value="" displayMode="label" showReadOnly="false"></w2:column>
+				</w2:row>
+			</w2:gBody>
+		</w2:gridView>
+	</body>
+</html>
