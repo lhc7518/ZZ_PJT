@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:w2="http://www.inswave.com/websquare"
+	xmlns:xf="http://www.w3.org/2002/xforms">
+	<head meta_screenId="temp_page1" meta_screenName="temp 페이지1">
+		<w2:type>DEFAULT</w2:type>
+		<w2:buildDate />
+		<xf:model>
+			<xf:instance>
+				<data xmlns="" />
+			</xf:instance>
+			<w2:dataCollection baseNode="map">
+				
+				<w2:dataList baseNode="list" repeatNode="map" id="dlt_master" saveRemovedData="true">
+					<w2:columnInfo>
+<!-- 						<w2:column id="file" name="파일" dataType="text"></w2:column> -->
+<!-- 						<w2:column id="func" name="함수" dataType="text"></w2:column> -->
+<!-- 						<w2:column id="title" name="함수title" dataType="text"></w2:column> -->
+<!-- 						<w2:column id="desc" name="decription" dataType="text"></w2:column> -->
+<!-- 						<w2:column id="asIs" name="asIs" dataType="text"></w2:column> -->
+<!-- 						<w2:column id="remark" name="비고" dataType="text"></w2:column> -->
+						<w2:column id="FILE" name="파일" dataType="text"></w2:column>
+						<w2:column id="FUNC" name="함수" dataType="text"></w2:column>
+						<w2:column id="FUNC_TITLE" name="함수title" dataType="text"></w2:column>
+						<w2:column id="FUNC_DESC" name="decription" dataType="text"></w2:column>
+						<w2:column id="FUNC_REMARK" name="비고" dataType="text"></w2:column>		
+						<w2:column id="FUNC_ASIS" name="asis함수" dataType="text"></w2:column>						
+					</w2:columnInfo>
+				</w2:dataList>
+			
+			</w2:dataCollection>
+			<w2:workflowCollection></w2:workflowCollection>
+
+		</xf:model>
+		<script type="text/javascript" lazy="false"><![CDATA[
+/**
+ * 공통함수 목록 Data(json) 생성 화면 - 사용방법 
+ * 		- 공통함수 정리 Excel			: UI 공통함수 목록.xlsx 
+ * 		- 공통함수 json 생성화면		: Create_scriptData.xml 
+ * 		- 공통함수 데이터 json			: scriptData.json 
+ * 		- 제공용 공통함수 목록 화면	: Common_ScriptList.xml 
+ * 		- 주의사항 : 생성하는 json 데이터의 컬럼명 체크 필요함 
+ * 
+ * 	1. 공통함수 목록을 Excel 에 목록으로 정리 ( /ui/TEMP/Common/data/UI 공통함수 목록.xlsx ) 
+ * 	2. 작성한 Excel의 내용을 전체 복사 (NO제외) 
+ * 	3. 해당 화면의 그리드뷰에 붙여넣기 
+ * 	4. json 가져오기 버튼 클릭 
+ * 	5. textArea 의 내용을 복사 
+ * 	6. json 파일에 내용 붙여넣기 & ctrl+shit+f 로 포맷정리 ( /ui/TEMP/Common/data/scriptData.json ) 
+ * 	7. 공통함수 목록 화면에서 데이터 조회 ( /ui/TEMP/Common/Common_ScriptList.xml )
+ */
+
+
+scwin.onpageload = function() { 
+	dlt_master.insertRow();
+};
+
+scwin.onpageunload = function() {
+
+};
+
+/*******************************************************/
+/******************** user 정의 함수 *************************/		
+/*******************************************************/
+
+//조회 
+scwin.searchFn = function() {		
+	var data = dlt_master.getAllJSON();
+	
+	var arrayStr = com.str.serialize(data);
+	arrayStr = arrayStr.replaceAll(',"rowStatus":"C"', '');
+
+	var preStr = '{"dlt_temp": [';
+	var postStr = ']}';	
+
+	var realData = arrayStr.substr(1, arrayStr.length-2);
+
+	//ipt_json.setValue(arrayStr.substr(1, arrayStr.length-2));
+
+	ipt_json.setValue(preStr + realData + postStr);
+};
+
+/*******************************************************/
+/**************** component 이벤트 함수 ***********************/		
+/*******************************************************/
+
+scwin.btn_search_onclick = function(e) {
+	scwin.searchFn(); 
+};
+
+
+	]]></script>
+	</head>
+	<body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+		<xf:group class="contentWrap" id="" style="">
+			<xf:group style="width:100.0%;height:37px;margin-top: 10px;" id="" class="">
+				<w2:textbox style="width: 300px;height: 30px;font-size:25px;font-weight:bold;float:left;" label="공통함수 데이터 생성" id=""></w2:textbox>
+				<xf:trigger ev:onclick="scwin.btn_search_onclick"
+					style="width: 200px;height: 27px;float:right;margin-top:5px;margin-right:5px;" id="btn_search" type="button" class="">
+					<xf:label><![CDATA[json 가져오기]]></xf:label>
+				</xf:trigger>
+			</xf:group>
+
+			<w2:gridView showSortableUseFilter="false" scrollByColumnAdaptive="false" summaryAuto="false" useShiftKey="true"
+				scrollByColumn="false" summaryOnlyAuto="false" defaultCellHeight="20" applyAllColumnStyle="false" tooltipDisplay="true"
+				dataList="data:dlt_master" style="width:100%;height:250px;" ignoreCellClick="false" id="grd_master" useFilterList="false"
+				autoFit="allColumn" ignoreToggleOnDisabled="false" focusMode="row">
+				<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+				<w2:header style="" id="header2">
+					<w2:row style="" id="row3">
+						<w2:column removeBorderStyle="false" width="70" inputType="text" style="" id="column8" value="파일"
+							blockSelect="false" displayMode="label">
+						</w2:column>
+						<w2:column width="100" inputType="text" style="" id="column7" value="함수" blockSelect="false" displayMode="label"></w2:column>
+						<w2:column width="150" inputType="text" style="" id="column5" value="Title" blockSelect="false"
+							displayMode="label">
+						</w2:column>
+						<w2:column width="200" inputType="text" style="" id="column4" value="Desc" blockSelect="false"
+							displayMode="label">
+						</w2:column>
+						<w2:column width="100" inputType="text" style="" id="column3" value="비고" blockSelect="false" displayMode="label"></w2:column>
+						<w2:column removeBorderStyle="false" width="100" inputType="text" style="" id="column9" value="AS-IS"
+							blockSelect="false" displayMode="label">
+						</w2:column>
+					</w2:row>
+				</w2:header>
+				<w2:gBody style="" id="gBody2">
+					<w2:row style="" id="row4">
+						<w2:column removeBorderStyle="false" width="70" inputType="text" style="height:20px" id="FILE" value=""
+							blockSelect="false" displayMode="label">
+						</w2:column>
+						<w2:column width="100" inputType="text" style="" id="FUNC" value="" blockSelect="false" displayMode="label"></w2:column>
+						<w2:column width="150" inputType="text" style="" id="FUNC_TITLE" value="" blockSelect="false" displayMode="label"></w2:column>
+						<w2:column width="200" inputType="text" style="" id="FUNC_DESC" value="" blockSelect="false" displayMode="label"
+							textAlign="left">
+						</w2:column>
+						<w2:column width="100" inputType="text" style="" id="FUNC_REMARK" value="" blockSelect="false" displayMode="label"
+							textAlign="left">
+						</w2:column>
+						<w2:column removeBorderStyle="false" width="100" inputType="text" style="height:20px" id="FUNC_ASIS" value=""
+							blockSelect="false" displayMode="label">
+						</w2:column>
+					</w2:row>
+				</w2:gBody>
+			</w2:gridView>
+			<xf:group class="w2tb mt10" id="group1" style="width:100.00%;" tagname="table">
+				<w2:attributes>
+					<w2:summary></w2:summary>
+				</w2:attributes>
+				<xf:group tagname="colgroup">
+					<xf:group style="width:50px;" tagname="col"></xf:group>
+					<xf:group style="" tagname="col"></xf:group>
+					<xf:group style="width:150px;" tagname="col"></xf:group>
+					<xf:group style="" tagname="col"></xf:group>
+				</xf:group>
+				<xf:group style="height:32.00px;" tagname="tr">
+					<xf:group class="w2tb_th" style="" tagname="th">json<w2:attributes>
+							<w2:scope>row</w2:scope>
+						</w2:attributes></xf:group>
+					<xf:group class="w2tb_td" style="" tagname="td">
+						<w2:attributes>
+							<w2:colspan>3</w2:colspan>
+						</w2:attributes>
+						<xf:textarea id="ipt_json" style="width:99%; height:300px;" ref="" readOnly=""></xf:textarea>
+					</xf:group>
+				</xf:group>
+			</xf:group>
+		</xf:group>
+
+		
+	</body>
+</html>

@@ -92,6 +92,11 @@
 
 		</xf:model>
 		<script type="text/javascript" lazy="false"><![CDATA[
+/**
+ * 공통함수 목록 및 검색 기능용 화면 
+ */
+
+
 scwin.onpageload = function() {
 
 };
